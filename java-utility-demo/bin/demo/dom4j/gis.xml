@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="GBK" ?>
+<wfs:FeatureCollection 
+	xmlns:esri="http://www.esri.com/esri" 
+	xmlns:gml="http://www.opengis.net/gml" 
+	xmlns:wfs="http://www.opengis.net/wfs" 
+	xmlns:ogc="http://www.opengis.net/ogc">
+	<gml:featureMember>
+		<!-- 第一条记录 开始 -->
+		<esri:L416 fid="L416.1">
+			<!-- esri是命名空间，没有意义，L416是图层名，.1表示是这个图层的第一条记录 -->
+			<esri:OBJECTID>15</esri:OBJECTID>
+			<!-- Objectid是主键字段,15是主键值 -->
+			<gml:multiPointProperty>
+				<!-- gml也是命名空间，multiPointProperty表示开始定义图形 -->
+				<gml:MultiPoint srsName="EPSG:4326">
+					<!-- MultPoint表示图形类型，点图层都是这样，srsName表示坐标系代号 -->
+					<gml:pointMember>
+						<!-- 点定义 -->
+						<gml:Point srsName="EPSG:4326">
+							<gml:coordinates>523236.810013 276594.810031</gml:coordinates>
+							<!-- 表示X、Y坐标，中间空格隔开 -->
+						</gml:Point>
+					</gml:pointMember>
+				</gml:MultiPoint>
+			</gml:multiPointProperty>
+			<gml:envelope>523236.810013,276594.810031,523236.810013,276594.810031</gml:envelope>
+			<!-- 图形的外接矩形，对于点来说没有意义 -->
+			<esri:成品油证号>京大010</esri:成品油证号>
+			<!-- 成品油证号是图层字段，京大010是字段值，下同 -->
+			<esri:发证时间>2000.08.28</esri:发证时间>
+			<esri:企业名称>北京市德兴成石油商店</esri:企业名称>
+			<esri:企业地址>北京市大兴区采育镇庙洼营村北50米.</esri:企业地址>
+			<esri:法人负责人>谷学民</esri:法人负责人>
+			<esri:电话>69246091</esri:电话>
+			<esri:化危证证号>3104009 2003.08</esri:化危证证号>
+			<esri:序号>15.000000</esri:序号>
+		</esri:L416>
+	</gml:featureMember>
+	<!-- 返回的第一条记录 结束 -->
+	<gml:featureMember>
+		<!-- 第二条记录 开始 -->
+		<esri:L416 fid="L416.2">
+			<esri:OBJECTID>2</esri:OBJECTID>
+			<gml:multiPointProperty>
+				<gml:MultiPoint srsName="EPSG:4326">
+					<gml:pointMember>
+						<gml:Point srsName="EPSG:4326">
+							<gml:coordinates>498628.000003 293871.809987</gml:coordinates>
+						</gml:Point>
+					</gml:pointMember>
+				</gml:MultiPoint>
+			</gml:multiPointProperty>
+			<gml:envelope>498628.000003,293871.809987,498628.000003,293871.809987</gml:envelope>
+			<esri:成品油证号>京丰086</esri:成品油证号>
+			<esri:发证时间>2002.05.23</esri:发证时间>
+			<esri:企业名称>中国石油化工股份有限公司北京京南丰新石油商店</esri:企业名称>
+			<esri:企业地址>北京市丰台区新发地大队潘家庙59号</esri:企业地址>
+			<esri:法人负责人>张克生</esri:法人负责人>
+			<esri:电话>67914851</esri:电话>
+			<esri:化危证证号>3106101 2003.12</esri:化危证证号>
+			<esri:序号>2.000000</esri:序号>
+		</esri:L416>
+		<!-- 返回的第二条记录 结束 -->
+	</gml:featureMember>
+	<gml:boundedBy>
+		<gml:Box srsName="EPSG:4326">
+			<gml:coordinates>484677.684968,276594.810031,567187.309967,390646.595008</gml:coordinates>
+		</gml:Box>
+	</gml:boundedBy>
+</wfs:FeatureCollection>
