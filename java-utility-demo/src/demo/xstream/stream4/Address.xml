@@ -1,0 +1,7 @@
+<Hi>
+	<unit>
+		<adress zipcode="100000">北京</adress>
+		<adress zipcode="200000">上海</adress>
+		<adress zipcode="300000">天津</adress>
+	</unit>
+</Hi>

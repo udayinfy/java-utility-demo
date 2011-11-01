@@ -1,0 +1,31 @@
+<xstream3.Person>
+	<name>赵钱孙</name>
+	<age>27</age>
+	<profile>
+		<job>软件工程师</job>
+		<tel>13688889999</tel>
+		<remark>备注说明</remark>
+	</profile>
+	<addList>
+		<xstream3.Address>
+			<province>
+				<name>河北</name>
+				<size>大省份</size>
+			</province>
+			<city>
+				<name>保定</name>
+				<size>大城市</size>
+			</city>
+		</xstream3.Address>
+		<xstream3.Address>
+			<province>
+				<name>辽宁</name>
+				<size>大省份</size>
+			</province>
+			<city>
+				<name>大连</name>
+				<size>大城市</size>
+			</city>
+		</xstream3.Address>
+	</addList>
+</xstream3.Person>
