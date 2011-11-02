@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0048)http://developer.51cto.com/art/200908/143639.htm -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Java语法技巧之双括弧初始化 - 51CTO.COM</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=x-ua-compatible content=ie=7>
+<META 
+content="本文介绍了一个Java语法技巧：双括弧的使用。第一层括弧 实际是定义了一个内部匿名类 (Anonymous Inner Class)，第二层括弧 实际上是一个实例初始化块 (instance initializer block)，这个块在内部匿名类构造时被执行。" 
+name=description>
+<META content=双括弧,Java语法技巧 name=keywords><LINK 
+href="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/news_09.css" type=text/css 
+rel=stylesheet><LINK href="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/master_top.css" 
+type=text/css rel=stylesheet>
+<SCRIPT language=javaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/validate2.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/fb_words_list.htm"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/base6.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/dialog_utf8.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/mail.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/article.js"></SCRIPT>
+
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/index_1_down.js"></SCRIPT>
+
+<SCRIPT>
+var thistid=143639;
+</SCRIPT>
+
+<META content="MSHTML 6.00.6000.17080" name=GENERATOR></HEAD>
+<BODY onresize=set_sreach() onload=set_sreach()>
+<DIV class=top>
+<DIV class=top_nav>
+<DIV class=top_nav_logo title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></DIV>
+<DIV class=top_nav_r><A href="http://www.51cto.com/">51CTO首页</A> | <A 
+href="http://news.51cto.com/">新闻</A> | <A 
+href="http://www.51cto.com/col/35">专题</A> | <A 
+href="http://bbs.51cto.com/">论坛</A> | <A href="http://blog.51cto.com/">博客</A> | 
+<A href="http://down.51cto.com/">下载</A> | <A href="http://g.51cto.com/">技术圈</A> 
+| <A href="http://book.51cto.com/">读书</A> | <A class=top_nav_r1 
+onmouseover=show(1,this) onmouseout=popupClose() 
+href="http://www.51cto.com/col/35/">技术频道 </A>| <A 
+href="http://www.cioage.com/">CIO </A>| <A href="http://www.watchstor.com/">存储 
+</A>| <A href="http://www.hc3i.cn/">HC3i </A>| <A 
+href="http://www.51cto.com/about/map.htm">地图</A> </DIV></DIV></DIV>
+<DIV class=subMenu1 id=s1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">安全</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A> 
+  <LI><A href="http://database.51cto.com/">数据库</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://cloud.51cto.com/">云计算</A> 
+  <LI><A href="http://developer.51cto.com/embed/">嵌入式</A> </LI></UL></DIV>
+<DIV class=subMenu1 id=s1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网建网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">网络安全</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">操作系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A></LI></UL></DIV>
+<DIV class=subMenu2 id=s2 onmouseover=popupNoClose( onmouseout=popupClose() )>
+<UL>
+  <LI><A href="http://www.cioage.com/news">资讯前沿</A> 
+  <LI><A href="http://www.cioage.com/insight">业界观察</A> 
+  <LI><A href="http://www.cioage.com/exp">应用体验</A> 
+  <LI><A href="http://www.cioage.com/tech">杀手技术</A></LI></UL></DIV>
+<DIV class=subMenu3 id=s3 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://news.watchstor.com/">新闻资讯</A> 
+  <LI><A href="http://tech.watchstor.com/">技术中心</A> 
+  <LI><A href="http://video.watchstor.com/">互动视频</A> 
+  <LI><A href="http://special.watchstor.com/">专题汇聚</A></LI></UL></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=banner>
+<DIV class=banner_l id=tonglanad></DIV>
+<DIV class=banner_r>
+<UL>
+  <LI id=wordlinkad1>
+  <LI id=wordlinkad2>
+  <LI id=wordlinkad3>
+  <LI id=wordlinkad4></LI></UL></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV id=subNav>
+<DIV class=subNav_logo><IMG 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/kaifa_logo.gif"></DIV>
+<DIV class=subNav_l><A href="http://developer.51cto.com/">首页</A> | <A 
+href="http://developer.51cto.com/java/">Java</A> | <A 
+href="http://developer.51cto.com/net/">.NET</A> | <A 
+href="http://developer.51cto.com/web/">Web</A> | <A 
+href="http://developer.51cto.com/col/1315/">XML</A> | <A 
+href="http://developer.51cto.com/col/585/">语言工具</A> | <A 
+href="http://developer.51cto.com/col/1312/">测试</A> | <A 
+href="http://developer.51cto.com/col/1314/" target=_blank>游戏</A> | <A 
+href="http://developer.51cto.com/col/583/" target=_blank>移动</A> | <A 
+href="http://developer.51cto.com/col/1308/">架构</A> | <A 
+href="http://developer.51cto.com/col/586/">项目管理</A> | <A 
+href="http://publish.51cto.com/list/460/">全部文章</A></DIV>
+<DIV class=search>
+<FORM 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" 
+name=searchform action=http://www.51cto.com/php/search.php method=post>
+<DL>
+  <DT><INPUT class=new_te1 name=keyword> </DT>
+  <DD><INPUT type=image 
+  src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/search.gif"></DD></DL></FORM></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV id=container>
+<DIV id=left>
+<DIV class=title>
+<DIV class=breadcrumb>您所在的位置：<A href="http://www.51cto.com/" 
+target=_blank>首页</A> &gt; <A href="http://developer.51cto.com/">开发</A> &gt; <A 
+href="http://developer.51cto.com/col/461/">Java</A> &gt; <A 
+href="http://developer.51cto.com/col/1005/">Java基础</A> &gt; </DIV>
+<DIV class=con>
+<UL>
+  <LI>
+  <H1>Java语法技巧之双括弧初始化</H1>
+  <LI class=msg><SPAN><A 
+  href="http://developer.51cto.com/">http://developer.51cto.com/</A> 
+  &nbsp;2009-08-12 17:43 &nbsp;Alan Gao 译 &nbsp;JavaEye论坛 &nbsp;<A 
+  href="http://www.51cto.com/php/feedbackt.php?id=143639">我要评论(<SPAN 
+  id=pinglun_1>0</SPAN>)</A></SPAN> </LI></UL></DIV></DIV>
+<DIV class=BR_3></DIV>
+<DIV class=container>
+<DIV class=sum>
+<UL class=summary>本文介绍了一个Java语法技巧：双括弧的使用。第一层括弧 实际是定义了一个内部匿名类 (Anonymous Inner 
+  Class)，第二层括弧 实际上是一个实例初始化块 (instance initializer 
+block)，这个块在内部匿名类构造时被执行。</UL></DIV>
+<UL class=con>
+  <P>
+  <P>译者序：这是我在<A 
+  href="http://www.c2.com/cgi/wiki?JavaIdioms">JavaIdioms</A>上看到一个Java使用技巧。使用Java这么多年了，也还是头一次看到，还很实用。别看这小技巧好像很简单，但保证你不会在任何一书Java教材上看到，因为它不是一个真正的语法规范，而是一个语法的用法变种。小技巧还蕴含着Java的深层知识，就是身经百战的老手也不一定能说出其中奥妙。</P>
+  <P>翻译正文：</P>
+  <P>由于Java语言的集合框架中(collections, 如list, map, 
+  set等)没有提供任何简便的语法结构，这使得在建立常量集合时的工作非常繁索。每次建立时我们都要做：</P>
+  <P>◆定义一个临时的集合类变量</P>
+  <P>◆建立一个空集合的实例，然后赋值给变量</P>
+  <P>◆将数据放入集合中</P>
+  <P>◆最后将集合做为参数传递给方法</P>
+  <P>例如，要将一个Set变量传给一个方法：</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN>Set&lt;&nbsp;String&gt;&nbsp;validCodes&nbsp;=&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;HashSet&lt;&nbsp;String&gt;();&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"XZ13s"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"AB21/X"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"YYLEX"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"AR2D"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>removeProductsWithCodeIn(validCodes);&nbsp;&nbsp; &nbsp;</SPAN></LI></OL></PRE>
+  <P>也可以用静态初始的方法</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN class=keyword><STRONG><FONT color=#006699>private</FONT></STRONG></SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>static</FONT></STRONG></SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>final</FONT></STRONG></SPAN><SPAN>&nbsp;Set&lt;&nbsp;String&gt;&nbsp;validCodes&nbsp;=&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;HashSet&lt;&nbsp;String&gt;();&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN></SPAN><SPAN class=keyword><STRONG><FONT color=#006699>static</FONT></STRONG></SPAN><SPAN>&nbsp;{&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"XZ13s"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"AB21/X"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"YYLEX"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validCodes.add(</SPAN><SPAN class=string><FONT color=#0000ff>"AR2D"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>}&nbsp;&nbsp; &nbsp;</SPAN></LI></OL></PRE>
+  <P>其实，还有简结的方法，我们可以用双括弧语法(double-brace syntax)建立并初始化一个新的集合：</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN class=keyword><STRONG><FONT color=#006699>private</FONT></STRONG></SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>static</FONT></STRONG></SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>final</FONT></STRONG></SPAN><SPAN>&nbsp;Set&lt;&nbsp;String&gt;&nbsp;VALID_CODES&nbsp;=&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;HashSet&lt;&nbsp;String&gt;()&nbsp;{{&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"XZ13s"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"AB21/X"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"YYLEX"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"AR2D"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>}};&nbsp;&nbsp; &nbsp;</SPAN></LI></OL></PRE>
+  <P>或者</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN>removeProductsWithCodeIn(</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;HashSet&lt;&nbsp;String&gt;()&nbsp;{{&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"XZ13s"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"AB21/X"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"YYLEX"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=string><FONT color=#0000ff>"AR5E"</FONT></SPAN><SPAN>);&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>}});&nbsp;&nbsp; &nbsp;</SPAN></LI></OL></PRE>
+  <P><STRONG>Java语法技巧：双括弧的意义</STRONG></P>
+  <P>第一层括弧 实际是定义了一个内部匿名类 (Anonymous Inner Class)，第二层括弧 实际上是一个实例初始化块 (instance 
+  initializer 
+  block)，这个块在内部匿名类构造时被执行。这个块之所以被叫做“实例初始化块”是因为它们被定义在了一个类的实例范围内。这和“静态初始化块 (static 
+  initialzer)”不同，因为这种块在定义时在括弧前使用了static关键字，因此它的和类在同一个范围内的，也就是说当类加载时就会被执行(详情可参考<A 
+  href="http://java.sun.com/docs/books/jls/third_edition/html/classes.html#8.6">Java语言规范</A>)。实例初始化块中可以使用其容器范围内的所有方法及变量，但特别需要注意的是实例初始化块是在构造器之前运行的。</P>
+  <P>这种方法只适用于不是final的类，因为final类是无法建立内部匿名子类，好在集合类都没有这个限制。因此，这种方法还可以被用来初始化其它任何对象，比如一个GUI对象：</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN>add(</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;JPanel()&nbsp;{{&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setLayout(...);&nbsp;&nbsp; &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setBorder(...);&nbsp;&nbsp; &nbsp;</SPAN><LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;JLabel(...));&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>new</FONT></STRONG></SPAN><SPAN>&nbsp;JSpinner(...));&nbsp;&nbsp; &nbsp;</SPAN></SPAN><LI class=""><SPAN>}});&nbsp;&nbsp; &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;</SPAN></LI></OL></PRE>
+  <P>这样建立的内部匿名类的实例中包函它容器对像的引用。如果串行化(serialization)这个集合同时也会串行化它的外部类。</P>
+  <P>以上就介绍了Java语法技巧之双括弧初始化。本文来自Alan Gao的译文，原文：《Java技巧之双括弧初始化》</P>
+  <P>【编辑推荐】</P>
+  <OL>
+    <LI><A href="http://developer.51cto.com/art/200906/130457.htm" 
+    target=_blank><FONT color=#0000ff>Java程序调试技巧浅析</FONT></A> 
+    <LI><A 
+    href="http://developer.51cto.com/art/200906/130411.htm">关于Java反射机制的一个实例 </A>
+    <LI><A 
+    href="http://developer.51cto.com/art/200906/130406.htm">在Java应用程序中使用Jfreechart配置 
+    </A>
+    <LI><A 
+    href="http://developer.51cto.com/art/200906/130093.htm">浅谈为什么Java接口中不允许定义变量</A> 
+
+    <LI><A 
+    href="http://developer.51cto.com/art/200906/129949.htm">Java的异常和断言学习笔记 
+    </A></LI></OL>
+  <DIV align=right>【责任编辑：<A class=ln href="mailto:yangsai@51cto.com">杨赛</A> 
+  TEL：（010）68476606】</DIV><BR></UL>
+<DIV class=BR_20></DIV>
+<DIV class=zhus>
+<DL>
+  <DT>原文：<A 
+  href="http://developer.51cto.com/art/200908/143639.htm">Java语法技巧之双括弧初始化</A> 
+  </DT>
+  <DD>标 签：&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=%CB%AB%C0%A8%BB%A1" 
+  target=_blank>双括弧</A>&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=Java%D3%EF%B7%A8%BC%BC%C7%C9" 
+  target=_blank>Java语法技巧</A> </DD></DL></DIV>
+<DIV class=lij><SPAN>上一篇： <A 
+href="http://developer.51cto.com/art/200908/143504.htm" 
+target=_self>Java的synchronized关键字：同步机制总结</A> 下一篇： <A 
+href="http://developer.51cto.com/art/200908/143644.htm" 
+target=_self>再谈Java双括弧技巧：不规范的语法？</A></SPAN></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=review>
+<DIV class=tit>
+<H3>网友评论</H3><SPAN><A 
+href="http://www.51cto.com/php/feedbackt.php?id=143639">查看所有评论（<EM 
+id=pinglun_2></EM>）</A></SPAN></DIV>
+<DIV id=artcomments>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/artcomment0910.htm"></SCRIPT>
+</DIV>
+<DIV class=con1>
+<DIV class=sp1>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/authart.htm"></SCRIPT>
+</DIV>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/developer.htm"></SCRIPT>
+</DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=mary>
+<UL class=le1>
+  <OL class=tit>读 书</OL>
+  <LI><A title=jQuery基础教程 
+  href="http://book.51cto.com/art/200910/157840.htm">jQuery基础教程</A> 
+  <LI><A title=计算机的心智：操作系统之哲学原理 
+  href="http://book.51cto.com/art/200912/173615.htm">计算机的心智：操作系统之哲学原理</A> 
+  <LI><A title=金牌网管师（助理级）网吧网管 
+  href="http://book.51cto.com/art/200911/162796.htm">金牌网管师（助理级）网吧网管</A> 
+  <LI><A title=高效程序员的45个习惯：敏捷开发修炼之道 
+  href="http://book.51cto.com/art/201003/186171.htm">高效程序员的45个习惯：敏捷开发修炼之道</A> 
+  <LI><A title=TCP/IP路由技术（第一卷）（第二版） 
+  href="http://book.51cto.com/art/200904/120933.htm">TCP/IP路由技术（第一卷）（第二版）</A> 
+  </LI></UL>
+<UL class=le2>
+  <OL class=tit>论 坛</OL>
+  <LI><A title=教会你防御网络游戏外挂暗藏木马全攻略 
+  href="http://bbs.51cto.com/thread-230590-1.html" 
+  target=_blank>教会你防御网络游戏外挂暗藏木马全..</A>
+  <LI><A title=公司的员工除了上QQ还玩游戏 href="http://bbs.51cto.com/thread-230574-1.html" 
+  target=_blank>公司的员工除了上QQ还玩游戏</A>
+  <LI><A title=『西安』铁通服务器托管/铁通主机托管/铁通服务器租用/铁通主机租用 
+  href="http://bbs.51cto.com/thread-230553-1.html" 
+  target=_blank>『西安』铁通服务器托管/铁通主机托..</A>
+  <LI><A title="DynamipsGUI  的用法" 
+  href="http://bbs.51cto.com/thread-230548-1.html" target=_blank>DynamipsGUI 
+  的用法</A>
+  <LI><A title="二手cisco(思科)3550-48-SMI 2950-24等交换机低价转让" 
+  href="http://bbs.51cto.com/thread-230547-1.html" 
+  target=_blank>二手cisco(思科)3550-48-SMI 2950-2..</A> </LI></UL>
+<DIV class=BR_line></DIV>
+<UL class=le1>
+  <OL class=tit>博 客</OL>
+  <LI><A title=三层交换机实验 href="http://waterice.blog.51cto.com/661686/133409/" 
+  target=_blank>三层交换机实验</A>
+  <LI><A title=唐骏在大连理工的演讲 href="http://baiyangwyp.blog.51cto.com/191350/133408/" 
+  target=_blank>唐骏在大连理工的演讲</A>
+  <LI><A title=CCNP课堂实战二：静态路由下实现路由汇总 
+  href="http://luwenju.blog.51cto.com/620835/133407/" 
+  target=_blank>CCNP课堂实战二：静态路由下实现路..</A>
+  <LI><A title="Windows Server 2003 Family" 
+  href="http://sunlinux.blog.51cto.com/509115/133404/" target=_blank>Windows 
+  Server 2003 Family</A>
+  <LI><A title=Exchange2003+SP2的部署和安装系统管理工具 
+  href="http://luchao1989.blog.51cto.com/674145/133403/" 
+  target=_blank>Exchange2003+SP2的部署和安装系统..</A> </LI></UL>
+<UL class=le2>
+  <OL class=tit>下 载</OL>
+  <LI><A title="Cisco 6500 Configuration Guide" 
+  href="http://down.51cto.com/data/14433/" target=_blank>Cisco 6500 
+  Configuration Guide</A>
+  <LI><A title="思科 ONS 15800 系列密集波分复用平台 [pdf]" 
+  href="http://down.51cto.com/data/14431/" target=_blank>思科 ONS 15800 
+  系列密集波分复用平..</A>
+  <LI><A title=isdn和ddr设计 href="http://down.51cto.com/data/14430/" 
+  target=_blank>isdn和ddr设计</A>
+  <LI><A title=ip配置 href="http://down.51cto.com/data/14429/" 
+  target=_blank>ip配置</A>
+  <LI><A title=交换式lan设计 href="http://down.51cto.com/data/14428/" 
+  target=_blank>交换式lan设计</A> </LI></UL>
+<DIV class=BR></DIV></DIV></DIV>
+<DIV id=right>
+<DIV class=hot>
+<UL>
+  <LI class=tit><EM>关注</EM> <A 
+  href="http://developer.51cto.com/developer/qiyuan/">年终巨献：开发高手的物种起源</A> 
+  <LI class=con>
+  <DL>
+    <DT><A href="http://developer.51cto.com/developer/qiyuan/"><IMG 
+    src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/095910688.jpg" border=0></A> 
+</DT>
+    <DD>究竟高手是如何炼成的？让我们一起回到原点，探寻开发高手的物种起源 </DD></DL></LI></UL></DIV>
+<DIV class=bann id=MyMoveAd 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 300px; PADDING-TOP: 0px; HEIGHT: 1px">
+<SCRIPT language=JavaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/ad.js"></SCRIPT>
+</DIV>
+<DIV class=top10>
+<DIV class=tab><A id=top_1 onmouseover=change_top10(1);>24小时</A><A id=top_2 
+onmouseover=change_top10(2);>本周</A><A id=top_3 
+onmouseover=change_top10(3);>本月</A></DIV>
+<DIV class=list id=top10_1 style="DISPLAY: block">
+<UL>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title="Eclipse插件大全 挑选最牛的TOP30" 
+  href="http://developer.51cto.com/art/201007/214478.htm" 
+  target=_blank>Eclipse插件大全 挑选最牛的TOP30</A> </LI>
+  <LI><A title="代替桌面工具 10款最给力的Web开发与设计工具" 
+  href="http://developer.51cto.com/art/201101/242579.htm" target=_blank>代替桌面工具 
+  10款最给力的Web开发与设计工具</A> </LI>
+  <LI><A title=10款给力构建易用性网站的jQuery插件 
+  href="http://developer.51cto.com/art/201101/243852.htm" 
+  target=_blank>10款给力构建易用性网站的jQuery插件</A> </LI>
+  <LI><A title="程序员的十个层次 你属于哪一层？" 
+  href="http://developer.51cto.com/art/201011/233083.htm" target=_blank>程序员的十个层次 
+  你属于哪一层？</A> </LI>
+  <LI><A title="多图详解教程：Eclipse 3.6连接Tomcat 7" 
+  href="http://developer.51cto.com/art/201007/212405.htm" 
+  target=_blank>多图详解教程：Eclipse 3.6连接Tomcat 7</A> </LI>
+  <LI><A title=Google首席Java架构师谈数学与程序员的关系 
+  href="http://developer.51cto.com/art/201012/238798.htm" 
+  target=_blank>Google首席Java架构师谈数学与程序员的关系</A> </LI>
+  <LI><A title=JavaScript初学者应注意的七个细节 
+  href="http://developer.51cto.com/art/201101/242546.htm" 
+  target=_blank>JavaScript初学者应注意的七个细节</A> </LI>
+  <LI><A title=2011年1月编程语言排行榜：Python称霸2010 
+  href="http://developer.51cto.com/art/201101/242327.htm" 
+  target=_blank>2011年1月编程语言排行榜：Python称霸2010</A> </LI>
+  <LI><A title=详解Java解析XML的四种方法 
+  href="http://developer.51cto.com/art/200903/117512.htm" 
+  target=_blank>详解Java解析XML的四种方法</A> </LI></UL></DIV>
+<DIV class=list id=top10_2 style="DISPLAY: none">
+<UL>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title="HTML效仿Chrome浏览器 将不再有版本号" 
+  href="http://developer.51cto.com/art/201101/243813.htm" 
+  target=_blank>HTML效仿Chrome浏览器 将不再有版本号</A> </LI>
+  <LI><A title="HTML5迎来新Logo 成下一代Web标准无容置疑" 
+  href="http://developer.51cto.com/art/201101/243420.htm" 
+  target=_blank>HTML5迎来新Logo 成下一代Web标准无容置疑</A> </LI>
+  <LI><A title=9大最有潜力PHP开源项目:Android开发居首 
+  href="http://developer.51cto.com/art/201101/243552.htm" 
+  target=_blank>9大最有潜力PHP开源项目:Android开发居首</A> </LI>
+  <LI><A title=是什么让一个Web应用程序变得如此伟大？ 
+  href="http://developer.51cto.com/art/201101/243540.htm" 
+  target=_blank>是什么让一个Web应用程序变得如此伟大？</A> </LI>
+  <LI><A title=jQuery1.5的六大细节改进:DOM操作更简单 
+  href="http://developer.51cto.com/art/201101/243424.htm" 
+  target=_blank>jQuery1.5的六大细节改进:DOM操作更简单</A> </LI>
+  <LI><A title="10个超赞超实用的免费jQuery图片插件 附下载" 
+  href="http://developer.51cto.com/art/201101/243701.htm" 
+  target=_blank>10个超赞超实用的免费jQuery图片插件 附下载</A> </LI>
+  <LI><A title=2011年5大科技预言：平板电脑昙花一现 
+  href="http://developer.51cto.com/art/201101/243698.htm" 
+  target=_blank>2011年5大科技预言：平板电脑昙花一现</A> </LI>
+  <LI><A title=微软轻量级Web服务器将提供免费版 
+  href="http://developer.51cto.com/art/201101/243305.htm" 
+  target=_blank>微软轻量级Web服务器将提供免费版</A> </LI>
+  <LI><A title="Scala获欧盟资助 以克服并行编程的困难" 
+  href="http://developer.51cto.com/art/201101/243487.htm" 
+  target=_blank>Scala获欧盟资助 以克服并行编程的困难</A> </LI></UL></DIV>
+<DIV class=list id=top10_3 style="DISPLAY: none">
+<UL>
+  <LI><A title=2011年1月编程语言排行榜：Python称霸2010 
+  href="http://developer.51cto.com/art/201101/242327.htm" 
+  target=_blank>2011年1月编程语言排行榜：Python称霸2010</A> </LI>
+  <LI><A title="代替桌面工具 10款最给力的Web开发与设计工具" 
+  href="http://developer.51cto.com/art/201101/242579.htm" target=_blank>代替桌面工具 
+  10款最给力的Web开发与设计工具</A> </LI>
+  <LI><A title=15个国外最流行的CSS框架（附下载） 
+  href="http://developer.51cto.com/art/201101/241626.htm" 
+  target=_blank>15个国外最流行的CSS框架（附下载）</A> </LI>
+  <LI><A title=3种类型的程序员：“虫族”，“人族”，“神族” 
+  href="http://developer.51cto.com/art/201012/240844.htm" 
+  target=_blank>3种类型的程序员：“虫族”，“人族”，“神族”</A> </LI>
+  <LI><A title="10个国外开发的HTML 5精彩应用" 
+  href="http://developer.51cto.com/art/201012/240884.htm" 
+  target=_blank>10个国外开发的HTML 5精彩应用</A> </LI>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title=JavaScript初学者应注意的七个细节 
+  href="http://developer.51cto.com/art/201101/242546.htm" 
+  target=_blank>JavaScript初学者应注意的七个细节</A> </LI>
+  <LI><A title=年度最热门SNS开源系统出炉（附下载） 
+  href="http://developer.51cto.com/art/201012/240705.htm" 
+  target=_blank>年度最热门SNS开源系统出炉（附下载）</A> </LI>
+  <LI><A title=2011年Web设计最新潮流（图文） 
+  href="http://developer.51cto.com/art/201101/242117.htm" 
+  target=_blank>2011年Web设计最新潮流（图文）</A> </LI>
+  <LI><A title=Java专家孙卫琴：专精一门编程语言也能成功 
+  href="http://developer.51cto.com/art/201101/243013.htm" 
+  target=_blank>Java专家孙卫琴：专精一门编程语言也能成功</A> </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=tag>
+<DIV class=con><A title=刀片服务器专区 href="http://server.51cto.com/Blade" 
+target=_blank>刀片服务器</A>&nbsp;&nbsp; <A title=云计算频道全新上线 
+href="http://cloud.51cto.com/" target=_blank>云计算</A>&nbsp;&nbsp; <A 
+title=ARP攻击与防御 href="http://netsecurity.51cto.com/art/200609/31897.htm" 
+target=_blank>ARP攻防</A>&nbsp;&nbsp; <A title=思科培训技术专区 
+href="http://training.51cto.com/cisco" 
+target=_blank>思科培训</A>&nbsp;&nbsp;</DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=dingy>
+<TABLE cellSpacing=0 cellPadding=0 width=280 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2 height=56>&nbsp;</TD></TR>
+  <TR>
+    <TD align=right colSpan=2><A 
+      href="http://news.51cto.com/col/1323/">点击这里查看样刊</A></TD></TR>
+  <TR>
+    <TD colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <FORM onsubmit="return mail_process(email.value)" 
+    action=http://newsletter2.51cto.com/new/newsletter/mailm.php method=post>
+    <TD align=right width=223><INPUT class=new_te5 onfocus=this.select() 
+      onclick="this.value=''" name=email><INPUT type=hidden name=mailsub></TD>
+    <TD align=right width=57><INPUT onclick=submit(); type=image 
+      src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/dingy.gif"></TD></FORM></TR></TBODY></TABLE></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=redian>
+<DIV class=list>
+<UL>
+  <LI><A title=MySQL数据库典型应用案例 
+  href="http://solution.51cto.com/art/200511/10883.htm">MySQL数据库典型应用案例</A> </LI>
+  <LI><A title=Samba将可取得微软Windows协议文件 
+  href="http://os.51cto.com/art/200712/62928.htm">Samba将可取得微软Windows协议文件</A> 
+  </LI>
+  <LI><A title=Cisco路由交换设备的IOS故障排除 
+  href="http://network.51cto.com/art/200511/12063.htm">Cisco路由交换设备的IOS故障排除</A> 
+  </LI>
+  <LI><A title="DB2 并行版本中的查询优化" 
+  href="http://database.51cto.com/art/200512/12951.htm">DB2 并行版本中的查询优化</A> </LI>
+  <LI><A title=适合中小企业的SOA 
+  href="http://tech.51cto.com/art/200603/24307.htm">适合中小企业的SOA</A> </LI>
+  <LI><A title=Sun称Java企业系统支持Windows和UX 
+  href="http://news.51cto.com/art/200510/9426.htm">Sun称Java企业系统支持Windows和UX</A> 
+  </LI>
+  <LI><A title=光纤放大器技术 
+  href="http://network.51cto.com/art/200508/2212.htm">光纤放大器技术</A> </LI>
+  <LI><A title=IBM两款Linux服务器新品分析 
+  href="http://server.51cto.com/Prod-9193.htm">IBM两款Linux服务器新品分析</A> </LI>
+  <LI><A title=解读Linux文件权限的设置方法 
+  href="http://os.51cto.com/art/200508/1866.htm">解读Linux文件权限的设置方法</A> </LI>
+  <LI><A title="甲骨文安全补丁摞着补丁 引起业内广泛批评" 
+  href="http://news.51cto.com/art/200508/1953.htm">甲骨文安全补丁摞着补丁 引起业内广泛批评</A> 
+</LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV><IFRAME class=bann 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 300px; PADDING-TOP: 0px; HEIGHT: 250px; BACKGROUND-COLOR: #dbdbdb" 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/4.htm" frameBorder=0 
+scrolling=no></IFRAME>
+<DIV class=BR_10></DIV></DIV>
+<DIV class=BR></DIV></DIV>
+<DIV class=BR_20></DIV>
+<DIV id=foot>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/copy_right.js"></SCRIPT>
+</DIV><!--弹出窗口-->
+<DIV id=tanc style="DISPLAY: none; LEFT: 0px; TOP: 0px; BACKGROUND-COLOR: #fff">
+<DIV class=tit>
+<DL>
+  <DT>更多关于“<SPAN id=search_title></SPAN>”的推荐</DT>
+  <DD><IMG onclick=close_this(); 
+  src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/ico2.gif"></DD></DL></DIV>
+<DIV class=con>
+<OL>51CTO还有以下内容可能满足您的需求</OL>
+<UL id=search_body></UL><SPAN><A id=search_url 
+href="http://developer.51cto.com/art/200908/143639.htm#">站内搜索更多 <EM 
+id=search_foot></EM>的内容</A></SPAN></DIV></DIV><!--弹出窗口End--><!-- 新监测代码 -->
+<SCRIPT type=text/javascript>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+try {
+var pageTracker = _gat._getTracker("UA-10766765-6");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+
+<DIV style="DISPLAY: none">
+<SCRIPT type=text/javascript>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6d49a084fadc0a02616d836ba8b4a72e' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/tongji.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><A href="http://www.linezing.com/"><IMG 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/tongji.gif"></A></NOSCRIPT> </DIV><!-- 新监测代码 -->
+<DIV style="DISPLAY: none"><SPAN id=wordlink_1>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/wordlink1.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_2>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/wordlink2.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_3>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/wordlink3.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_4>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/wordlink4.js"></SCRIPT>
+</SPAN><SPAN id=pinglun>
+<SCRIPT language=JavaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/getArtCount.htm"></SCRIPT>
+</SPAN>
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/ad(1).js"></SCRIPT>
+<SPAN id=tonglan>
+<SCRIPT language=JavaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/ad(2).js"></SCRIPT>
+</SPAN><SPAN id=wordlink>
+<SCRIPT language=JavaScript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/ad(1).js"></SCRIPT>
+</SPAN></DIV>
+<SCRIPT>
+	document.getElementById('pinglun_1').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('pinglun_2').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('tonglanad').innerHTML=document.getElementById('tonglan').innerHTML;
+    document.getElementById('tonglan').innerHTML="";
+	function refimg(){
+		var randval = Math.random();
+		document.getElementById('secunum').src='http://www.51cto.com/php/seccode.php?rnum='+randval;
+	}
+</SCRIPT>
+
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/count.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/count.htm"></SCRIPT>
+
+<SCRIPT src="Java语法技巧之双括弧初始化%20-%2051CTO_COM_files/new_art_dev.js" 
+type=text/javascript></SCRIPT>
+</BODY></HTML>
