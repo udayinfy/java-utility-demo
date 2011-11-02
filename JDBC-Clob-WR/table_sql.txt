@@ -1,0 +1,34 @@
+-- Create table
+create table FILEINFO
+(
+  FILEID      INTEGER not null,
+  FILENAME    VARCHAR2(100),
+  FILECONTENT CLOB
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table FILEINFO
+  is '用JDBC读写Blob数据的测试用表';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table FILEINFO
+  add primary key (FILEID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
