@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductMapper">
+	  	
+	<insert id="addProduct" parameterType="org.mybatis.Product">
+		<selectKey keyProperty="pid" resultType="int" order="BEFORE">
+			select product_seq.nextVal from dual
+		</selectKey>
+		insert into product( pid, pcode, pname, pdate )
+		values( #{pid}, #{pcode}, #{pname}, #{pdate} )
+	</insert>
+
+		
+	<resultMap id="productResultMap" type="org.mybatis.Product">
+		<id property="pid" column="pid" />
+		<result property="pcode" column="pcode"/>
+		<result property="pname" column="pname"/>
+		<result property="pdate" column="pdate"/>
+	</resultMap>
+	
+  	<select id="queryProductById" parameterType="int" resultMap="productResultMap">
+  		select pid, pcode, pname, pdate 
+  	    from product
+  	    where pid = #{value}
+  	</select>
+  	
+  	<select id="getSomePnameById" parameterType="java.util.List" resultType="java.lang.String">
+  		select pname from product where pid in 
+		
+  		<choose>
+			<when test="list.size()!=0">
+				<foreach item="item" index="index" collection="list" 
+						open="(" separator="," close=")">
+				#{item}
+				</foreach>
+			</when>
+			<otherwise>
+				(-1)
+			</otherwise>
+		</choose>
+  	
+  	</select>
+  	
+	  	
+  	
+  	
+</mapper>
+
+
+
