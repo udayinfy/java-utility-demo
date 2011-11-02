@@ -1,0 +1,241 @@
+div,td{font-size:12px;color:#333333;line-height:20px;font-family: "宋体";}
+input,select {font-size:12px;color:#333333;}
+.f14{
+	font-size:14px;
+	color:#333333;
+	line-height: 150%;
+	font-family: "宋体";
+}
+body {
+	margin: 0px;
+	padding-left: 18px;
+	background-image: url(/images/0531_left1.gif);
+	background-repeat: repeat-y;
+	background-color: #FFFFFF;
+	FONT-FAMILY: '宋体','新宋体',arial,verdana,sans-serif;
+}
+A:link { color:#333333;text-decoration:none; }
+A:visited { color:#333333;text-decoration:none; }
+A:active { color:#ff0000;text-decoration:none; }
+A:hover { color:#ff0000; text-decoration: underline; }
+
+A.blue:link {color:#000099;text-decoration: underline;}
+A.blue:visited {color:#000099;text-decoration: underline;}
+A.blue:active {color:#ff0000;text-decoration:none;}
+A.blue:hover {color:#ff0000;	text-decoration:none;}
+
+A.blue_1:link { color:#0000C4; text-decoration: underline; font-size:14px}
+A.blue_1:visited { color:#0000C4; text-decoration: underline;}
+A.blue_1:hover { color:#ff0000; text-decoration:none;}
+A.blue_1:active { color:#ff0000; text-decoration:none;}
+
+#itcomcn {}
+#top{
+MARGIN-RIGHT: auto;
+MARGIN-LEFT: auto; 
+TEXT-ALIGN: left;
+line-height: 150%;
+font-size:12px;
+}
+#art_main{
+background-color: #F1F1F1;
+heightt:100%;
+nowrap;
+}
+#art_line{
+background-image: url(/images/line_h.gif);
+height:1px;
+}
+
+#cor_left_top{
+background-image: url(http://www.it.com.cn/images/comm/0830_cor_top.gif);
+height:5px;
+width:173px;
+}
+#cor_top{
+background-image: url(http://www.it.com.cn/images/comm/0830_cor_top.gif);
+height:5px;
+}
+
+#cor_bot{
+background-image: url(http://www.it.com.cn/images/comm/0830_cor_bot.gif);
+height:5px;
+}
+#cor_left_bot{
+background-image: url(http://www.it.com.cn/images/comm/0830_cor_bot.gif);
+height:5px;
+width:173px;
+}
+#cor_left{
+float: left;
+}
+#cor_right{
+float: right;
+}
+#art_top{
+background-color: #F5F5F5;
+text-align:center;
+}
+#art_main_right{
+background-color: #Ffffff;
+border-left:#CCCCCC 1px solid;
+border-right:#CCCCCC 1px solid;
+}
+#art_main_left{
+
+background-color: #Ffffff;
+border-left:#CCCCCC 1px solid;
+border-right:#CCCCCC 1px solid;
+text-align:center;
+width:173px
+}
+#bottom{
+clear:both;
+text-align:left;
+COLOR:#CCC;
+}
+#bottom1{
+clear:both;
+	background-color: #EEF8FE;
+	border-top:#C8E0F5 1px solid;
+	border-bottom:#C8E0F5 1px solid;
+	text-align:center;
+}
+#main_left {
+   float:left;
+	width: 183px;	
+	background-color: #F1F1F1;
+	padding: 5px;
+	text-align:center;
+POSsITION: absolute; 
+top:120px;
+left:19px
+
+}
+#main_right {
+    float:right;
+	background-color: #F1F1F1;
+	padding:5px;
+
+left:200px
+
+
+} 
+ #bottom_left {
+   float:left;
+	width: 65%;	
+	background-color: #F1F1F1;
+	text-align:center;
+       padding:5px;
+}
+#bottom_right {
+    float:left;
+	text-align:center;
+	background-color: #F1F1F1;
+	width: 34%;
+}
+#art_top1{
+padding: 5px;
+text-align:center;
+}
+#art_title {
+	font-size:18px;
+	color:#333333;
+	line-height: 150%;FONT-WEIGHT: bold;
+	font-family: "宋体";
+	text-align:center;
+	padding:5px;
+}
+#art_center {
+	line-height: 150%;
+	text-align:center;
+	padding:1px;
+}
+#art_right {
+	line-height: 150%;
+	text-align:right;
+	padding:2px;
+}
+#art_left {
+	line-height: 150%;
+	text-align:left;
+        padding:3px;
+}
+#art_text {
+        WORD-WRAP: break-word;
+	font-size:14.8px;
+	line-height: 150%;
+	padding: 5px;
+	text-align:left;
+}
+#cor5 {
+	padding:5px;
+}
+#art_xgwz {
+border-top:#dddddd 2px solid;
+border-bottom:#dddddd 2px solid;
+width:"95%";
+text-align:left;
+line-height: 150%;
+}
+.f14b {
+	font-size:14px;
+	line-height: 150%;
+	font-weight: bold;
+	font-family: "宋体";
+}
+
+#art_bgf1f1f1{
+background-color: #F1F1F1;
+text-align:left;
+}
+.spanclass{ VISIBILITY: hidden;width:1px;height:1px;POSITION: absolute; left:1px;top:1px}
+
+#bar1{
+background-image: url(http://www.it.com.cn/images/title_bg.gif);
+height:27px;
+padding-top: 5px;
+}
+#bar_left {
+    float:left;
+}
+#bar_right {
+    float:right;
+}
+#menu ul {
+MARGIN-left:18px;
+MARGIN-right:0px;
+MARGIN-top:5px;
+MARGIN-bottom:0px;
+PADDING: 0px;
+
+BORDER: medium none; 
+LINE-HEIGHT: normal; 
+LIST-STYLE-TYPE: none;
+}
+#menu li {
+BORDER-TOP: #FFF 1px solid; MARGIN: 0px;
+height:22px;
+font-size:12px;
+list-style-image:url(http://www.it.com.cn/images/comm/bjk_11.gif)
+} 
+
+#cor1_top{
+background-image: url(http://www.it.com.cn/images/comm/art/con_t.gif);
+height:8px;
+}
+
+#cor1_bot{
+background-image: url(http://www.it.com.cn/images/comm/art/con_b.gif);
+height:8px;
+}
+
+
+#cor1_maint{
+
+background-color: #ededed;
+background-image: url(http://www.it.com.cn/images/comm/art/con_bg.gif);
+	background-repeat: repeat-y;
+border-left:#d7d7d7 4px solid;
+border-right:#d7d7d7 4px solid;
+}
