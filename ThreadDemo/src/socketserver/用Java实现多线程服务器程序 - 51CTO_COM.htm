@@ -1,0 +1,522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0047)http://developer.51cto.com/art/200712/62076.htm -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>用Java实现多线程服务器程序 - 51CTO.COM</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=x-ua-compatible content=ie=7>
+<META 
+content=在Java出现之前，编写多线程程序是一件烦琐且伴随许多不安全因素的事情。利用Java，编写安全高效的多线程程序变得简单，而且利用多线程和Java的网络包我们可以方便的实现多线程服务器程序。 
+name=description>
+<META content=Java,多线程,服务器,程序 name=keywords><LINK 
+href="用Java实现多线程服务器程序%20-%2051CTO_COM_files/news_09.css" type=text/css 
+rel=stylesheet><LINK href="用Java实现多线程服务器程序%20-%2051CTO_COM_files/master_top.css" 
+type=text/css rel=stylesheet>
+<SCRIPT language=javaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/validate2.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/fb_words_list.htm"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/base6.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/dialog_utf8.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/mail.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/article.js"></SCRIPT>
+
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/index_1_down.js"></SCRIPT>
+
+<SCRIPT>
+var thistid=62076;
+</SCRIPT>
+
+<META content="MSHTML 6.00.6000.17080" name=GENERATOR></HEAD>
+<BODY onresize=set_sreach() onload=set_sreach()>
+<DIV class=top>
+<DIV class=top_nav>
+<DIV class=top_nav_logo title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></DIV>
+<DIV class=top_nav_r><A href="http://www.51cto.com/">51CTO首页</A> | <A 
+href="http://news.51cto.com/">新闻</A> | <A 
+href="http://www.51cto.com/col/35">专题</A> | <A 
+href="http://bbs.51cto.com/">论坛</A> | <A href="http://blog.51cto.com/">博客</A> | 
+<A href="http://down.51cto.com/">下载</A> | <A href="http://g.51cto.com/">技术圈</A> 
+| <A href="http://book.51cto.com/">读书</A> | <A class=top_nav_r1 
+onmouseover=show(1,this) onmouseout=popupClose() 
+href="http://www.51cto.com/col/35/">技术频道 </A>| <A 
+href="http://www.cioage.com/">CIO </A>| <A href="http://www.watchstor.com/">存储 
+</A>| <A href="http://www.hc3i.cn/">HC3i </A>| <A 
+href="http://www.51cto.com/about/map.htm">地图</A> </DIV></DIV></DIV>
+<DIV class=subMenu1 id=s1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">安全</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A> 
+  <LI><A href="http://database.51cto.com/">数据库</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://cloud.51cto.com/">云计算</A> 
+  <LI><A href="http://developer.51cto.com/embed/">嵌入式</A> </LI></UL></DIV>
+<DIV class=subMenu1 id=s1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网建网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">网络安全</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">操作系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A></LI></UL></DIV>
+<DIV class=subMenu2 id=s2 onmouseover=popupNoClose( onmouseout=popupClose() )>
+<UL>
+  <LI><A href="http://www.cioage.com/news">资讯前沿</A> 
+  <LI><A href="http://www.cioage.com/insight">业界观察</A> 
+  <LI><A href="http://www.cioage.com/exp">应用体验</A> 
+  <LI><A href="http://www.cioage.com/tech">杀手技术</A></LI></UL></DIV>
+<DIV class=subMenu3 id=s3 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://news.watchstor.com/">新闻资讯</A> 
+  <LI><A href="http://tech.watchstor.com/">技术中心</A> 
+  <LI><A href="http://video.watchstor.com/">互动视频</A> 
+  <LI><A href="http://special.watchstor.com/">专题汇聚</A></LI></UL></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=banner>
+<DIV class=banner_l id=tonglanad></DIV>
+<DIV class=banner_r>
+<UL>
+  <LI id=wordlinkad1>
+  <LI id=wordlinkad2>
+  <LI id=wordlinkad3>
+  <LI id=wordlinkad4></LI></UL></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV id=subNav>
+<DIV class=subNav_logo><IMG 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/kaifa_logo.gif"></DIV>
+<DIV class=subNav_l><A href="http://developer.51cto.com/">首页</A> | <A 
+href="http://developer.51cto.com/java/">Java</A> | <A 
+href="http://developer.51cto.com/net/">.NET</A> | <A 
+href="http://developer.51cto.com/web/">Web</A> | <A 
+href="http://developer.51cto.com/col/1315/">XML</A> | <A 
+href="http://developer.51cto.com/col/585/">语言工具</A> | <A 
+href="http://developer.51cto.com/col/1312/">测试</A> | <A 
+href="http://developer.51cto.com/col/1314/" target=_blank>游戏</A> | <A 
+href="http://developer.51cto.com/col/583/" target=_blank>移动</A> | <A 
+href="http://developer.51cto.com/col/1308/">架构</A> | <A 
+href="http://developer.51cto.com/col/586/">项目管理</A> | <A 
+href="http://publish.51cto.com/list/460/">全部文章</A></DIV>
+<DIV class=search>
+<FORM 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" 
+name=searchform action=http://www.51cto.com/php/search.php method=post>
+<DL>
+  <DT><INPUT class=new_te1 name=keyword> </DT>
+  <DD><INPUT type=image 
+  src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/search.gif"></DD></DL></FORM></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV id=container>
+<DIV id=left>
+<DIV class=title>
+<DIV class=breadcrumb>您所在的位置：<A href="http://www.51cto.com/" 
+target=_blank>首页</A> &gt; <A href="http://developer.51cto.com/">开发</A> &gt; <A 
+href="http://developer.51cto.com/col/461/">Java</A> &gt; </DIV>
+<DIV class=con>
+<UL>
+  <LI>
+  <H1>用Java实现多线程服务器程序</H1>
+  <LI class=msg><SPAN><A 
+  href="http://developer.51cto.com/">http://developer.51cto.com/</A> 
+  &nbsp;2007-12-11 15:58 &nbsp;佚名 &nbsp;计算机世界网 &nbsp;<A 
+  href="http://www.51cto.com/php/feedbackt.php?id=62076">我要评论(<SPAN 
+  id=pinglun_1>0</SPAN>)</A></SPAN> </LI></UL></DIV></DIV>
+<DIV class=BR_3></DIV>
+<DIV class=container>
+<DIV class=sum>
+<UL 
+  class=summary>在Java出现之前，编写多线程程序是一件烦琐且伴随许多不安全因素的事情。利用Java，编写安全高效的多线程程序变得简单，而且利用多线程和Java的网络包我们可以方便的实现多线程服务器程序。</UL></DIV>
+<UL class=con>
+  <P>
+  <P>Java是伴随Internet的大潮产生的，对网络及多线程具有内在的支持，具有网络时代编程语言的一切特点。从Java的当前应用看，Java主要用于在Internet或局域网上的网络编程，而且将Java作为主流的网络编程语言的趋势愈来愈明显。实际工作中，我们除了使用商品化的服务器软件外，时常需要按照实际环境编写自己的服务器软件，以完成特定任务或与特定客户端软件实现交互。在实现服务器程序时，为提高程序运行效率，降低用户等待时间，我们应用了在Java 
+  Applet中常见的多线程技术。</P>
+  <P><STRONG>一、Java中的服务器程序与多线程</STRONG></P>
+  <P>在Java之前，没有一种主流编程语言能够提供对高级网络编程的固有支持。在其他语言环境中，实现网络程序往往需要深入依赖于操作平台的网络API的技术中去，而Java提供了对网络支持的无平台相关性的完整软件包，使程序员没有必要为系统网络支持的细节而烦恼。</P>
+  <P>Java软件包内在支持的网络协议为TCP/IP，也是当今最流行的广域网/局域网协议。Java有关网络的类及接口定义在java.net包中。客户端软件通常使用java.net包中的核心类Socket与服务器的某个端口建立连接，而服务器程序不同于客户机，它需要初始化一个端口进行监听，遇到连接呼叫，才与相应的客户机建立连接。Java.net包的ServerSocket类包含了编写服务器系统所需的一切。下面给出ServerSocket类的部分定义。 
+  </P>
+  <P>
+  <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=2 width=400 
+  align=center borderColorLight=black border=1>
+    <TBODY>
+    <TR>
+      <TD class=code bgColor=#e6e6e6><PRE>public class ServerSocket { <BR>public ServerSocket(int port) <BR>throws IOException ； <BR>public Socket accept() throws IOException ； <BR>public InetAddress getInetAddress() ； <BR>public int getLocalPort() ； <BR>public void close() throws IOException ； <BR>public synchronized void setSoTimeout <BR>(int timeout) throws SocketException ； <BR>public synchronized int <BR>getSoTimeout() throws IOException ； <BR>}&nbsp;</PRE></TD></TR></TBODY></TABLE></P>
+  <P>ServerSocket构造器是服务器程序运行的基础，它将参数port指定的端口初始化作为该服务器的端口，监听客户机连接请求。Port的范围是0到65536，但0到1023是标准Internet协议保留端口，而且在Unix主机上，这些端口只有root用户可以使用。一般自定义的端口号在8000到16000之间。仅初始化了ServerSocket还是远远不够的，它没有同客户机交互的套接字（Socket），因此需要调用该类的accept方法接受客户呼叫。Accept()方法直到有连接请求才返回通信套接字(Socket)的实例。通过这个实例的输入、输出流，服务器可以接收用户指令，并将相应结果回应客户机。ServerSocket类的getInetAddress和getLocalPort方法可得到该服务器的IP地址和端口。setSoTimeout和getSoTimeout方法分别是设置和得到服务器超时设置，如果服务器在timout设定时间内还未得到accept方法返回的套接字实例，则抛出IOException的异常。</P>
+  <P>Java的多线程可谓是Java编程的精华之一，运用得当可以极大地改善程序的响应时间，提高程序的并行性。在服务器程序中，由于往往要接收不同客户机的同时请求或命令，因此可以对每个客户机的请求生成一个命令处理线程，同时对各用户的指令作出反应。在一些较复杂的系统中，我们还可以为每个数据库查询指令生成单独的线程，并行对数据库进行操作。实践证明，采用多线程设计可以很好的改善系统的响应，并保证用户指令执行的独立性。由于Java本身是“线程安全”的，因此有一条编程原则是能够独立在一个线程中完成的操作就应该开辟一个新的线程。</P>
+  <P>Java中实现线程的方式有两种，一是生成Thread类的子类，并定义该子类自己的run方法，线程的操作在方法run中实现。但我们定义的类一般是其他类的子类，而Java又不允许多重继承，因此，第二种实现线程的方法是实现Runnable接口。通过覆盖Runnable接口中的run方法实现该线程的功能。本文例子采用第一种方法实现线程。</P>
+  <P><STRONG>二、多线程服务器程序举例</STRONG></P>
+  <P>以下是我们在项目中采用的多线程服务器程序的架构，可以在此基础上对命令进行扩充。本例未涉及数据库。如果在线程运行中需要根据用户指令对数据库进行更新操作，则应注意线程间的同步问题，使同一更新方法一次只能由一个线程调用。这里我们有两个类，receiveServer包含启动代码（main()），并初始化ServerSocket的实例，在accept方法返回用户请求后，将返回的套接字（Socket）交给生成的线程类serverThread的实例，直到该用户结束连接。 
+  </P>
+  <P>
+  <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=2 width=400 
+  align=center borderColorLight=black border=1>
+    <TBODY>
+    <TR>
+      <TD class=code bgColor=#e6e6e6><PRE>//类receiveServer <BR>import java.io.*; <BR>import java.util.*; <BR>import java.net.*; <BR>public class receiveServer{ <BR>final int RECEIVE_PORT=9090; <BR>//该服务器的端口号 <BR>//receiveServer的构造器 <BR>public receiveServer() { <BR>ServerSocket rServer=null; <BR>//ServerSocket的实例 <BR>Socket request=null; //用户请求的套接字 <BR>Thread receiveThread=null; <BR>try{ <BR>rServer=new ServerSocket(RECEIVE_PORT); <BR>//初始化ServerSocket <BR>System.out.println("Welcome to the server!"); <BR>System.out.println(new Date()); <BR>System.out.println("The server is ready!"); <BR>System.out.println("Port: "+RECEIVE_PORT); <BR>while(true){ //等待用户请求 <BR>request=rServer.accept(); <BR>//接收客户机连接请求 <BR>receiveThread=new serverThread(request); <BR>//生成serverThread的实例 <BR>receiveThread.start(); <BR>//启动serverThread线程 <BR>} <BR>}catch(IOException e){ <BR>System.out.println(e.getMessage());} <BR>} <BR>public static void main(String args[]){ <BR>new receiveServer(); <BR>} //end of main <BR>} //end of class <BR>//类serverThread <BR>import java.io.*; <BR>import java.net.*; <BR>class serverThread extends Thread { <BR>Socket clientRequest; <BR>//用户连接的通信套接字 <BR>BufferedReader input; //输入流 <BR>PrintWriter output; //输出流 <BR>public serverThread(Socket s) <BR>{ //serverThread的构造器 <BR>this.clientRequest=s; <BR>//接收receiveServer传来的套接字 <BR>InputStreamReader reader; <BR>OutputStreamWriter writer; <BR>try{ //初始化输入、输出流 <BR>reader=new InputStreamReader <BR>(clientRequest.getInputStream()); <BR>writer=new OutputStreamWriter <BR>(clientRequest.getOutputStream()); <BR>input=new BufferedReader(reader); <BR>output=new PrintWriter(writer,true); <BR>}catch(IOException e){ <BR>System.out.println(e.getMessage());} <BR>output.println("Welcome to the server!"); <BR>//客户机连接欢迎词 <BR>output.println("Now is: <BR>"+new java.util.Date()+" "+ <BR>"Port:"+clientRequest.getLocalPort()); <BR>output.println("What can I do for you?"); <BR>} <BR>public void run(){ //线程的执行方法 <BR>String command=null; //用户指令 <BR>String str=null; <BR>boolean done=false; <BR>while(!done){ <BR>try{ <BR>str=input.readLine(); //接收客户机指令 <BR>}catch(IOException e){ <BR>System.out.println(e.getMessage());} <BR>command=str.trim().toUpperCase(); <BR>if(str==null || command.equals("QUIT")) <BR>//命令quit结束本次连接 <BR>done=true; <BR>else if(command.equals("HELP")){ <BR>//命令help查询本服务器可接受的命令 <BR>output.println("query"); <BR>output.println("quit"); <BR>output.println("help"); <BR>} <BR>else if(command.startsWith("QUERY")) <BR>{ //命令query <BR>output.println("OK to query something!"); <BR>} <BR>//else if …….. //在此可加入服务器的其他指令 <BR>else if(!command.startsWith("HELP") &amp;&amp; <BR>!command.startsWith("QUIT") &amp;&amp; <BR>!command.startsWith("QUERY")){ <BR>output.println("Command not Found! <BR>Please refer to the HELP!"); <BR>} <BR>}//end of while <BR>try{ <BR>clientRequest.close(); //关闭套接字 <BR>}catch(IOException e){ <BR>System.out.println(e.getMessage()); <BR>} <BR>command=null; <BR>}//end of run&nbsp;</PRE></TD></TR></TBODY></TABLE><BR>启动该服务器程序后，可用telnet 
+  machine 
+  port命令连接，其中machine为本机名或地址，port为程序中指定的端口。也可以编写特定的客户机软件通过TCP的Socket套接字建立连接。 </P>
+  <P><FONT size=4>【相关文章】</FONT></P>
+  <UL type=disc>
+    <LI><A href="http://developer.51cto.com/art/200712/61976.htm" 
+    target=_blank><U><FONT color=blue>讨论5种跟踪Java执行的方法</FONT></U></A></LI></UL>
+  <UL type=disc>
+    <LI><A href="http://developer.51cto.com/art/200712/61952.htm" 
+    target=_blank><U><FONT color=blue>提高Java代码可重用性的三个措施</FONT></U></A></LI></UL>
+  <UL type=disc>
+    <LI><A href="http://developer.51cto.com/art/200712/61870.htm" 
+    target=_blank><U><FONT color=blue>Java中基本数据类型与流的操作方法</FONT></U></A></LI></UL>
+  <DIV align=right>【责任编辑：<A class=ln href="mailto:sunsj@51cto.com">火凤凰</A> 
+  TEL：（010）68476606】</DIV><BR></UL>
+<DIV class=BR_20></DIV>
+<DIV class=zhus>
+<DL>
+  <DT>原文：<A 
+  href="http://developer.51cto.com/art/200712/62076.htm">用Java实现多线程服务器程序</A> 
+  </DT>
+  <DD>标 签：&nbsp;&nbsp;<A href="http://www.51cto.com/php/search.php?keyword=Java" 
+  target=_blank>Java</A>&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=%B6%E0%CF%DF%B3%CC" 
+  target=_blank>多线程</A>&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=%B7%FE%CE%F1%C6%F7" 
+  target=_blank>服务器</A>&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=%B3%CC%D0%F2" 
+  target=_blank>程序</A> </DD></DL></DIV>
+<DIV class=lij><SPAN>上一篇： <A 
+href="http://developer.51cto.com/art/200712/62066.htm" target=_self>简介Java 
+Server Faces</A> 下一篇： <A href="http://developer.51cto.com/art/200712/62151.htm" 
+target=_self>关于提高自己Java水平的十大技术讨论</A></SPAN></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=review>
+<DIV class=tit>
+<H3>网友评论</H3><SPAN><A 
+href="http://www.51cto.com/php/feedbackt.php?id=62076">查看所有评论（<EM 
+id=pinglun_2></EM>）</A></SPAN></DIV>
+<DIV id=artcomments>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/artcomment0910.htm"></SCRIPT>
+</DIV>
+<DIV class=con1>
+<DIV class=sp1>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/authart.htm"></SCRIPT>
+</DIV>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/developer.htm"></SCRIPT>
+</DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=mary>
+<UL class=le1>
+  <OL class=tit>读 书</OL>
+  <LI><A title=30天学通Java项目案例开发 
+  href="http://book.51cto.com/art/200907/136701.htm">30天学通Java项目案例开发</A> 
+  <LI><A title=世界因你不同：李开复自传 
+  href="http://book.51cto.com/art/200909/152993.htm">世界因你不同：李开复自传</A> 
+  <LI><A title=算法之道 href="http://book.51cto.com/art/201003/187838.htm">算法之道</A> 
+  <LI><A title=企业虚拟化实战——VMware篇 
+  href="http://book.51cto.com/art/200908/144045.htm">企业虚拟化实战——VMware篇</A> 
+  <LI><A title=MySQL性能调优与架构设计 
+  href="http://book.51cto.com/art/200906/132406.htm">MySQL性能调优与架构设计</A> </LI></UL>
+<UL class=le2>
+  <OL class=tit>论 坛</OL>
+  <LI><A title=Cisco模拟器 href="http://bbs.51cto.com/thread-100112-1.html" 
+  target=_blank>Cisco模拟器</A>
+  <LI><A title=光纤可以熔芯？这个熔字什么意思 href="http://bbs.51cto.com/thread-100110-1.html" 
+  target=_blank>光纤可以熔芯？这个熔字什么意思</A>
+  <LI><A title=常用的cisco词典 href="http://bbs.51cto.com/thread-100109-1.html" 
+  target=_blank>常用的cisco词典</A>
+  <LI><A title=以太口如何接2MDDN href="http://bbs.51cto.com/thread-100095-1.html" 
+  target=_blank>以太口如何接2MDDN</A>
+  <LI><A title=主板结构之(主板插槽ISA+PCA+AGP+USB+...) 
+  href="http://bbs.51cto.com/thread-100093-1.html" 
+  target=_blank>主板结构之(主板插槽ISA+PCA+AGP+US..</A> </LI></UL>
+<DIV class=BR_line></DIV>
+<UL class=le1>
+  <OL class=tit>博 客</OL>
+  <LI><A title="Java IO学习笔记：字符流" 
+  href="http://lavasoft.blog.51cto.com/62575/95390/" target=_blank>Java 
+  IO学习笔记：字符流</A>
+  <LI><A title="Java IO学习笔记：字节流" 
+  href="http://lavasoft.blog.51cto.com/62575/95387/" target=_blank>Java 
+  IO学习笔记：字节流</A>
+  <LI><A title="Java IO学习笔记：概念原理" 
+  href="http://lavasoft.blog.51cto.com/62575/95384/" target=_blank>Java 
+  IO学习笔记：概念原理</A>
+  <LI><A title="print spooler服务启动后，自动停止，服务不稳定" 
+  href="http://netlin.blog.51cto.com/118225/95381/" target=_blank>print 
+  spooler服务启动后，自动停止..</A>
+  <LI><A title=VMware安装windows2003后声卡、网卡问题 
+  href="http://zkxuchi.blog.51cto.com/238641/95371/" 
+  target=_blank>VMware安装windows2003后声卡、网卡..</A> </LI></UL>
+<UL class=le2>
+  <OL class=tit>下 载</OL>
+  <LI><A title="云端软件平台 免安装 绝对无毒" href="http://down.51cto.com/data/57847/" 
+  target=_blank>云端软件平台 免安装 绝对无毒</A>
+  <LI><A title=DOS学习大全 href="http://down.51cto.com/data/57846/" 
+  target=_blank>DOS学习大全</A>
+  <LI><A title=人事档案管理系统 href="http://down.51cto.com/data/57845/" 
+  target=_blank>人事档案管理系统</A>
+  <LI><A title=专用ros软路由教程(非常详细) href="http://down.51cto.com/data/57844/" 
+  target=_blank>专用ros软路由教程(非常详细)</A>
+  <LI><A title=vPN软件-Hlink分支端 href="http://down.51cto.com/data/57843/" 
+  target=_blank>vPN软件-Hlink分支端</A> </LI></UL>
+<DIV class=BR></DIV></DIV></DIV>
+<DIV id=right>
+<DIV class=hot>
+<UL>
+  <LI class=tit><EM>关注</EM> <A 
+  href="http://developer.51cto.com/developer/qiyuan/">年终巨献：开发高手的物种起源</A> 
+  <LI class=con>
+  <DL>
+    <DT><A href="http://developer.51cto.com/developer/qiyuan/"><IMG 
+    src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/095910688.jpg" border=0></A> 
+</DT>
+    <DD>究竟高手是如何炼成的？让我们一起回到原点，探寻开发高手的物种起源 </DD></DL></LI></UL></DIV>
+<DIV class=bann id=MyMoveAd 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 300px; PADDING-TOP: 0px; HEIGHT: 1px">
+<SCRIPT language=JavaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/ad.js"></SCRIPT>
+</DIV>
+<DIV class=top10>
+<DIV class=tab><A id=top_1 onmouseover=change_top10(1);>24小时</A><A id=top_2 
+onmouseover=change_top10(2);>本周</A><A id=top_3 
+onmouseover=change_top10(3);>本月</A></DIV>
+<DIV class=list id=top10_1 style="DISPLAY: block">
+<UL>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title="Eclipse插件大全 挑选最牛的TOP30" 
+  href="http://developer.51cto.com/art/201007/214478.htm" 
+  target=_blank>Eclipse插件大全 挑选最牛的TOP30</A> </LI>
+  <LI><A title="代替桌面工具 10款最给力的Web开发与设计工具" 
+  href="http://developer.51cto.com/art/201101/242579.htm" target=_blank>代替桌面工具 
+  10款最给力的Web开发与设计工具</A> </LI>
+  <LI><A title=10款给力构建易用性网站的jQuery插件 
+  href="http://developer.51cto.com/art/201101/243852.htm" 
+  target=_blank>10款给力构建易用性网站的jQuery插件</A> </LI>
+  <LI><A title="程序员的十个层次 你属于哪一层？" 
+  href="http://developer.51cto.com/art/201011/233083.htm" target=_blank>程序员的十个层次 
+  你属于哪一层？</A> </LI>
+  <LI><A title="多图详解教程：Eclipse 3.6连接Tomcat 7" 
+  href="http://developer.51cto.com/art/201007/212405.htm" 
+  target=_blank>多图详解教程：Eclipse 3.6连接Tomcat 7</A> </LI>
+  <LI><A title=Google首席Java架构师谈数学与程序员的关系 
+  href="http://developer.51cto.com/art/201012/238798.htm" 
+  target=_blank>Google首席Java架构师谈数学与程序员的关系</A> </LI>
+  <LI><A title=JavaScript初学者应注意的七个细节 
+  href="http://developer.51cto.com/art/201101/242546.htm" 
+  target=_blank>JavaScript初学者应注意的七个细节</A> </LI>
+  <LI><A title=2011年1月编程语言排行榜：Python称霸2010 
+  href="http://developer.51cto.com/art/201101/242327.htm" 
+  target=_blank>2011年1月编程语言排行榜：Python称霸2010</A> </LI>
+  <LI><A title=详解Java解析XML的四种方法 
+  href="http://developer.51cto.com/art/200903/117512.htm" 
+  target=_blank>详解Java解析XML的四种方法</A> </LI></UL></DIV>
+<DIV class=list id=top10_2 style="DISPLAY: none">
+<UL>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title="HTML效仿Chrome浏览器 将不再有版本号" 
+  href="http://developer.51cto.com/art/201101/243813.htm" 
+  target=_blank>HTML效仿Chrome浏览器 将不再有版本号</A> </LI>
+  <LI><A title="HTML5迎来新Logo 成下一代Web标准无容置疑" 
+  href="http://developer.51cto.com/art/201101/243420.htm" 
+  target=_blank>HTML5迎来新Logo 成下一代Web标准无容置疑</A> </LI>
+  <LI><A title=9大最有潜力PHP开源项目:Android开发居首 
+  href="http://developer.51cto.com/art/201101/243552.htm" 
+  target=_blank>9大最有潜力PHP开源项目:Android开发居首</A> </LI>
+  <LI><A title=是什么让一个Web应用程序变得如此伟大？ 
+  href="http://developer.51cto.com/art/201101/243540.htm" 
+  target=_blank>是什么让一个Web应用程序变得如此伟大？</A> </LI>
+  <LI><A title=jQuery1.5的六大细节改进:DOM操作更简单 
+  href="http://developer.51cto.com/art/201101/243424.htm" 
+  target=_blank>jQuery1.5的六大细节改进:DOM操作更简单</A> </LI>
+  <LI><A title="10个超赞超实用的免费jQuery图片插件 附下载" 
+  href="http://developer.51cto.com/art/201101/243701.htm" 
+  target=_blank>10个超赞超实用的免费jQuery图片插件 附下载</A> </LI>
+  <LI><A title=2011年5大科技预言：平板电脑昙花一现 
+  href="http://developer.51cto.com/art/201101/243698.htm" 
+  target=_blank>2011年5大科技预言：平板电脑昙花一现</A> </LI>
+  <LI><A title=微软轻量级Web服务器将提供免费版 
+  href="http://developer.51cto.com/art/201101/243305.htm" 
+  target=_blank>微软轻量级Web服务器将提供免费版</A> </LI>
+  <LI><A title="Scala获欧盟资助 以克服并行编程的困难" 
+  href="http://developer.51cto.com/art/201101/243487.htm" 
+  target=_blank>Scala获欧盟资助 以克服并行编程的困难</A> </LI></UL></DIV>
+<DIV class=list id=top10_3 style="DISPLAY: none">
+<UL>
+  <LI><A title=2011年1月编程语言排行榜：Python称霸2010 
+  href="http://developer.51cto.com/art/201101/242327.htm" 
+  target=_blank>2011年1月编程语言排行榜：Python称霸2010</A> </LI>
+  <LI><A title="代替桌面工具 10款最给力的Web开发与设计工具" 
+  href="http://developer.51cto.com/art/201101/242579.htm" target=_blank>代替桌面工具 
+  10款最给力的Web开发与设计工具</A> </LI>
+  <LI><A title=15个国外最流行的CSS框架（附下载） 
+  href="http://developer.51cto.com/art/201101/241626.htm" 
+  target=_blank>15个国外最流行的CSS框架（附下载）</A> </LI>
+  <LI><A title=3种类型的程序员：“虫族”，“人族”，“神族” 
+  href="http://developer.51cto.com/art/201012/240844.htm" 
+  target=_blank>3种类型的程序员：“虫族”，“人族”，“神族”</A> </LI>
+  <LI><A title="10个国外开发的HTML 5精彩应用" 
+  href="http://developer.51cto.com/art/201012/240884.htm" 
+  target=_blank>10个国外开发的HTML 5精彩应用</A> </LI>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title=JavaScript初学者应注意的七个细节 
+  href="http://developer.51cto.com/art/201101/242546.htm" 
+  target=_blank>JavaScript初学者应注意的七个细节</A> </LI>
+  <LI><A title=年度最热门SNS开源系统出炉（附下载） 
+  href="http://developer.51cto.com/art/201012/240705.htm" 
+  target=_blank>年度最热门SNS开源系统出炉（附下载）</A> </LI>
+  <LI><A title=2011年Web设计最新潮流（图文） 
+  href="http://developer.51cto.com/art/201101/242117.htm" 
+  target=_blank>2011年Web设计最新潮流（图文）</A> </LI>
+  <LI><A title=Java专家孙卫琴：专精一门编程语言也能成功 
+  href="http://developer.51cto.com/art/201101/243013.htm" 
+  target=_blank>Java专家孙卫琴：专精一门编程语言也能成功</A> </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=tag>
+<DIV class=con><A title=刀片服务器专区 href="http://server.51cto.com/Blade" 
+target=_blank>刀片服务器</A>&nbsp;&nbsp; <A title=云计算频道全新上线 
+href="http://cloud.51cto.com/" target=_blank>云计算</A>&nbsp;&nbsp; <A 
+title=ARP攻击与防御 href="http://netsecurity.51cto.com/art/200609/31897.htm" 
+target=_blank>ARP攻防</A>&nbsp;&nbsp; <A title=思科培训技术专区 
+href="http://training.51cto.com/cisco" 
+target=_blank>思科培训</A>&nbsp;&nbsp;</DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=dingy>
+<TABLE cellSpacing=0 cellPadding=0 width=280 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2 height=56>&nbsp;</TD></TR>
+  <TR>
+    <TD align=right colSpan=2><A 
+      href="http://news.51cto.com/col/1323/">点击这里查看样刊</A></TD></TR>
+  <TR>
+    <TD colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <FORM onsubmit="return mail_process(email.value)" 
+    action=http://newsletter2.51cto.com/new/newsletter/mailm.php method=post>
+    <TD align=right width=223><INPUT class=new_te5 onfocus=this.select() 
+      onclick="this.value=''" name=email><INPUT type=hidden name=mailsub></TD>
+    <TD align=right width=57><INPUT onclick=submit(); type=image 
+      src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/dingy.gif"></TD></FORM></TR></TBODY></TABLE></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=redian>
+<DIV class=list>
+<UL>
+  <LI><A title="AttachmateWRQ Reflection for Secure IT Windows服务器重命名帐户远程登录漏洞" 
+  href="http://netsecurity.51cto.com/art/200509/2369.htm">AttachmateWRQ 
+  Reflection for Secure IT ..</A> </LI>
+  <LI><A title=win2k运行进程详解 
+  href="http://course.51cto.com/art/200508/962.htm">win2k运行进程详解</A> </LI>
+  <LI><A title=在单个区域办配置OSPF 
+  href="http://network.51cto.com/art/200508/2121.htm">在单个区域办配置OSPF</A> </LI>
+  <LI><A title=路由器与集线器、交换机的根本区别 
+  href="http://network.51cto.com/art/200510/9503.htm">路由器与集线器、交换机的根本区别</A> </LI>
+  <LI><A title="13日病毒日报 小心感染型蠕虫自动下载盗号木马" 
+  href="http://netsecurity.51cto.com/art/200706/49139.htm">13日病毒日报 
+  小心感染型蠕虫自动下载盗号..</A> </LI>
+  <LI><A title=浅谈骨干交换机和桌面交换机的区别(组图) 
+  href="http://network.51cto.com/art/200511/10667.htm">浅谈骨干交换机和桌面交换机的区别(组图)</A> 
+  </LI>
+  <LI><A title=MySQL平台数据库备份方案详细说明 
+  href="http://netsecurity.51cto.com/art/200602/20285.htm">MySQL平台数据库备份方案详细说明</A> 
+  </LI>
+  <LI><A title="4月第3周安全回顾 恶意微处理器亮相 垃圾邮件出新招" 
+  href="http://netsecurity.51cto.com/art/200804/70386.htm">4月第3周安全回顾 恶意微处理器亮相 
+  垃圾..</A> </LI>
+  <LI><A title=IBM与Novell合作开放源安全项目 
+  href="http://developer.51cto.com/art/200603/21810.htm">IBM与Novell合作开放源安全项目</A> 
+  </LI>
+  <LI><A title=招式繁多机关重重——实战卡巴斯基2010全功能安全软件 
+  href="http://netsecurity.51cto.com/art/200908/142852.htm">招式繁多机关重重——实战卡巴斯基2010全..</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV><IFRAME class=bann 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 300px; PADDING-TOP: 0px; HEIGHT: 250px; BACKGROUND-COLOR: #dbdbdb" 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/4.htm" frameBorder=0 
+scrolling=no></IFRAME>
+<DIV class=BR_10></DIV></DIV>
+<DIV class=BR></DIV></DIV>
+<DIV class=BR_20></DIV>
+<DIV id=foot>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/copy_right.js"></SCRIPT>
+</DIV><!--弹出窗口-->
+<DIV id=tanc style="DISPLAY: none; LEFT: 0px; TOP: 0px; BACKGROUND-COLOR: #fff">
+<DIV class=tit>
+<DL>
+  <DT>更多关于“<SPAN id=search_title></SPAN>”的推荐</DT>
+  <DD><IMG onclick=close_this(); 
+  src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/ico2.gif"></DD></DL></DIV>
+<DIV class=con>
+<OL>51CTO还有以下内容可能满足您的需求</OL>
+<UL id=search_body></UL><SPAN><A id=search_url 
+href="http://developer.51cto.com/art/200712/62076.htm#">站内搜索更多 <EM 
+id=search_foot></EM>的内容</A></SPAN></DIV></DIV><!--弹出窗口End--><!-- 新监测代码 -->
+<SCRIPT type=text/javascript>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+try {
+var pageTracker = _gat._getTracker("UA-10766765-6");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+
+<DIV style="DISPLAY: none">
+<SCRIPT type=text/javascript>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6d49a084fadc0a02616d836ba8b4a72e' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/tongji.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><A href="http://www.linezing.com/"><IMG 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/tongji.gif"></A></NOSCRIPT> </DIV><!-- 新监测代码 -->
+<DIV style="DISPLAY: none"><SPAN id=wordlink_1>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/wordlink1.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_2>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/wordlink2.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_3>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/wordlink3.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_4>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/wordlink4.js"></SCRIPT>
+</SPAN><SPAN id=pinglun>
+<SCRIPT language=JavaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/getArtCount.htm"></SCRIPT>
+</SPAN>
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/ad(1).js"></SCRIPT>
+<SPAN id=tonglan>
+<SCRIPT language=JavaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/ad(2).js"></SCRIPT>
+</SPAN><SPAN id=wordlink>
+<SCRIPT language=JavaScript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/ad(1).js"></SCRIPT>
+</SPAN></DIV>
+<SCRIPT>
+	document.getElementById('pinglun_1').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('pinglun_2').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('tonglanad').innerHTML=document.getElementById('tonglan').innerHTML;
+    document.getElementById('tonglan').innerHTML="";
+	function refimg(){
+		var randval = Math.random();
+		document.getElementById('secunum').src='http://www.51cto.com/php/seccode.php?rnum='+randval;
+	}
+</SCRIPT>
+
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/count.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/count.htm"></SCRIPT>
+
+<SCRIPT src="用Java实现多线程服务器程序%20-%2051CTO_COM_files/new_art_dev.js" 
+type=text/javascript></SCRIPT>
+</BODY></HTML>

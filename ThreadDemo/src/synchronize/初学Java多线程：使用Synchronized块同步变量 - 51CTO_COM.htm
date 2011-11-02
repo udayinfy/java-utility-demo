@@ -1,0 +1,529 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0048)http://developer.51cto.com/art/200906/132362.htm -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>初学Java多线程：使用Synchronized块同步变量 - 51CTO.COM</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<META name=description 
+content=本文是Java多线程初学教程中的最后一部分，讲解如何使用Synchronized块同步变量。我们可以通过synchronized块来同步特定的静态或非静态方法。>
+<META name=keywords content=Java多线程,Synchronized块,同步变量><LINK rel=stylesheet 
+type=text/css 
+href="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/news_09.css"><LINK 
+rel=stylesheet type=text/css 
+href="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/master_top.css">
+<SCRIPT language=javaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/validate2.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/fb_words_list.htm"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/base6.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/dialog_utf8.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/mail.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/article.js"></SCRIPT>
+
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/index_1_down.js"></SCRIPT>
+
+<SCRIPT>
+var thistid=132362;
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18999"></HEAD>
+<BODY onresize=set_sreach() onload=set_sreach()>
+<DIV class=top>
+<DIV class=top_nav>
+<DIV class=top_nav_logo title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></DIV>
+<DIV class=top_nav_r><A href="http://www.51cto.com/">51CTO首页</A> | <A 
+href="http://news.51cto.com/">新闻</A> | <A 
+href="http://www.51cto.com/col/35">专题</A> | <A 
+href="http://bbs.51cto.com/">论坛</A> | <A href="http://blog.51cto.com/">博客</A> | 
+<A href="http://down.51cto.com/">下载</A> | <A href="http://g.51cto.com/">技术圈</A> 
+| <A href="http://book.51cto.com/">读书</A> | <A class=top_nav_r1 
+onmouseover=show(1,this) onmouseout=popupClose() 
+href="http://www.51cto.com/col/35/">技术频道 </A>| <A 
+href="http://www.cioage.com/">CIO </A>| <A href="http://www.watchstor.com/">存储 
+</A>| <A href="http://www.hc3i.cn/">HC3i </A>| <A 
+href="http://www.51cto.com/about/map.htm">地图</A> </DIV></DIV></DIV>
+<DIV id=s1 class=subMenu1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">安全</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A> 
+  <LI><A href="http://database.51cto.com/">数据库</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://cloud.51cto.com/">云计算</A> 
+  <LI><A href="http://developer.51cto.com/embed/">嵌入式</A> </LI></UL></DIV>
+<DIV id=s1 class=subMenu1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网建网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">网络安全</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">操作系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A></LI></UL></DIV>
+<DIV id=s2 class=subMenu2 onmouseover=popupNoClose( onmouseout=popupClose() )>
+<UL>
+  <LI><A href="http://www.cioage.com/news">资讯前沿</A> 
+  <LI><A href="http://www.cioage.com/insight">业界观察</A> 
+  <LI><A href="http://www.cioage.com/exp">应用体验</A> 
+  <LI><A href="http://www.cioage.com/tech">杀手技术</A></LI></UL></DIV>
+<DIV id=s3 class=subMenu3 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://news.watchstor.com/">新闻资讯</A> 
+  <LI><A href="http://tech.watchstor.com/">技术中心</A> 
+  <LI><A href="http://video.watchstor.com/">互动视频</A> 
+  <LI><A href="http://special.watchstor.com/">专题汇聚</A></LI></UL></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=banner>
+<DIV id=tonglanad class=banner_l></DIV>
+<DIV class=banner_r>
+<UL>
+  <LI id=wordlinkad1>
+  <LI id=wordlinkad2>
+  <LI id=wordlinkad3>
+  <LI id=wordlinkad4></LI></UL></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV id=subNav>
+<DIV class=subNav_logo><IMG 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/kaifa_logo.gif"></DIV>
+<DIV class=subNav_l><A href="http://developer.51cto.com/">首页</A> | <A 
+href="http://developer.51cto.com/java/">Java</A> | <A 
+href="http://developer.51cto.com/net/">.NET</A> | <A 
+href="http://developer.51cto.com/web/">Web</A> | <A 
+href="http://developer.51cto.com/col/1315/">XML</A> | <A 
+href="http://developer.51cto.com/col/585/">语言工具</A> | <A 
+href="http://developer.51cto.com/col/1312/">测试</A> | <A 
+href="http://developer.51cto.com/col/1314/" target=_blank>游戏</A> | <A 
+href="http://developer.51cto.com/col/583/" target=_blank>移动</A> | <A 
+href="http://developer.51cto.com/col/1308/">架构</A> | <A 
+href="http://developer.51cto.com/col/586/">项目管理</A> | <A 
+href="http://publish.51cto.com/list/460/">全部文章</A></DIV>
+<DIV class=search>
+<FORM 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+method=post name=searchform action=http://www.51cto.com/php/search.php>
+<DL>
+  <DT><INPUT class=new_te1 name=keyword> </DT>
+  <DD><INPUT 
+  src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/search.gif" 
+  type=image></DD></DL></FORM></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV id=container>
+<DIV id=left>
+<DIV class=title>
+<DIV class=breadcrumb>您所在的位置：<A href="http://www.51cto.com/" 
+target=_blank>首页</A> &gt; <A href="http://developer.51cto.com/">开发</A> &gt; <A 
+href="http://developer.51cto.com/col/461/">Java</A> &gt; <A 
+href="http://developer.51cto.com/col/1005/">Java基础</A> &gt; </DIV>
+<DIV class=con>
+<UL>
+  <LI>
+  <H1>初学Java多线程：使用Synchronized块同步变量</H1>
+  <LI class=msg><SPAN><A 
+  href="http://developer.51cto.com/">http://developer.51cto.com/</A> 
+  &nbsp;2009-06-29 18:44 &nbsp;nokiaguy &nbsp;<A 
+  href="http://www.blogjava.net/nokiaguy/archive/2009/03/22/261357.html" 
+  target=_blank>真的有外星人吗</A> &nbsp;<A 
+  href="http://www.51cto.com/php/feedbackt.php?id=132362">我要评论(<SPAN 
+  id=pinglun_1>0</SPAN>)</A></SPAN> </LI></UL></DIV></DIV>
+<DIV class=BR_3></DIV>
+<DIV class=container>
+<DIV class=sum>
+<UL 
+  class=summary>本文是Java多线程初学教程中的最后一部分，讲解如何使用Synchronized块同步变量。我们可以通过synchronized块来同步特定的静态或非静态方法。</UL></DIV>
+<UL class=con>
+  <P>
+  <P>我们可以通过synchronized块来同步特定的静态或非静态方法。要想实现这种需求必须为这些特性的方法定义一个类变量，然后将这些方法的代码用synchronized块括起来，并将这个类变量作为参数传入synchronized块。下面的代码演示了如何同步特定的类方法：</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN class=keyword>package</SPAN><SPAN>&nbsp;mythread; &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;</SPAN><LI class=alt><SPAN></SPAN><SPAN class=keyword>public</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>class</SPAN><SPAN>&nbsp;SyncThread&nbsp;</SPAN><SPAN class=keyword>extends</SPAN><SPAN>&nbsp;Thread &nbsp;</SPAN></SPAN><LI><SPAN>{ &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>private</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>static</SPAN><SPAN>&nbsp;String&nbsp;sync&nbsp;=&nbsp;</SPAN><SPAN class=string>""</SPAN><SPAN>; &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>private</SPAN><SPAN>&nbsp;String&nbsp;methodType&nbsp;=&nbsp;</SPAN><SPAN class=string>""</SPAN><SPAN>; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>private</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>static</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>void</SPAN><SPAN>&nbsp;method(String&nbsp;s) &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>synchronized</SPAN><SPAN>&nbsp;(sync) &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sync&nbsp;=&nbsp;s; &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s); &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>while</SPAN><SPAN>&nbsp;(</SPAN><SPAN class=keyword>true</SPAN><SPAN>); &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>public</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>void</SPAN><SPAN>&nbsp;method1() &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method(</SPAN><SPAN class=string>"method1"</SPAN><SPAN>); &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>public</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>static</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>void</SPAN><SPAN>&nbsp;staticMethod1() &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method(</SPAN><SPAN class=string>"staticMethod1"</SPAN><SPAN>); &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>public</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>void</SPAN><SPAN>&nbsp;run() &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>if</SPAN><SPAN>&nbsp;(methodType.equals(</SPAN><SPAN class=string>"static"</SPAN><SPAN>)) &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;staticMethod1(); &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>else</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>if</SPAN><SPAN>&nbsp;(methodType.equals(</SPAN><SPAN class=string>"nonstatic"</SPAN><SPAN>)) &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method1(); &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>public</SPAN><SPAN>&nbsp;SyncThread(String&nbsp;methodType) &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>this</SPAN><SPAN>.methodType&nbsp;=&nbsp;methodType; &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN class=keyword>public</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>static</SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword>void</SPAN><SPAN>&nbsp;main(String[]&nbsp;args)&nbsp;</SPAN><SPAN class=keyword>throws</SPAN><SPAN>&nbsp;Exception &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SyncThread&nbsp;sample1&nbsp;=&nbsp;</SPAN><SPAN class=keyword>new</SPAN><SPAN>&nbsp;SyncThread(</SPAN><SPAN class=string>"nonstatic"</SPAN><SPAN>); &nbsp;</SPAN></SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SyncThread&nbsp;sample2&nbsp;=&nbsp;</SPAN><SPAN class=keyword>new</SPAN><SPAN>&nbsp;SyncThread(</SPAN><SPAN class=string>"static"</SPAN><SPAN>); &nbsp;</SPAN></SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sample1.start(); &nbsp;</SPAN><LI class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sample2.start(); &nbsp;</SPAN><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;</SPAN><LI class=alt><SPAN>}&nbsp;</SPAN></LI></OL></PRE>
+  <P>运行结果如下：</P>
+  <P>method1<BR>staticMethod1</P>
+  <P>看到上面的运行结果很多读者可能感到惊奇。在上面的代码中method1和staticMethod1方法使用了静态字符串变量sync进行同步。这两个方法只能有一个同时执行，而这两个方法都会执行014行的无限循环语句。因此，输出结果只能是method1和staticMethod1其中之一。但这个程序将这两个字符串都输出了。</P>
+  <P>出现这种结果的愿意很简单，我们看一下012行就知道了。原来在这一行将sync的值改变了。在这里要说一下Java中的String类型。String类型和Java中其他的复杂类型不同。在使用String型变量时，只要给这个变量赋一次值，Java就会创建个新的String类型的实例。如下面的代码所示：</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN>String&nbsp;s&nbsp;=&nbsp;</SPAN><SPAN class=string><FONT color=#0000ff>"hello"</FONT></SPAN><SPAN>; &nbsp;</SPAN></SPAN><LI><SPAN>System.out.println(s.hashCode()); &nbsp;</SPAN><LI class=alt><SPAN>s&nbsp;=&nbsp;</SPAN><SPAN class=string><FONT color=#0000ff>"world"</FONT></SPAN><SPAN>; &nbsp;</SPAN></SPAN><LI><SPAN>System.out.println(s.hashCode());&nbsp;&nbsp;&nbsp;</SPAN></LI></OL></PRE>
+  <P>在上面的代码中。第一个s和再次赋值后的s的hashCode的值是不一样的。由于创建String类的实例并不需要使用new，因此，在同步String类型的变量时要注意不要给这个变量赋值，否则会使变量无法同步。</P>
+  <P>由于在013行已经为sync创建了一个新的实例，假设method1先执行，当method1方法执行了013行的代码后，sync的值就已经不是最初那个值了，而method1方法锁定的仍然是sync变量最初的那个值。而在这时，staticMethod1正好执行到synchronized(sync)，在staticMethod1方法中要锁定的这个sync和method1方法锁定的sync已经不是一个了，因此，这两个方法的同步性已经被破坏了。</P>
+  <P>解决以上问题的方法当然是将013行去掉。在本例中加上这行，只是为了说明使用类变量来同步方法时如果在synchronized块中将同步变量的值改变，就会破坏方法之间的同步。为了彻底避免这种情况发生，在定义同步变量时可以使用final关键字。如将上面的程序中的005行可改成如下形式：</P><PRE><OL class=dp-j><LI class=alt><SPAN><SPAN class=keyword><STRONG><FONT color=#006699>private</FONT></STRONG></SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>final</FONT></STRONG></SPAN><SPAN>&nbsp;</SPAN><SPAN class=keyword><STRONG><FONT color=#006699>static</FONT></STRONG></SPAN><SPAN>&nbsp;String&nbsp;sync&nbsp;=&nbsp;</SPAN><SPAN class=string><FONT color=#0000ff>""</FONT></SPAN><SPAN>;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></PRE>
+  <P>使用final关键字后，sync只能在定义时为其赋值，并且以后不能再修改。如果在程序的其他地方给sync赋了值，程序就无法编译通过。在Eclipse等开发工具中，会直接在错误的地方给出提示。</P>
+  <P>我们可以从两个角度来理解synchronized块。如果从类方法的角度来理解，可以通过类变量来同步相应的方法。如果从类变量的角度来理解，可以使用synchronized块来保证某个类变量同时只能被一个方法访问。不管从哪个角度来理解，它们的实质都是一样的，就是利用类变量来获得同步锁，通过同步锁的互斥性来实现同步。</P>
+  <P>注意：在使用synchronized块时应注意，synchronized块只能使用对象作为它的参数。如果是简单类型的变量(如int、char、boolean等)，不能使用synchronized来同步。</P>
+  <P><SPAN>【编辑推荐】</P>
+  <OL>
+    <LI><A href="http://developer.51cto.com/art/200906/132360.htm" 
+    target=_blank>初学Java多线程：使用Synchronized块同步方法</A> 
+    <LI><A href="http://developer.51cto.com/art/200906/132354.htm" 
+    target=_blank>初学Java多线程：使用Synchronized关键字同步类方法</A> 
+    <LI><A href="http://developer.51cto.com/art/200906/132349.htm" 
+    target=_blank><FONT color=#0000ff>初学Java多线程：从线程返回数据的两种方法</FONT></A> 
+    <LI><A href="http://developer.51cto.com/art/200906/132347.htm" 
+    target=_blank><FONT color=#0000ff>初学Java多线程：向线程传递数据的三种方法</FONT></A> 
+    <LI><A href="http://developer.51cto.com/art/200906/132344.htm" 
+    target=_blank>初学Java多线程：慎重使用volatile关键字</A> </SPAN></LI></OL>
+  <DIV align=right>【责任编辑：<A class=ln href="mailto:yangsai@51cto.com">杨赛</A> 
+  TEL：（010）68476606】</DIV><BR></UL>
+<DIV class=BR_20></DIV>
+<DIV class=zhus>
+<DL>
+  <DT>原文：<A 
+  href="http://developer.51cto.com/art/200906/132362.htm">初学Java多线程：使用Synchronized块同步..</A> 
+  </DT>
+  <DD>标 签：&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=Java%B6%E0%CF%DF%B3%CC" 
+  target=_blank>Java多线程</A>&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=Synchronized%BF%E9" 
+  target=_blank>Synchro..</A>&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=%CD%AC%B2%BD%B1%E4%C1%BF" 
+  target=_blank>同步..</A> </DD></DL></DIV>
+<DIV class=lij><SPAN>上一篇： <A 
+href="http://developer.51cto.com/art/200906/132360.htm" 
+target=_self>初学Java多线程：使用Synchronized块同步方法</A> 下一篇： <A 
+href="http://developer.51cto.com/art/200906/132380.htm" 
+target=_self>使用Java解析名称空间的方法</A></SPAN></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=review>
+<DIV class=tit>
+<H3>网友评论</H3><SPAN><A 
+href="http://www.51cto.com/php/feedbackt.php?id=132362">查看所有评论（<EM 
+id=pinglun_2></EM>）</A></SPAN></DIV>
+<DIV id=artcomments>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/artcomment0910.htm"></SCRIPT>
+</DIV>
+<DIV class=con1>
+<DIV class=sp1>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/authart.htm"></SCRIPT>
+</DIV>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/developer.htm"></SCRIPT>
+</DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=mary>
+<UL class=le1>
+  <OL class=tit>读 书</OL>
+  <LI><A title="Dynamic HTML权威指南（第3版）" 
+  href="http://book.51cto.com/art/200908/144814.htm">Dynamic HTML权威指南（第3版）</A> 
+  <LI><A title=ASP.NET夜话 
+  href="http://book.51cto.com/art/200907/136948.htm">ASP.NET夜话</A> 
+  <LI><A title=搜索引擎营销的成功策略与技巧解密 
+  href="http://book.51cto.com/art/200912/173482.htm">搜索引擎营销的成功策略与技巧解密</A> 
+  <LI><A title="UML与Enterprise Architect 7.5团队开发实务手册" 
+  href="http://book.51cto.com/art/201003/190151.htm">UML与Enterprise Architect 
+  7.5团队开发实务手册</A> 
+  <LI><A title=GPU高效能运算之CUDA 
+  href="http://book.51cto.com/art/200910/157904.htm">GPU高效能运算之CUDA</A> </LI></UL>
+<UL class=le2>
+  <OL class=tit>论 坛</OL>
+  <LI><A title=一个关于合并超网的问题 href="http://bbs.51cto.com/thread-81280-1.html" 
+  target=_blank>一个关于合并超网的问题</A>
+  <LI><A title=关于Linux网络安全的内在限制 href="http://bbs.51cto.com/thread-81278-1.html" 
+  target=_blank>关于Linux网络安全的内在限制</A>
+  <LI><A title="Linux 入门常用命令" href="http://bbs.51cto.com/thread-81276-1.html" 
+  target=_blank>Linux 入门常用命令</A>
+  <LI><A title=求职不必过分包装 href="http://bbs.51cto.com/thread-81271-1.html" 
+  target=_blank>求职不必过分包装</A>
+  <LI><A title=杀它一个“回马枪”也许会收到意料不到的收获 
+  href="http://bbs.51cto.com/thread-81268-1.html" 
+  target=_blank>杀它一个“回马枪”也许会收到意料..</A> </LI></UL>
+<DIV class=BR_line></DIV>
+<UL class=le1>
+  <OL class=tit>博 客</OL>
+  <LI><A title="LINQ stuff (more links)" 
+  href="http://feishunji.blog.51cto.com/237830/61976/" target=_blank>LINQ stuff 
+  (more links)</A>
+  <LI><A title="java （Unix）时间戳计算" 
+  href="http://maomao.blog.51cto.com/115985/61975/" target=_blank>java 
+  （Unix）时间戳计算</A>
+  <LI><A title=批处理文件快速动态修改IP地址，默认网关和DNS来实现网络切换 
+  href="http://233375.blog.51cto.com/223375/61974/" 
+  target=_blank>批处理文件快速动态修改IP地址，默..</A>
+  <LI><A title=小五笔记0206 href="http://xwnet.blog.51cto.com/233677/61973/" 
+  target=_blank>小五笔记0206</A>
+  <LI><A title="Valentine's Day" 
+  href="http://yardan.blog.51cto.com/304821/61972/" target=_blank>Valentine's 
+  Day</A> </LI></UL>
+<UL class=le2>
+  <OL class=tit>下 载</OL>
+  <LI><A title="思科最新实验 题" href="http://down.51cto.com/data/42808/" 
+  target=_blank>思科最新实验 题</A>
+  <LI><A title=ccie全中文的学习笔记！PDF格式！ href="http://down.51cto.com/data/42807/" 
+  target=_blank>ccie全中文的学习笔记！PDF格式！</A>
+  <LI><A title="Dynamips / Dynagen 教程（中文版）" 
+  href="http://down.51cto.com/data/42806/" target=_blank>Dynamips / Dynagen 
+  教程（中文版）</A>
+  <LI><A title="思科pix IOS 635" href="http://down.51cto.com/data/42805/" 
+  target=_blank>思科pix IOS 635</A>
+  <LI><A title=CCNA题库 href="http://down.51cto.com/data/42804/" 
+  target=_blank>CCNA题库</A> </LI></UL>
+<DIV class=BR></DIV></DIV></DIV>
+<DIV id=right>
+<DIV class=hot>
+<UL>
+  <LI class=tit><EM>关注</EM> <A 
+  href="http://developer.51cto.com/developer/qiyuan/">年终巨献：开发高手的物种起源</A> 
+  <LI class=con>
+  <DL>
+    <DT><A href="http://developer.51cto.com/developer/qiyuan/"><IMG border=0 
+    src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/095910688.jpg"></A> 
+    </DT>
+    <DD>究竟高手是如何炼成的？让我们一起回到原点，探寻开发高手的物种起源 </DD></DL></LI></UL></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 300px; PADDING-RIGHT: 0px; HEIGHT: 1px; OVERFLOW: hidden; PADDING-TOP: 0px" 
+id=MyMoveAd class=bann>
+<SCRIPT language=JavaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/ad.js"></SCRIPT>
+</DIV>
+<DIV class=top10>
+<DIV class=tab><A id=top_1 onmouseover=change_top10(1);>24小时</A><A id=top_2 
+onmouseover=change_top10(2);>本周</A><A id=top_3 
+onmouseover=change_top10(3);>本月</A></DIV>
+<DIV style="DISPLAY: block" id=top10_1 class=list>
+<UL>
+  <LI><A title="Eclipse插件大全 挑选最牛的TOP30" 
+  href="http://developer.51cto.com/art/201007/214478.htm" 
+  target=_blank>Eclipse插件大全 挑选最牛的TOP30</A> </LI>
+  <LI><A title="20个HTML 5和CSS3的免费网站模板与教程" 
+  href="http://developer.51cto.com/art/201101/244001.htm" target=_blank>20个HTML 
+  5和CSS3的免费网站模板与教程</A> </LI>
+  <LI><A title="代替桌面工具 10款最给力的Web开发与设计工具" 
+  href="http://developer.51cto.com/art/201101/242579.htm" target=_blank>代替桌面工具 
+  10款最给力的Web开发与设计工具</A> </LI>
+  <LI><A title=推荐25个非常优秀的网页表单设计案例 
+  href="http://developer.51cto.com/art/201101/244023.htm" 
+  target=_blank>推荐25个非常优秀的网页表单设计案例</A> </LI>
+  <LI><A title="多图详解教程：Eclipse 3.6连接Tomcat 7" 
+  href="http://developer.51cto.com/art/201007/212405.htm" 
+  target=_blank>多图详解教程：Eclipse 3.6连接Tomcat 7</A> </LI>
+  <LI><A title="程序员的十个层次 你属于哪一层？" 
+  href="http://developer.51cto.com/art/201011/233083.htm" target=_blank>程序员的十个层次 
+  你属于哪一层？</A> </LI>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title=JavaScript初学者应注意的七个细节 
+  href="http://developer.51cto.com/art/201101/242546.htm" 
+  target=_blank>JavaScript初学者应注意的七个细节</A> </LI>
+  <LI><A title=2011年1月编程语言排行榜：Python称霸2010 
+  href="http://developer.51cto.com/art/201101/242327.htm" 
+  target=_blank>2011年1月编程语言排行榜：Python称霸2010</A> </LI>
+  <LI><A title=Google首席Java架构师谈数学与程序员的关系 
+  href="http://developer.51cto.com/art/201012/238798.htm" 
+  target=_blank>Google首席Java架构师谈数学与程序员的关系</A> </LI></UL></DIV>
+<DIV style="DISPLAY: none" id=top10_2 class=list>
+<UL>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title="HTML效仿Chrome浏览器 将不再有版本号" 
+  href="http://developer.51cto.com/art/201101/243813.htm" 
+  target=_blank>HTML效仿Chrome浏览器 将不再有版本号</A> </LI>
+  <LI><A title=10款给力构建易用性网站的jQuery插件 
+  href="http://developer.51cto.com/art/201101/243852.htm" 
+  target=_blank>10款给力构建易用性网站的jQuery插件</A> </LI>
+  <LI><A title="HTML5迎来新Logo 成下一代Web标准无容置疑" 
+  href="http://developer.51cto.com/art/201101/243420.htm" 
+  target=_blank>HTML5迎来新Logo 成下一代Web标准无容置疑</A> </LI>
+  <LI><A title=9大最有潜力PHP开源项目:Android开发居首 
+  href="http://developer.51cto.com/art/201101/243552.htm" 
+  target=_blank>9大最有潜力PHP开源项目:Android开发居首</A> </LI>
+  <LI><A title=jQuery1.5的六大细节改进:DOM操作更简单 
+  href="http://developer.51cto.com/art/201101/243424.htm" 
+  target=_blank>jQuery1.5的六大细节改进:DOM操作更简单</A> </LI>
+  <LI><A title=是什么让一个Web应用程序变得如此伟大？ 
+  href="http://developer.51cto.com/art/201101/243540.htm" 
+  target=_blank>是什么让一个Web应用程序变得如此伟大？</A> </LI>
+  <LI><A title="ASP.NET MVC 3中文正式版发布（附下载）" 
+  href="http://developer.51cto.com/art/201101/243705.htm" target=_blank>ASP.NET 
+  MVC 3中文正式版发布（附下载）</A> </LI>
+  <LI><A title="10个超赞超实用的免费jQuery图片插件 附下载" 
+  href="http://developer.51cto.com/art/201101/243701.htm" 
+  target=_blank>10个超赞超实用的免费jQuery图片插件 附下载</A> </LI>
+  <LI><A title=2011年5大科技预言：平板电脑昙花一现 
+  href="http://developer.51cto.com/art/201101/243698.htm" 
+  target=_blank>2011年5大科技预言：平板电脑昙花一现</A> </LI></UL></DIV>
+<DIV style="DISPLAY: none" id=top10_3 class=list>
+<UL>
+  <LI><A title=2011年1月编程语言排行榜：Python称霸2010 
+  href="http://developer.51cto.com/art/201101/242327.htm" 
+  target=_blank>2011年1月编程语言排行榜：Python称霸2010</A> </LI>
+  <LI><A title="代替桌面工具 10款最给力的Web开发与设计工具" 
+  href="http://developer.51cto.com/art/201101/242579.htm" target=_blank>代替桌面工具 
+  10款最给力的Web开发与设计工具</A> </LI>
+  <LI><A title=15个国外最流行的CSS框架（附下载） 
+  href="http://developer.51cto.com/art/201101/241626.htm" 
+  target=_blank>15个国外最流行的CSS框架（附下载）</A> </LI>
+  <LI><A title="Android抄袭Java代码出新证 谷歌新CEO如何应对？" 
+  href="http://developer.51cto.com/art/201101/243835.htm" 
+  target=_blank>Android抄袭Java代码出新证 谷歌新CEO如何应对？</A> </LI>
+  <LI><A title=3种类型的程序员：“虫族”，“人族”，“神族” 
+  href="http://developer.51cto.com/art/201012/240844.htm" 
+  target=_blank>3种类型的程序员：“虫族”，“人族”，“神族”</A> </LI>
+  <LI><A title=JavaScript初学者应注意的七个细节 
+  href="http://developer.51cto.com/art/201101/242546.htm" 
+  target=_blank>JavaScript初学者应注意的七个细节</A> </LI>
+  <LI><A title="10个国外开发的HTML 5精彩应用" 
+  href="http://developer.51cto.com/art/201012/240884.htm" 
+  target=_blank>10个国外开发的HTML 5精彩应用</A> </LI>
+  <LI><A title=年度最热门SNS开源系统出炉（附下载） 
+  href="http://developer.51cto.com/art/201012/240705.htm" 
+  target=_blank>年度最热门SNS开源系统出炉（附下载）</A> </LI>
+  <LI><A title=2011年Web设计最新潮流（图文） 
+  href="http://developer.51cto.com/art/201101/242117.htm" 
+  target=_blank>2011年Web设计最新潮流（图文）</A> </LI>
+  <LI><A title=Java专家孙卫琴：专精一门编程语言也能成功 
+  href="http://developer.51cto.com/art/201101/243013.htm" 
+  target=_blank>Java专家孙卫琴：专精一门编程语言也能成功</A> </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=tag>
+<DIV class=con><A title=刀片服务器专区 href="http://server.51cto.com/Blade" 
+target=_blank>刀片服务器</A>&nbsp;&nbsp; <A title=云计算频道全新上线 
+href="http://cloud.51cto.com/" target=_blank>云计算</A>&nbsp;&nbsp; <A 
+title=ARP攻击与防御 href="http://netsecurity.51cto.com/art/200609/31897.htm" 
+target=_blank>ARP攻防</A>&nbsp;&nbsp; <A title=思科培训技术专区 
+href="http://training.51cto.com/cisco" 
+target=_blank>思科培训</A>&nbsp;&nbsp;</DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=dingy>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width=280>
+  <TBODY>
+  <TR>
+    <TD height=56 colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD colSpan=2 align=right><A 
+      href="http://news.51cto.com/col/1323/">点击这里查看样刊</A></TD></TR>
+  <TR>
+    <TD colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <FORM onsubmit="return mail_process(email.value)" method=post 
+    action=http://newsletter2.51cto.com/new/newsletter/mailm.php>
+    <TD width=223 align=right><INPUT class=new_te5 onfocus=this.select() 
+      onclick="this.value=''" name=email><INPUT type=hidden name=mailsub></TD>
+    <TD width=57 align=right><INPUT onclick=submit(); 
+      src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/dingy.gif" 
+      type=image></TD></FORM></TR></TBODY></TABLE></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=redian>
+<DIV class=list>
+<UL>
+  <LI><A title=安全专家浅谈防火墙分类及应用 
+  href="http://netsecurity.51cto.com/art/200806/77418.htm">安全专家浅谈防火墙分类及应用</A> 
+  </LI>
+  <LI><A title=2005年2季度富士通服务器产品概览及新动向 
+  href="http://product.51cto.com/art/200508/1710.htm">2005年2季度富士通服务器产品概览及新动向</A> 
+  </LI>
+  <LI><A title=AJAX技术介绍 
+  href="http://tech.51cto.com/art/200602/20847.htm">AJAX技术介绍</A> </LI>
+  <LI><A title=Gentoo对phpwebsite进行升级 
+  href="http://netsecurity.51cto.com/art/200509/2324.htm">Gentoo对phpwebsite进行升级</A> 
+  </LI>
+  <LI><A title=SILC服务器和工具用不安全的方式创建临时文件漏洞 
+  href="http://netsecurity.51cto.com/art/200509/2355.htm">SILC服务器和工具用不安全的方式创建临时..</A> 
+  </LI>
+  <LI><A title=CISSP的成长之路（二）：为什么要获得CISSP认证 
+  href="http://netsecurity.51cto.com/art/200708/53672.htm">CISSP的成长之路（二）：为什么要获得CISS..</A> 
+  </LI>
+  <LI><A title=防火墙：你真的挡不住黑客入侵么？ 
+  href="http://netsecurity.51cto.com/art/200611/35286.htm">防火墙：你真的挡不住黑客入侵么？</A> 
+  </LI>
+  <LI><A title=网吧培训教程(第二篇) 
+  href="http://course.51cto.com/art/200508/2036.htm">网吧培训教程(第二篇)</A> </LI>
+  <LI><A title=六类线标准正式出台 
+  href="http://network.51cto.com/art/200508/2237.htm">六类线标准正式出台</A> </LI>
+  <LI><A title="期待GNOME 2.24的全方位的“声色盛宴”" 
+  href="http://os.51cto.com/art/200807/83196.htm">期待GNOME 2.24的全方位的“声色盛宴”</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV><IFRAME 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #dbdbdb; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 300px; PADDING-RIGHT: 0px; HEIGHT: 250px; OVERFLOW: hidden; PADDING-TOP: 0px" 
+class=bann src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/4.htm" 
+frameBorder=0 scrolling=no></IFRAME>
+<DIV class=BR_10></DIV></DIV>
+<DIV class=BR></DIV></DIV>
+<DIV class=BR_20></DIV>
+<DIV id=foot>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/copy_right.js"></SCRIPT>
+</DIV><!--弹出窗口-->
+<DIV style="BACKGROUND-COLOR: #fff; DISPLAY: none; TOP: 0px; LEFT: 0px" id=tanc>
+<DIV class=tit>
+<DL>
+  <DT>更多关于“<SPAN id=search_title></SPAN>”的推荐</DT>
+  <DD><IMG onclick=close_this(); 
+  src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/ico2.gif"></DD></DL></DIV>
+<DIV class=con>
+<OL>51CTO还有以下内容可能满足您的需求</OL>
+<UL id=search_body></UL><SPAN><A id=search_url 
+href="http://developer.51cto.com/art/200906/132362.htm#">站内搜索更多 <EM 
+id=search_foot></EM>的内容</A></SPAN></DIV></DIV><!--弹出窗口End--><!-- 新监测代码 -->
+<SCRIPT type=text/javascript>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+try {
+var pageTracker = _gat._getTracker("UA-10766765-6");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+
+<DIV style="DISPLAY: none">
+<SCRIPT type=text/javascript>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6d49a084fadc0a02616d836ba8b4a72e' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/tongji.js"></SCRIPT>
+<NOSCRIPT><A href="http://www.linezing.com/"><IMG 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/tongji.gif"></A></NOSCRIPT> 
+</DIV><!-- 新监测代码 -->
+<DIV style="DISPLAY: none"><SPAN id=wordlink_1>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/wordlink1.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_2>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/wordlink2.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_3>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/wordlink3.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_4>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/wordlink4.js"></SCRIPT>
+</SPAN><SPAN id=pinglun>
+<SCRIPT language=JavaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/getArtCount.htm"></SCRIPT>
+</SPAN>
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/ad(1).js"></SCRIPT>
+<SPAN id=tonglan>
+<SCRIPT language=JavaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/ad(2).js"></SCRIPT>
+</SPAN><SPAN id=wordlink>
+<SCRIPT language=JavaScript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/ad(1).js"></SCRIPT>
+</SPAN></DIV>
+<SCRIPT>
+	document.getElementById('pinglun_1').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('pinglun_2').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('tonglanad').innerHTML=document.getElementById('tonglan').innerHTML;
+    document.getElementById('tonglan').innerHTML="";
+	function refimg(){
+		var randval = Math.random();
+		document.getElementById('secunum').src='http://www.51cto.com/php/seccode.php?rnum='+randval;
+	}
+</SCRIPT>
+
+<SCRIPT 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/count.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/count.htm"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="初学Java多线程：使用Synchronized块同步变量%20-%2051CTO_COM_files/new_art_dev.js"></SCRIPT>
+</BODY></HTML>
