@@ -1,0 +1,44 @@
+-- Create table
+create table USERINFO
+(
+  ID       NUMBER not null,
+  NAME     VARCHAR2(10),
+  AGE      NUMBER,
+  BIRTHDAY DATE,
+  MEMO     CLOB
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table USERINFO
+  add constraint USERINFO_PK primary key (ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+  
+  
+-- Create sequence 
+create sequence USERINFO_SEQ
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 61
+increment by 1
+cache 20;
+ 

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserInfoMapper">
+
+	<resultMap id="userResult"
+		type="org.mybatis.UserInfoDTO">
+		<result property="id" column="id" jdbcType="INTEGER"
+			javaType="java.lang.Integer" />
+		<result property="name" column="name" jdbcType="VARCHAR"
+			javaType="java.lang.String" />
+		<result property="age" column="age" jdbcType="INTEGER"
+			javaType="java.lang.Integer" />
+		<result property="birthday" column="birthday" jdbcType="DATE"
+			javaType="java.sql.Timestamp" />
+		<result property="memo" column="memo" jdbcType="CLOB"
+			javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="getUserInfo" parameterType="int" resultMap="userResult">
+		select id, name, age, birthday, memo from userinfomation where id = #{value}
+	</select>
+	
+	<select id="getUserInfoByBirthday" resultType="org.mybatis.UserInfoDTO" parameterType="java.sql.Timestamp">
+		select * from userinfomation where birthday = #{value}
+	</select>
+	
+	<select id="getUserInfoByAgeAndBirthday" resultType="org.mybatis.UserInfoDTO" parameterType="HashMap">
+		select * from userinfomation where age=#{arg1} and birthday=#{arg2}
+	</select>
+	
+	<update id="updateNumberToNull" parameterType="HashMap">
+		update userinfomation 
+		   set age = null 
+		 where id = #{arg1}
+	</update>
+	
+	<!--
+	<parameterMap id="userParam" type="org.mybatis.UserInfoDTO">
+		<parameter property="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<parameter property="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<parameter property="age" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<parameter property="birthday" jdbcType="DATE" javaType="java.sql.Timestamp" />
+		<parameter property="memo" jdbcType="CLOB" javaType="java.lang.String" />
+	</parameterMap>
+	 -->
+	 
+	<insert id="addUserInfo" parameterType="org.mybatis.UserInfoDTO">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			select userinfomation_seq.nextVal from dual
+		</selectKey>
+		<!-- 
+		insert into userinfomation(id, name, age, birthday, memo) values(?, ?, ?, ?, ?)
+		-->
+		insert into userinfomation
+		(
+		<if test="name!=null">
+			name, 
+		</if> 
+		<if test="age!=0">
+			age, 
+		</if>
+		<if test="birthday!=null">
+			birthday, 
+		</if>
+		<if test="memo!=null">
+			memo,
+		</if>
+		id
+		) values (
+		<if test="name!=null">
+			#{name}, 
+		</if> 
+		<if test="age!=0">
+			#{age},
+		</if> 
+		<if test="birthday!=null">
+			#{birthday}, 
+		</if> 
+		<if test="memo!=null">
+			#{memo:CLOB},
+		</if> 
+		#{id}
+		)
+	</insert>
+	
+</mapper>
+
+
+
