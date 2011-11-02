@@ -1,0 +1,45 @@
+-- Create table
+create table PERSON
+(
+  PID      NUMBER not null,
+  PNAME    NVARCHAR2(20),
+  AGE      NUMBER,
+  BIRTHDAY DATE
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PERSON
+  is 'MyBatis≤‚ ‘”√±Ì';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PERSON
+  add constraint PERSON_PK primary key (PID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+  
+  
+  
+-- Create sequence 
+create sequence PERSON_SEQ
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 21
+increment by 1
+cache 20;

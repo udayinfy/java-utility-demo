@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PersonMapper">
+	
+	<insert id="addPerson" parameterType="org.mybatis.dao.vo.Person">
+		<selectKey keyProperty="pid" resultType="int" order="BEFORE">
+			select person_seq.nextVal from dual
+		</selectKey>
+		insert into person
+		  (pid, pname, age, birthday)
+		values
+		  (#{pid}, #{pname}, #{age}, #{birthday})
+	</insert>
+  	
+  	<delete id="deletePerson" parameterType="org.mybatis.dao.vo.Person">
+  		delete from person where pid = #{pid}
+  	</delete>
+  	<delete id="deletePersonById" parameterType="int">
+  		delete from person where pid = #{pid}
+  	</delete>
+  	
+  	
+  	<update id="updatePerson">
+  		update person 
+  		set 
+  		<if test="pname!=null">
+  			pname = #{pname}, 
+  		</if>
+  		<if test="age!=0">
+			age = #{age}, 
+		</if>
+  		<if test="birthday!=null">
+  			birthday = #{birthday},
+  		</if>
+  		pid = #{pid}
+  		where pid = #{pid}
+  	</update>
+  	
+  	
+  	<select id="queryPersonById" parameterType="int"
+		resultType="org.mybatis.dao.vo.Person">
+		<!--select pid, pname, age, birthday from person where pid = #{value}-->
+		select * from person where pid = #{value}
+  	</select>
+  	<select id="queryPersonByName" parameterType="String"
+  		resultType="org.mybatis.dao.vo.Person">
+  		select * from person where pname like '%${value}%'
+  	</select>
+  	
+</mapper>
+
+
+
