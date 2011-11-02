@@ -1,0 +1,16 @@
+create table userinfo(
+userid varchar2(5), 
+username varchar2(20),
+memo clob,
+constraint pk_userinfo primary key(userid)
+);
+
+
+
+-- Create sequence 
+create sequence USERINFO_SEQ
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
