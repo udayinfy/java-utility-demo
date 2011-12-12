@@ -1,6 +1,8 @@
 package utility.file;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -77,6 +79,41 @@ public class FileUtil {
         return fileUrl;
     }
 
+    /**
+     * 把图片的二进制读入byte数组
+     * @return
+     * @throws IOException
+     */
+    public static byte[] readImage2(String filePath) throws Exception {
+		File tmpFile = new File(filePath);
+		FileInputStream fin = new FileInputStream(tmpFile);
+		DataInputStream is = null;
+		byte[] btemp;
+		try {
+			is = new DataInputStream(fin);
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			byte[] bufferByte = new byte[256];
+			int l = -1;
+			int downloadSize = 0;
+			while ((l = is.read(bufferByte)) > -1) {
+				downloadSize += l;
+				out.write(bufferByte, 0, l);
+				out.flush();
+			}
+			btemp = out.toByteArray();
+			out.close();
+		} catch (Exception ex) {
+			throw ex;
+		} finally {
+			try {
+				if (is != null)
+					is.close();
+			} catch (Exception ex) {
+			}
+		}
+		return btemp;
+	}
+    
     /**
      * 本地目录,不存在创建
      */
