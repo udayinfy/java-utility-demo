@@ -1,5 +1,5 @@
 
-package sample;
+package demo;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -18,8 +18,8 @@ public class JUnit3TestSuite extends TestCase {
 
     public static Test suite() {
         TestSuite suite = new TestSuite("JUnit3TestSuite");
-        suite.addTest(new TestSuite(sample.VectorsJUnit3Test.class));
-        suite.addTest(new TestSuite(sample.UtilsJUnit3Test.class));
+        suite.addTest(new TestSuite(demo.VectorsJUnit3Test.class));
+        suite.addTest(new TestSuite(demo.UtilsJUnit3Test.class));
         return suite;
     }
 

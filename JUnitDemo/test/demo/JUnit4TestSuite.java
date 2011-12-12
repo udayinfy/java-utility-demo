@@ -1,5 +1,5 @@
 
-package sample;
+package demo;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
  * @author nb
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({sample.VectorsJUnit4Test.class,sample.UtilsJUnit4Test.class})
+@Suite.SuiteClasses({demo.VectorsJUnit4Test.class,demo.UtilsJUnit4Test.class})
 public class JUnit4TestSuite {
 
 }

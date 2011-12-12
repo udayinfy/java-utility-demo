@@ -1,5 +1,6 @@
-package sample;
+package demo;
 
+import demo.Vectors;
 import junit.framework.TestCase;
 
 /**

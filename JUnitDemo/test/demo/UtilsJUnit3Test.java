@@ -1,6 +1,8 @@
-package sample;
+package demo;
 
 import java.util.concurrent.TimeoutException;
+
+import demo.Utils;
 import junit.framework.TestCase;
 
 /**

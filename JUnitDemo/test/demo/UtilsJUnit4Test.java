@@ -1,4 +1,4 @@
-package sample;
+package demo;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import demo.Utils;
 import static org.junit.Assert.*;
 
 /**

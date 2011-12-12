@@ -1,8 +1,10 @@
-package sample;
+package demo;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import demo.Vectors;
 import static org.junit.Assert.*;
 
 /**
