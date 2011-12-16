@@ -1,4 +1,4 @@
-package demo.xstream.stream1;
+package demo.xstream.xstream1;
 
 public class Person {
 

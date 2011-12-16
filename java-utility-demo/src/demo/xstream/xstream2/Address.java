@@ -1,4 +1,4 @@
-package demo.xstream.stream2;
+package demo.xstream.xstream2;
 
 public class Address {
 	private String add;

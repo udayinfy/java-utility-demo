@@ -1,4 +1,4 @@
-package demo.xstream.stream3;
+package demo.xstream.xstream4;
 
 import java.io.BufferedReader;
 import java.io.File;

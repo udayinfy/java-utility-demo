@@ -1,4 +1,4 @@
-package demo.xstream.stream2;
+package demo.xstream.xstream1;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,16 +9,6 @@ import java.io.InputStreamReader;
 public class FileUtil {
 
 	
-	/**
-	 * 本地目录,不存在创建
-	 */
-	public static void dealDir(String dir){
-		File file = new File( dir );
-		if ( !file.isDirectory() ){
-			file.mkdir();
-		}
-	}
-
 	/**
 	 * 把文件读入字符串
 	 * @param fileUrl

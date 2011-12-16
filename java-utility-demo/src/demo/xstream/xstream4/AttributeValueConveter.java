@@ -1,4 +1,4 @@
-package demo.xstream.stream4;
+package demo.xstream.xstream4;
 
 import java.lang.reflect.Constructor;  
 import java.lang.reflect.Field;  

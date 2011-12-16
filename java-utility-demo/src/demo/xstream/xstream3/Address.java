@@ -1,4 +1,4 @@
-package demo.xstream.stream3;
+package demo.xstream.xstream3;
 
 public class Address {
 	
