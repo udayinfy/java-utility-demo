@@ -11,7 +11,7 @@ public class PrjWithLog4j {
 	
 	public static void main(String[] args) {
 		
-		final URL url = PrjWithLog4j.class.getResource("/PrjWithLog4j.xml");
+		URL url = PrjWithLog4j.class.getResource("/PrjWithLog4j.xml");
 		
 		DOMConfigurator.configure(url);
 		
