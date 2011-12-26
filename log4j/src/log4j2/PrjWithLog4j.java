@@ -11,10 +11,12 @@ public class PrjWithLog4j {
 	
 	public static void main(String[] args) {
 		
-		URL url = PrjWithLog4j.class.getResource("/PrjWithLog4j.xml");
+		URL url = PrjWithLog4j.class.getResource("/log4j.xml");
 		
 		DOMConfigurator.configure(url);
 		
+		logger.debug("this is dubug message.");
+		logger.debug("this is dubug message.");
 		logger.debug("this is dubug message.");
 		
 		
