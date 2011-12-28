@@ -5,13 +5,13 @@ import java.net.URL;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
-public class PrjWithLog4j {
+public class LogDemo {
 	
-	private static Logger logger = Logger.getLogger(PrjWithLog4j.class);
+	private static Logger logger = Logger.getLogger(LogDemo.class);
 	
 	public static void main(String[] args) {
 		
-		URL url = PrjWithLog4j.class.getResource("/log4j.xml");
+		URL url = LogDemo.class.getResource("/log4j.xml");
 		
 		DOMConfigurator.configure(url);
 		
