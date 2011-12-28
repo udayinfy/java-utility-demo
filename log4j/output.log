@@ -1,5 +1,0 @@
-2010-03-02   09:48:49   [log4j.ServerWithLog4j]-[INFO]   ServerSocket before accept: ServerSocket[addr=0.0.0.0/0.0.0.0,port=0,localport=8001]
-   2010-03-02   09:48:49   [log4j.ServerWithLog4j]-[INFO]   Java server with log4j, on-line!
-   2010-03-02   09:49:02   [log4j.ServerWithLog4j]-[INFO]   ServerSocket after accept: ServerSocket[addr=0.0.0.0/0.0.0.0,port=0,localport=8001]
-   2010-03-02   09:49:02   [log4j.ServerWithLog4j]-[WARN]   Command 'HELLO' not understood.
-   
