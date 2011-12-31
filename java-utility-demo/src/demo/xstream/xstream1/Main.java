@@ -12,7 +12,7 @@ public class Main {
 
 		// write
 //		Birthday birthday = new Birthday("2008", "08", "08");
-//		Person person = new Person("赵", "male", "2010", birthday);
+//		Person person = new Person("赵", null, null, birthday);
 //		write(person);
 
 		// read
