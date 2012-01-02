@@ -1,0 +1,4 @@
+<log4j:event logger="mail" timestamp="1325535900634" level="DEBUG" thread="main">
+<log4j:message><![CDATA[aaaaaaaaaaaa]]></log4j:message>
+</log4j:event>
+
