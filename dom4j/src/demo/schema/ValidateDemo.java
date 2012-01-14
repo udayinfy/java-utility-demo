@@ -14,7 +14,7 @@ import demo.util.FileUtil;
 public class ValidateDemo {
 
 	public static void main(String[] args) {
-		String xmlPath = FileUtil.getBinPath() + "\\xml\\ecsync.xml";
+		String xmlPath = FileUtil.getBinPath() + "\\xml\\validatexml.xml";
 		String xml = FileUtil.readToBuffer(xmlPath, "utf-8");
 		String schemaPath = FileUtil.getBinPath() + "\\schema\\ecsync.xsd";
 		String schema = FileUtil.readToBuffer(schemaPath, "utf-8");
