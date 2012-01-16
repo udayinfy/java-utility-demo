@@ -1,4 +1,4 @@
-package test;
+package ws.client.weather;
 
 import java.rmi.RemoteException;
 import java.util.Arrays;
