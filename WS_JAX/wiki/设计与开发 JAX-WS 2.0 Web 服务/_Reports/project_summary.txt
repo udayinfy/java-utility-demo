@@ -1,0 +1,5 @@
+TaskName,Category,StartPage,Title,URL,URLs,Description,Keywords,Status,Schedule,LastRun,NextRun,TotalBytes,TotalFiles,PagesDownloaded,PagesDownloadedPct,PagesQueued,PagesQueuedPct,PagesError,PagesErrorPct,PagesTotal,MediaDownloaded,MediaDownloadedPct,MediaQueued,MediaQueuedPct,MediaError,MediaErrorPct,MediaTotal,ErrorsTotal,LocalURL,Destination,TemplateName,FileTypes,PageLocation,MediaLocation,Depth,URLFilterInclude,URLFilterExclude
+"Éè¼ÆÓë¿ª·¢ JAX-WS 2.0 Web ·şÎñ","","C:\Users\haichao.zhang\Documents\ÎÒµÄ WebZIP ·½°¸\General\Éè¼ÆÓë¿ª·¢ JAX-WS 2.0 Web ·şÎñ.wprj","è®¾è®¡ä¸å¼€å‘ JAX-WS 2.0 Web æœåŠ¡","http://www.ibm.com/developerworks/cn/education/webservices/ws-jax/index.html","","","","·½°¸Íê³É","","01/20/12 14:47:48","","1139628","49","43",""98",","0",""0",","1",""2",","44","5",""100",","0",""0",","0",""0",","5","1","C:\Users\haichao.zhang\Documents\ÎÒµÄ WebZIP Õ¾µã\Éè¼ÆÓë¿ª·¢ JAX-WS 2.0 Web ·şÎñ\www.ibm.com\developerworks\cn\education\webservices\ws-jax\index.html","C:\Users\haichao.zhang\Documents\ÎÒµÄ WebZIP Õ¾µã\Éè¼ÆÓë¿ª·¢ JAX-WS 2.0 Web ·şÎñ\","","All","0","1","-1","[AL]ws-jax
+[AL]section
+[AL]index
+",""
