@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web
 Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
-
 <web-app>
+
   <display-name>Apache-Axis</display-name>
     
     <listener>
@@ -80,7 +79,6 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
     <extension>wsdl</extension>
      <mime-type>text/xml</mime-type>
   </mime-mapping>
-  
 
   <mime-mapping>
     <extension>xsd</extension>

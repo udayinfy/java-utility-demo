@@ -21,15 +21,5 @@
         <webClassPathEntry>/WS_Axis1/Web/WEB-INF/lib/saaj.jar</webClassPathEntry>
         <webClassPathEntry>/WS_Axis1/Web/WEB-INF/lib/wsdl4j-1.5.1.jar</webClassPathEntry>
         <webClassPathEntry>/WS_Axis1/Web/WEB-INF/lib/xmlsec-1.2.1.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/charsets.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/ext/dnsns.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/ext/localedata.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/ext/sunjce_provider.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/ext/sunmscapi.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/ext/sunpkcs11.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/jce.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/jsse.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/resources.jar</webClassPathEntry>
-        <webClassPathEntry>D:/Program Files/Java/jre6/lib/rt.jar</webClassPathEntry>
     </webClassPathEntries>
 </tomcatProjectProperties>
