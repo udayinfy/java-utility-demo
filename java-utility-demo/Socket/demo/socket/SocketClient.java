@@ -15,15 +15,15 @@ public class SocketClient {
 		Socket socket = null;
 		try {
 			socket = new Socket("localhost", 8888);
-			// »ñÈ¡Êä³öÁ÷£¬ÓÃÓÚ¿Í»§¶ËÏò·şÎñÆ÷¶Ë·¢ËÍÊı¾İ
+			// è·å–è¾“å‡ºæµï¼Œç”¨äºå®¢æˆ·ç«¯å‘æœåŠ¡å™¨ç«¯å‘é€æ•°æ®
 			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-			// »ñÈ¡ÊäÈëÁ÷£¬ÓÃÓÚ½ÓÊÕ·şÎñÆ÷¶Ë·¢ËÍÀ´µÄÊı¾İ
+			// è·å–è¾“å…¥æµï¼Œç”¨äºæ¥æ”¶æœåŠ¡å™¨ç«¯å‘é€æ¥çš„æ•°æ®
 			DataInputStream dis = new DataInputStream(socket.getInputStream());
-			// ¿Í»§¶ËÏò·şÎñÆ÷¶Ë·¢ËÍÊı¾İ
-			dos.writeUTF("ÎÒÊÇ¿Í»§¶Ë£¬ÇëÇóÁ¬½Ó!");
-			// ´òÓ¡³ö´Ó·şÎñÆ÷¶Ë½ÓÊÕµ½µÄÊı¾İ
+			// å®¢æˆ·ç«¯å‘æœåŠ¡å™¨ç«¯å‘é€æ•°æ®
+			dos.writeUTF("æˆ‘æ˜¯å®¢æˆ·ç«¯ï¼Œè¯·æ±‚è¿æ¥!");
+			// æ‰“å°å‡ºä»æœåŠ¡å™¨ç«¯æ¥æ”¶åˆ°çš„æ•°æ®
 			System.out.println(dis.readUTF());
-			// ²»ĞèÒª¼ÌĞøÊ¹ÓÃ´ËÁ¬½ÓÊ±£¬¼ÇµÃ¹Ø±ÕÅ¶
+			// ä¸éœ€è¦ç»§ç»­ä½¿ç”¨æ­¤è¿æ¥æ—¶ï¼Œè®°å¾—å…³é—­å“¦
 			socket.close();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
