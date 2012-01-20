@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="gbk"?>
+<RESULTSET num="4">
+    <ROW id="0">
+        <ID>311087</ID>
+        <NAME>北京大学第一临床医学院培训中心</NAME>
+        <X>502196.81</X>
+        <Y>306177.07</Y>
+        <TIME>2009</TIME>
+        <LAYERID>L730</LAYERID>
+        <TABLENAME>L730</TABLENAME>
+        <OBJECTID>581</OBJECTID>
+        <DATAOWNERNAME>市质量技术监督局</DATAOWNERNAME>
+        <METADATAFOUNDATIONTIME>4/8/2009 0:0:0</METADATAFOUNDATIONTIME>
+    </ROW>
+    <ROW id="1">
+        <ID>311087</ID>
+        <NAME>北京大学第一临床医学院培训中心</NAME>
+        <X>502196.81</X>
+        <Y>306177.07</Y>
+        <TIME>2009</TIME>
+        <LAYERID>L730</LAYERID>
+        <TABLENAME>L730</TABLENAME>
+        <OBJECTID>581</OBJECTID>
+        <DATAOWNERNAME>市质量技术监督局</DATAOWNERNAME>
+        <METADATAFOUNDATIONTIME>4/8/2009 0:0:0</METADATAFOUNDATIONTIME>
+    </ROW>
+    <ROW id="2">
+        <ID>311087</ID>
+        <NAME>北京大学第一临床医学院培训中心</NAME>
+        <X>502196.81</X>
+        <Y>306177.07</Y>
+        <TIME>2009</TIME>
+        <LAYERID>L730</LAYERID>
+        <TABLENAME>L730</TABLENAME>
+        <OBJECTID>581</OBJECTID>
+        <DATAOWNERNAME>市质量技术监督局</DATAOWNERNAME>
+        <METADATAFOUNDATIONTIME>4/8/2009 0:0:0</METADATAFOUNDATIONTIME>
+    </ROW>
+    <ROW id="3"/>
+</RESULTSET>
