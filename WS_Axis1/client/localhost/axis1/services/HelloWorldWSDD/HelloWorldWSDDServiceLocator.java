@@ -22,7 +22,7 @@ public class HelloWorldWSDDServiceLocator extends org.apache.axis.client.Service
     }
 
     // Use to get a proxy class for HelloWorldWSDD
-    private java.lang.String HelloWorldWSDD_address = "http://localhost:8080/axis1/services/HelloWorldWSDD";
+    private java.lang.String HelloWorldWSDD_address = "http://localhost:1234/axis1/services/HelloWorldWSDD";
 
     public java.lang.String getHelloWorldWSDDAddress() {
         return HelloWorldWSDD_address;

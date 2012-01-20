@@ -8,8 +8,8 @@
   <parameter name="dotNetSoapEncFix" value="true"/>
   <parameter name="enableNamespacePrefixOptimization" value="false"/>
   <parameter name="sendXMLDeclaration" value="true"/>
-  <parameter name="sendXsiTypes" value="true"/>
   <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
   <requestFlow>
    <handler type="java:org.apache.axis.handlers.JWSHandler">
     <parameter name="scope" value="session"/>
@@ -31,8 +31,8 @@
  </handler>
  <service name="HelloWorldWSDD" provider="java:RPC">
   <parameter name="allowedMethods" value="*"/>
-  <parameter name="scope" value="request"/>
   <parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD"/>
+  <parameter name="scope" value="request"/>
  </service>
  <service name="AdminService" provider="java:MSG">
   <parameter name="allowedMethods" value="AdminService"/>
