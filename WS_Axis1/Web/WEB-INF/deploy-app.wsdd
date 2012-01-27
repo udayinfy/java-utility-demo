@@ -1,10 +1,17 @@
-<deployment xmlns="http://xml.apache.org/axis/wsdd/" 
-    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
-	
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
 	<service name="HelloWorldWSDD" provider="java:RPC">
+		<requestFlow>
+			<handler type="soapmonitor" />
+		</requestFlow>
+		<responseFlow>
+			<handler type="soapmonitor" />
+		</responseFlow>
+
 		<parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD" />
 		<parameter name="allowedMethods" value="*" />
 		<parameter name="scope" value="request" />
 	</service>
-	
+
 </deployment>
