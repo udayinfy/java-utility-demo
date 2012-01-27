@@ -9,10 +9,10 @@ SOAPAction: ""
 Content-Length: 489
 
 <?xml version="1.0" encoding="UTF-8"?>
-   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <soapenv:Body>
-         <ns1:hello soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://wsdd.axis.webservice">
-            <name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">ws</name>
-         </ns1:hello>
-      </soapenv:Body>
-   </soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <ns1:hello soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://wsdd.axis.webservice">
+         <name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">ws</name>
+      </ns1:hello>
+   </soapenv:Body>
+</soapenv:Envelope>
