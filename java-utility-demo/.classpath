@@ -6,6 +6,7 @@
 	<classpathentry kind="src" path="Socket"/>
 	<classpathentry kind="src" path="Annotation"/>
 	<classpathentry kind="src" path="MD5"/>
+	<classpathentry kind="src" path="OracleConn"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/dom4j"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
