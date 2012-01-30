@@ -23,5 +23,6 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/eclipse-ee/plugins/javax.wsdl_1.6.2.v201005080631.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/eclipse-ee/plugins/org.apache.commons.logging_1.0.4.v201005080501.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/log4j-1.2.16.jar"/>
 	<classpathentry kind="output" path="Web/WEB-INF/classes"/>
 </classpath>
