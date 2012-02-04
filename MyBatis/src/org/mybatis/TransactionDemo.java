@@ -41,6 +41,7 @@ public class TransactionDemo {
 		} finally {
 			try {
 				transaction.close();
+				sqlSession.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
