@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class SessionFactory {
 	
-	private static String resource = "Configuration.xml";
+	private static String resource = "configuration.xml";
 	private static SqlSessionFactory sqlMapperFactory = null;
 	
 	static {

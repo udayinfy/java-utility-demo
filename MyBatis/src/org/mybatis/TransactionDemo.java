@@ -7,26 +7,40 @@ import org.apache.ibatis.transaction.Transaction;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.dao.factory.SessionFactory;
+import org.mybatis.dao.vo.Person;
 
 public class TransactionDemo {
 
 	public static void unitJob() {
+		
+		Person p1 = new Person();
+		p1.setPname("abc");
+		p1.setBirthday(new java.util.Date());
+		p1.setAge(26);
+		
+		Person p2 = new Person();
+		p2.setAge(21);
+		p1.setBirthday(new java.util.Date());
+		
+		
 		TransactionFactory transactionFactory = new JdbcTransactionFactory();
-		SqlSession session = SessionFactory.getSqlSession();
-		Transaction newTransaction = transactionFactory.newTransaction(session.getConnection(), false);
+		SqlSession sqlSession = SessionFactory.getSqlSession();
+		Transaction transaction = transactionFactory.newTransaction(sqlSession.getConnection(), false);
 		try {
-			session.delete("");
-			session.update("");
+			sqlSession.insert("PersonMapper.addPerson", p1);
+			sqlSession.insert("PersonMapper.addPerson", p2);
+			
+			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				newTransaction.rollback();
+				transaction.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		} finally {
 			try {
-				newTransaction.close();
+				transaction.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
