@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="DBConn"/>
 	<classpathentry kind="src" path="ApacheCommons"/>
 	<classpathentry kind="src" path="Serializable"/>
 	<classpathentry kind="src" path="HTTP"/>
 	<classpathentry kind="src" path="Socket"/>
 	<classpathentry kind="src" path="Annotation"/>
 	<classpathentry kind="src" path="MD5"/>
-	<classpathentry kind="src" path="OracleConn"/>
 	<classpathentry kind="src" path="Brace"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/dom4j"/>
