@@ -11,7 +11,7 @@ import java.io.*;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
-public class Dom4JParser {
+public class dom4jReader {
 	
 	public void modifyDocument(File inputXml) {
 		try {
@@ -85,7 +85,7 @@ public class Dom4JParser {
 	}
 
 	public static void main(String[] argv) {
-		Dom4JParser dom4jParser = new Dom4JParser();
+		dom4jReader dom4jParser = new dom4jReader();
 		dom4jParser.modifyDocument(new File( System.getProperty("user.dir")
 				+ File.separator + "src" + File.separator + "catalog.xml" ));
 		System.out.println("ok");

@@ -6,7 +6,7 @@ import org.dom4j.Element;
 import org.dom4j.io.XMLWriter;
 import java.io.*;
 
-public class XmlDom4J {
+public class dom4jWriter {
 	
 	public void generateDocument() {
 		
@@ -44,7 +44,7 @@ public class XmlDom4J {
 	}
 
 	public static void main(String[] argv) {
-		XmlDom4J dom4j = new XmlDom4J();
+		dom4jWriter dom4j = new dom4jWriter();
 		dom4j.generateDocument();
 		System.out.println("ok");
 	}

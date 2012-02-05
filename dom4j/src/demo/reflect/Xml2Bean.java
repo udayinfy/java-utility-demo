@@ -1,4 +1,4 @@
-package demo.parse;
+package demo.reflect;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -7,10 +7,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+
+import demo.util.FileUtil;
 
 /**
  * Xml转换为Bean

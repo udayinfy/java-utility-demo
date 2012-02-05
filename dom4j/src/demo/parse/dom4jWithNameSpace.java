@@ -12,7 +12,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
-public class NSTest {
+public class dom4jWithNameSpace {
 
 	public static void main(String[] args) {
 		String filePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "gis.xml";
