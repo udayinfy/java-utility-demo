@@ -24,9 +24,9 @@ public class ValidateDemo {
 	 * 通过XSD（XML Schema）校验XML
 	 */
 	public static void validateXMLByXSD() {
-		String xmlFileName = "D:/Workspaces/workspace-ee/dom4j/schema/schema/note.xsd";
+		String xmlFileName = System.getProperty("user.dir") + "/src/demo/schema/note.xsd";
 		System.out.println(xmlFileName);
-		String xsdFileName = "D:/Workspaces/workspace-ee/dom4j/xml/xml/note.xml";
+		String xsdFileName = System.getProperty("user.dir") + "/src/demo/schema/note.xsd";
 		System.out.println(xsdFileName);
 		try {
 			// 创建默认的XML错误处理器
