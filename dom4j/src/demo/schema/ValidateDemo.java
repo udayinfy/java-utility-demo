@@ -24,10 +24,10 @@ public class ValidateDemo {
 	 * 通过XSD（XML Schema）校验XML
 	 */
 	public static void validateXMLByXSD() {
-		String xmlFileName = System.getProperty("user.dir") + "/src/demo/schema/note.xsd";
-		System.out.println(xmlFileName);
-		String xsdFileName = System.getProperty("user.dir") + "/src/demo/schema/note.xsd";
-		System.out.println(xsdFileName);
+		String xmlFilePath = "D:/Workspaces/workspace-ee/dom4j/src/demo/schema/note.xml";
+		System.out.println(xmlFilePath);
+		String xsdFilePath = "D:/Workspaces/workspace-ee/dom4j/src/demo/schema/note.xsd";
+		System.out.println(xsdFilePath);
 		try {
 			// 创建默认的XML错误处理器
 			XMLErrorHandler errorHandler = new XMLErrorHandler();
@@ -42,11 +42,11 @@ public class ValidateDemo {
 			// 创建一个读取工具
 			SAXReader xmlReader = new SAXReader();
 			// 获取要校验xml文档实例
-			Document xmlDocument = (Document) xmlReader.read(new File(xmlFileName));
+			Document xmlDocument = (Document) xmlReader.read(new File(xmlFilePath));
 			// 设置 XMLReader 的基础实现中的特定属性。核心功能和属性列表可以在
 			// [url]http://sax.sourceforge.net/?selected=get-set[/url] 中找到。
 			parser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
-			parser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + xsdFileName);
+			parser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + xsdFilePath);
 			// 创建一个SAXValidator校验工具，并设置校验工具的属性
 			SAXValidator validator = new SAXValidator(parser.getXMLReader());
 			// 设置校验工具的错误处理器，当发生错误时，可以从处理器对象中得到错误信息。
@@ -63,7 +63,7 @@ public class ValidateDemo {
 				System.out.println("Good! XML文件通过XSD文件校验成功！");
 			}
 		} catch (Exception ex) {
-			System.out.println("XML文件: " + xmlFileName + " 通过XSD文件:" + xsdFileName + "检验失败。\n原因： " + ex.getMessage());
+			System.out.println("XML文件: " + xmlFilePath + " 通过XSD文件:" + xsdFilePath + "检验失败。\n原因： " + ex.getMessage());
 			ex.printStackTrace();
 			
 		}
