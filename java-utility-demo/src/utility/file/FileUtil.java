@@ -20,7 +20,7 @@ public class FileUtil {
 	}
 
 	/**
-	 * 把图片的二进制读入byte数组
+	 * 把本地图片读入byte数组
 	 * 
 	 * @return
 	 * @throws IOException
