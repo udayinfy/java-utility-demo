@@ -6,12 +6,10 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
+import com.thoughtworks.xstream.io.xml.XmlFriendlyReplacer;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 
-public class XStreamUtil {
-
-	protected static String PREFIX_CDATA = "<![CDATA[";
-	protected static String SUFFIX_CDATA = "]]>";
+public class XStreamExt {
 
 	/**
 	 * 初始化XStream 可支持某一字段可以加入CDATA标签 如果需要某一字段使用原文
@@ -22,6 +20,10 @@ public class XStreamUtil {
 	 * @return
 	 */
 	public static XStream initXStream(boolean isAddCDATA) {
+		
+		final String PREFIX_CDATA = "<![CDATA[";
+		final String SUFFIX_CDATA = "]]>";
+		
 		XStream xstream = null;
 		if (isAddCDATA) {
 			xstream = new XStream(new XppDriver() {
@@ -42,4 +44,17 @@ public class XStreamUtil {
 		}
 		return xstream;
 	}
+	
+	/**
+	 * 解决XStream处理下划线变成两个下划线
+	 * @return
+	 */
+	public XStream creatXStream(){
+		
+		XStream xStream = new XStream(new XppDriver(new XmlFriendlyReplacer("_-", "_")));
+		
+		return xStream;
+		
+	}
+	
 }

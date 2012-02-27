@@ -1,5 +1,7 @@
 package demo.xstream.app;
 
+import org.junit.Test;
+
 import com.thoughtworks.xstream.XStream;
 
 /**
@@ -8,6 +10,17 @@ import com.thoughtworks.xstream.XStream;
  *
  */
 public class ECInfo {
+	
+	@Test
+	public void testOutput(){
+		// ...
+	}
+	
+	@Test
+	public void testInput(){
+		// ...
+	}
+	
 
 	private String OprCode;
 	private String ECID;
