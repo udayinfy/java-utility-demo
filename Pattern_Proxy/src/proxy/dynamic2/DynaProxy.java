@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class DynaProxyHello implements InvocationHandler {
+public class DynaProxy implements InvocationHandler {
 
 	/**
 	 * 操作者
@@ -40,19 +40,19 @@ public class DynaProxyHello implements InvocationHandler {
 			Class clazz = this.proxy.getClass();
 
 			// 反射得到操作者的Start方法
-			Method start = clazz.getDeclaredMethod("start", new Class[] { Method.class });
+			Method startMethod = clazz.getDeclaredMethod("start", new Class[] { Method.class });
 
 			// 反射执行start方法
-			start.invoke(this.proxy, new Object[] { method });
+			startMethod.invoke(this.proxy, new Object[] { method });
 
 			// 执行要处理对象的原本方法
 			result = method.invoke(this.delegate, args);
 
 			// 反射得到操作者的end方法
-			Method end = clazz.getDeclaredMethod("end", new Class[] { Method.class });
+			Method endMethod = clazz.getDeclaredMethod("end", new Class[] { Method.class });
 
 			// 反射执行end方法
-			end.invoke(this.proxy, new Object[] { method });
+			endMethod.invoke(this.proxy, new Object[] { method });
 
 		} catch (Exception e) {
 			e.printStackTrace();

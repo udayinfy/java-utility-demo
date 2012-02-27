@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class DynaProxyHello implements InvocationHandler {
+public class DynaProxy implements InvocationHandler {
 
 	/**
 	 * 要处理的对象,也就是我们要在方法的前后加上业务逻辑的对象,如例子中的Hello
@@ -25,7 +25,7 @@ public class DynaProxyHello implements InvocationHandler {
 	 * 要处理的对象中的每个方法会被此方法送去JVM调用, 也就是说,要处理的对象的方法只能通过此方法调用, 此方法是动态的,不是手动调用的
 	 */
 	@Override
-	public Object invoke(Object arg0, Method method, Object[] args) throws Throwable {
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
 		Object result = null;
 		try {
