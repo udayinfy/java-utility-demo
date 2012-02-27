@@ -62,10 +62,10 @@ public class DynaProxyHello implements InvocationHandler {
 
 }
 
-// 如果我们不想让所有方法都被日志记录,我们应该怎么去解藕呢.
-// 我的想法是在代理对象的public Object invoke(Object proxy,
-// Method method, Object[] args)方法里面加上个if(),对传进来的
-// method的名字进行判断,判断的条件存在XML里面.这样我们就可以配
-// 置文件时行解藕了.操作者,被代理者,都通过,
-// 那么就可以写一个简单的SpringAOP框架了.
+/*
+ * 如果我们不想让所有方法都被日志记录,我们应该怎么去解藕呢. 我的想法是在代理对象的 public Object invoke(Object proxy,
+ * Method method, Object[] args)方法里面加上个if(),对传进来的
+ * method的名字进行判断,判断的条件存在XML里面.这样我们就可以配 置文件时行解藕了.操作者,被代理者,都通过,
+ * 那么就可以写一个简单的SpringAOP框架了.
+ */
 
