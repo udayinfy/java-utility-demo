@@ -1,5 +1,45 @@
 <deployment xmlns="http://xml.apache.org/axis/wsdd/"
 	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<chain name="HelloWorldChain">
+		<handler type="java:webservice.axis.wsddchain.HelloWorldChain" />
+	</chain>
+	<service name="HelloWorldWSDDChain" provider="java:RPC">
+		<requestFlow>
+			<chain type="HelloWorldChain" />
+		</requestFlow>
+		<parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD" />
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="scope" value="request" />
+	</service>
+</deployment>
+
+<!-- 
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	
+	<handler name="HelloWorldHandler"
+		type="java:webservice.axis.wsddhandler.HelloWorldHandler">
+		<parameter name="status" value="success" />
+	</handler>
+	
+	<service name="HelloWorldWSDDHandler" provider="java:RPC">
+		<requestFlow>
+			<handler type="HelloWorldHandler" />
+		</requestFlow>
+		<parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD" />
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="scope" value="request" />
+		<responseFlow>
+			<handler type="HelloWorldHandler" />
+		</responseFlow>
+	</service>
+	
+</deployment>
+ -->
+ 
+<!-- 
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 
 	<service name="HelloWorldWSDD" provider="java:RPC">
 		<requestFlow>
@@ -15,3 +55,4 @@
 	</service>
 
 </deployment>
+ -->

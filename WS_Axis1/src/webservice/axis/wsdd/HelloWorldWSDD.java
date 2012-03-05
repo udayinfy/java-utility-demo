@@ -5,7 +5,6 @@ public class HelloWorldWSDD {
 	private int requestCount = 0;
 
 	public String hello(String name) {
-		System.out.println(this.toString());
 		requestCount++;
 		System.out.println("requestCount=" + requestCount);
 		System.out.println("Received: " + name);

@@ -9,7 +9,8 @@ public class ClientWSDD {
 	
 	public static void main(String[] args) {
 		try {
-			String url = "http://localhost:8080/axis1/services/HelloWorldWSDD";
+			
+			String url = "http://localhost:8080/axis1/services/HelloWorldWSDDChain";
 			Service serv = new Service();
 			Call call = (Call) serv.createCall();
 			call.setTargetEndpointAddress(url);
