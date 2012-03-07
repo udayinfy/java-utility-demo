@@ -1,0 +1,19 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+	<service name="FileReceiverServer" provider="java:RPC">
+		<parameter name="className" value="webservice.axis.wsddfiletransport.FileReceiverServer" />
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="scope" value="session" />
+		<operation name="receive" qname="operNS:receive" xmlns:OperNS="receive" returnType="rtns:string"
+			xmlns:rtns="http://www.w3.org/2001/XMLSchema">
+			<parameter name="handler" type="myns:DataHandler" xmlns:tns="http://www.w3.org/2001/XMLSchema" />
+			<parameter name="fileName" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" />
+		</operation>
+		<typeMapping qname="myNs:DataHandler" xmlns:myNs="DataHandler" 
+			languageSpecificType="java:javax.activation.DataHandler"
+			serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory" 
+			deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory"
+			encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+	</service>
+	
+</deployment>
