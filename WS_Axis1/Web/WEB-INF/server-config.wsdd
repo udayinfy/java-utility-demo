@@ -8,8 +8,8 @@
   <parameter name="dotNetSoapEncFix" value="true"/>
   <parameter name="enableNamespacePrefixOptimization" value="false"/>
   <parameter name="sendXMLDeclaration" value="true"/>
-  <parameter name="sendXsiTypes" value="true"/>
   <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
   <requestFlow>
    <handler type="java:org.apache.axis.handlers.JWSHandler">
     <parameter name="scope" value="session"/>
@@ -31,23 +31,33 @@
  </handler>
  <handler name="soapmonitor" type="java:org.apache.axis.handlers.SOAPMonitorHandler">
   <parameter name="wsdlURL" value="/axis/SOAPMonitorService-impl.wsdl"/>
-  <parameter name="serviceName" value="SOAPMonitorService"/>
   <parameter name="namespace" value="http://tempuri.org/wsdl/2001/12/SOAPMonitorService-impl.wsdl"/>
+  <parameter name="serviceName" value="SOAPMonitorService"/>
   <parameter name="portName" value="Demo"/>
  </handler>
- <service name="HelloWorldWSDDChain" provider="java:RPC">
-  <requestFlow>
-   <chain type="HelloWorldChain"/>
-  </requestFlow>
+ <service name="FileReceiverServer" provider="java:RPC">
+  <operation name="receive" returnType="xsd:string" soapAction="" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="handler"/>
+   <parameter name="fileName" type="xsd:string"/>
+  </operation>
   <parameter name="allowedMethods" value="*"/>
-  <parameter name="scope" value="request"/>
-  <parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD"/>
+  <parameter name="scope" value="session"/>
+  <parameter name="className" value="webservice.axis.wsddfiletransport.FileReceiverServer"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns1:DataHandler" serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory" type="java:javax.activation.DataHandler" xmlns:ns1="DataHandler"/>
  </service>
  <service name="AdminService" provider="java:MSG">
   <parameter name="allowedMethods" value="AdminService"/>
   <parameter name="enableRemoteAdmin" value="false"/>
   <parameter name="className" value="org.apache.axis.utils.Admin"/>
   <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="HelloWorldWSDDChain" provider="java:RPC">
+  <requestFlow>
+   <chain type="HelloWorldChain"/>
+  </requestFlow>
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD"/>
+  <parameter name="scope" value="request"/>
  </service>
  <service name="HelloWorldWSDDHandler" provider="java:RPC">
   <requestFlow>
@@ -57,8 +67,8 @@
    <handler type="HelloWorldHandler"/>
   </responseFlow>
   <parameter name="allowedMethods" value="*"/>
-  <parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD"/>
   <parameter name="scope" value="request"/>
+  <parameter name="className" value="webservice.axis.wsdd.HelloWorldWSDD"/>
  </service>
  <service name="Version" provider="java:RPC">
   <parameter name="allowedMethods" value="getVersion"/>
@@ -66,8 +76,8 @@
  </service>
  <service name="SOAPMonitorService" provider="java:RPC">
   <parameter name="allowedMethods" value="publishMessage"/>
-  <parameter name="scope" value="Application"/>
   <parameter name="className" value="org.apache.axis.monitor.SOAPMonitorService"/>
+  <parameter name="scope" value="Application"/>
  </service>
  <transport name="http">
   <requestFlow>

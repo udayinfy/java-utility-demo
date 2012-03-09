@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost:8080/axis1/services/FileReceiverServer" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/axis1/services/FileReceiverServer" xmlns:intf="http://localhost:8080/axis1/services/FileReceiverServer" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="DataHandler" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:message name="receiveRequest">
+
+      <wsdl:part name="handler" type="tns1:DataHandler"/>
+
+      <wsdl:part name="fileName" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="receiveResponse">
+
+      <wsdl:part name="receiveReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FileReceiverServer">
+
+      <wsdl:operation name="receive" parameterOrder="handler fileName">
+
+         <wsdl:input message="impl:receiveRequest" name="receiveRequest"/>
+
+         <wsdl:output message="impl:receiveResponse" name="receiveResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FileReceiverServerSoapBinding" type="impl:FileReceiverServer">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="receive">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="receiveRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/axis1/services/FileReceiverServer" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="receiveResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/axis1/services/FileReceiverServer" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FileReceiverServerService">
+
+      <wsdl:port binding="impl:FileReceiverServerSoapBinding" name="FileReceiverServer">
+
+         <wsdlsoap:address location="http://localhost:8080/axis1/services/FileReceiverServer"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
