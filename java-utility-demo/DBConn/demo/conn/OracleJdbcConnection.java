@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class DataBaseConnection {
+public class OracleJdbcConnection {
 
 	// 数据库驱动程序
 	private final String DBDRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -19,7 +19,7 @@ public class DataBaseConnection {
 	private Connection conn = null;
 
 	// 在构造方法之中连接数据库
-	public DataBaseConnection() {
+	public OracleJdbcConnection() {
 		try {
 			// 加载驱动程序
 			Class.forName(DBDRIVER);
@@ -49,7 +49,7 @@ public class DataBaseConnection {
 	
 	public static void main(String[] args) {
 		
-		DataBaseConnection dbconn = new DataBaseConnection();
+		OracleJdbcConnection dbconn = new OracleJdbcConnection();
 		Connection conn = dbconn.getConnection();
 		
 		Statement stmt = null;
