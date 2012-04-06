@@ -12,7 +12,7 @@ import org.dom4j.io.SAXValidator;
 import org.dom4j.io.XMLWriter;
 import org.dom4j.util.XMLErrorHandler;
 
-public class ValidateDemo {
+public class SchemaValidateDemo {
 	
 	public static void main(String[] args) {
 		validateXMLByXSD();
