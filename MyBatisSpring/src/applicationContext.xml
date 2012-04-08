@@ -25,7 +25,7 @@
 
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:sqlmap-config.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>
 
 
