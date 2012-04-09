@@ -15,18 +15,18 @@ public class PersonDaoTest {
 
 		SpringContext.initContext();
 		ApplicationContext appContext = SpringContext.getAppContext();
-
+		
 		Person person = new Person();
 		person.setPname("person1");
 		person.setAge(29);
 		person.setBirthday(Calendar.getInstance().getTime());
 
-		IPersonDao personDao = (PersonDaoImpl) appContext.getBean("personDao");
+		IPersonDao personDao = (IPersonDao) appContext.getBean("personDao");
 
 //		personDao.addPerson(person);
 
 		Person p = personDao.queryPersonById("1");
-//		System.out.println(p.getPname());
+		System.out.println(p.getPname());
 
 	}
 

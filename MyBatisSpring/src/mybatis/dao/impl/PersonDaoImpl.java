@@ -5,42 +5,46 @@ import java.util.List;
 import mybatis.dao.IPersonDao;
 import mybatis.dao.bean.Person;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-public class PersonDaoImpl extends SqlMapClientDaoSupport implements IPersonDao {
+public class PersonDaoImpl extends SqlSessionDaoSupport implements IPersonDao {
 
 	@Override
 	public void addPerson(Person person) {
 
-		getSqlMapClientTemplate().insert("PersonMapper.addPerson", person);
-
+		getSqlSession().insert("PersonMapper.addPerson", person);
+		
+		getSqlSession().insert("PersonMapper.addPerson", person);
+		
+		throw new RuntimeException("这是一个运行时异常。");
+		
 	}
 
 	@Override
 	public void deletePersonById(int id) {
 
-		getSqlMapClientTemplate().delete("PersonMapper.deletePersonById", id);
+		getSqlSession().delete("PersonMapper.deletePersonById", id);
 
 	}
 
 	@Override
 	public void deletePerson(Person person) {
 
-		getSqlMapClientTemplate().delete("PersonMapper.deletePerson", person);
+		getSqlSession().delete("PersonMapper.deletePerson", person);
 		
 	}
 
 	@Override
 	public void updatePerson(Person person) {
 
-		getSqlMapClientTemplate().update("PersonMapper.updatePerson", person);
+		getSqlSession().update("PersonMapper.updatePerson", person);
 		
 	}
 
 	@Override
 	public List<Person> queryPersonByName(String name) {
 
-		List<Person> personList = (List<Person>)getSqlMapClientTemplate().queryForList("PersonMapper.queryPersonByName", name);
+		List<Person> personList = getSqlSession().selectList("PersonMapper.queryPersonByName", name);
 		
 		return personList;
 		
@@ -49,7 +53,7 @@ public class PersonDaoImpl extends SqlMapClientDaoSupport implements IPersonDao 
 	@Override
 	public Person queryPersonById(String id) {
 
-		Person person = (Person) getSqlMapClientTemplate().queryForObject("PersonMapper.queryPersonById", id);
+		Person person = (Person) getSqlSession().selectOne("PersonMapper.queryPersonById", id);
 		
 		return person;
 		

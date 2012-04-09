@@ -20,21 +20,46 @@
 		<property name="maxIdle" value="${maxIdle}" />
 		<property name="minIdle" value="${minIdle}" />
 	</bean>
-
-	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:configuration.xml" />
-	</bean> -->
-
-	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:configuration.xml" />
+		<property name="mapperLocations" value="classpath*:mybatis/dao/mapper/**/*.xml" />
 	</bean>
+	
+	
+	<!-- ================================= 事务控制相关 ================================= -->  
+	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">     
+        <property name="dataSource" ref="dataSource"></property>  
+    </bean>     
+    <aop:config>
+	  	<aop:pointcut id="transactionPointcut" expression="execution(* mybatis.dao..*.*(..))"/>
+	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
+	</aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">  
+        <tx:attributes>  
+        	<tx:method name="insert*" propagation="REQUIRED" read-only="false"   
+                       rollback-for="java.lang.RuntimeException" /> 
+            <tx:method name="add*" propagation="REQUIRED" read-only="false"   
+                       rollback-for="java.lang.RuntimeException" />
+            <tx:method name="save*" propagation="REQUIRED" read-only="false"   
+                       rollback-for="java.lang.RuntimeException" />
+                       
+            <tx:method name="update*" propagation="REQUIRED" read-only="false"   
+                       rollback-for="java.lang.Exception" />  
+	
+			<tx:method name="del*" propagation="REQUIRED" read-only="false"   
+                       rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>
+            <tx:method name="remove*" propagation="REQUIRED" read-only="false"   
+                       rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>
+              
+            <tx:method name="find*" propagation="SUPPORTS"/>  
+            <tx:method name="get*" propagation="SUPPORTS"/>  
+            <tx:method name="select*" propagation="SUPPORTS"/>  
+        </tx:attributes>
+    </tx:advice> 
 
 
-	<bean id="personDao" class="mybatis.dao.impl.PersonDaoImpl">
-		<property name="sqlMapClient" ref="sqlMapClient"></property>
-	</bean>
+	<import resource="applicationContext-dao.xml"/>   
 
 
 </beans>

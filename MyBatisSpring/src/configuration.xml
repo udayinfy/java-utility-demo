@@ -5,16 +5,19 @@
 
 <configuration>
 
-<!--
-    <settings>
-        <setting name="cacheEnabled" value="false" />
-        <setting name="useGeneratedKeys" value="true" />
-        <setting name="defaultExecutorType" value="REUSE" />
-    </settings>
- -->
+ 	<!--
+ 	
+	<databaseIdProvider type=""></databaseIdProvider>
+	<environments default=""></environments>
+	<mappers></mappers>
+	<objectFactory type=""></objectFactory>
+	<objectWrapperFactory type=""></objectWrapperFactory>
+	<plugins></plugins>
+	<properties></properties>
+	<settings></settings>
+	<typeAliases></typeAliases>
+	<typeHandlers></typeHandlers>
+	
+	-->
  
-    <mappers>
-        <mapper resource="mybatis/dao/mapper/PersonMapper.xml" />
-    </mappers>
-
 </configuration>
