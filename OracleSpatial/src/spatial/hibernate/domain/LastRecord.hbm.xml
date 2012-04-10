@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="spatial.hibernate.domain">
+
+	<class name="LastRecord" table="t_last_locrecord">
+		<id name="id" column="id">
+			<generator class="sequence">
+				<param name="sequence">seq_lastrecord</param>
+			</generator>
+		</id>
+		<property name="latitude" column="latitude" />
+		<property name="longitude" column="longitude" />
+		<property name="jmx" column="jmx" />
+		<property name="jmy" column="jmy" />
+		<property name="speed" column="speed" />
+		<property name="direction" column="direction" />
+		<property name="height" column="height" />
+		<property name="distance" column="distance" />
+		<property name="statllite_num" column="statllite_num" />
+		<property name="device_id" column="device_id" />
+		<property name="gpstime" column="gpstime" />
+		<property name="inputdate" column="inputdate" />
+		<property name="locate_type" column="locate_type" />
+		<property name="alarm_read_flag" column="alarm_read_flag" />
+		<property name="speed_alarm_flag" column="speed_alarm_flag" />
+		<property name="coord_type" column="coord_type" />
+		<property name="state" column="state" />
+		<property name="pos_desc" column="pos_desc" />
+		<property name="loc_id" column="loc_id" />
+		<property name="obj_id" column="obj_id" />
+		<property name="obj_type" column="obj_type" />
+	</class>
+
+</hibernate-mapping>

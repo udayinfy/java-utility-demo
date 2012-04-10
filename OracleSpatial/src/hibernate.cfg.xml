@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		
+		<property name="show_sql">true</property>
+		
+		<!-- 
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:zhc</property>	
+		<property name="hibernate.dialect">org.hibernatespatial.oracle.OracleSpatial10gDialect</property>	
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>		
+		<property name="hibernate.connection.username">spatial</property>
+		<property name="hibernate.connection.password">spatial</property>
+		
+		<mapping resource="spatial/hibernate/domain/ColaMarkets.hbm.xml" />
+		-->
+		
+		<!-- 
+		<property name="hibernate.dialect">org.hibernatespatial.oracle.OracleSpatial10gDialect</property>	
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:zhc</property> 	
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>	
+		<property name="hibernate.connection.username">spatial</property>
+		<property name="hibernate.connection.password">spatial</property>
+		 -->
+		
+		<property name="hibernate.dialect">org.hibernatespatial.oracle.OracleSpatial10gDialect</property>	
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@60.247.103.59:1521:lbs</property>	
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>	
+		<property name="hibernate.connection.username">shxqyt</property>
+		<property name="hibernate.connection.password">mapabc</property>
+		
+		 
+		<mapping resource="spatial/hibernate/domain/MapArea.hbm.xml" />
+		<mapping resource="spatial/hibernate/domain/LastRecord.hbm.xml" />
+		
+		
+		
+		
+	</session-factory>
+	
+	
+</hibernate-configuration>
