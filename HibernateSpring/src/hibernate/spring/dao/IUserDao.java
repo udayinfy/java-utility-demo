@@ -1,5 +1,7 @@
 package hibernate.spring.dao;
 
+import org.springframework.dao.DataAccessException;
+
 import hibernate.spring.dao.domain.User;
 
 
