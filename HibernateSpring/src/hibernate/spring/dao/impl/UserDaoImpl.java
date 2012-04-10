@@ -9,7 +9,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements IUserDao{
 
 	@Override
 	public void save(User user) {
+		
 		getHibernateTemplate().save(user);
+		
+		user.setName("editedName");
+		getHibernateTemplate().update(user);
+		
+		
 	}
 
 	@Override

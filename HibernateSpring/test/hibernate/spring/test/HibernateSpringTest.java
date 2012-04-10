@@ -1,11 +1,10 @@
 package hibernate.spring.test;
 
-import java.util.Calendar;
-
 import hibernate.spring.context.SpringContext;
 import hibernate.spring.dao.IUserDao;
 import hibernate.spring.dao.domain.User;
-import hibernate.spring.dao.impl.UserDaoImpl;
+
+import java.util.Calendar;
 
 import org.springframework.context.ApplicationContext;
 
@@ -16,7 +15,7 @@ public class HibernateSpringTest {
 		SpringContext.initContext();
 		ApplicationContext appContext = SpringContext.getAppContext();
 		
-		IUserDao userDao = (UserDaoImpl)appContext.getBean("userDao");
+		IUserDao userDao = (IUserDao) appContext.getBean("userDao");
 		
 		User user = new User();
 		user.setName("User123");
