@@ -46,5 +46,6 @@
 	<classpathentry kind="lib" path="lib/slf4j-nop-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-core-2.5.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

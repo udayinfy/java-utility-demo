@@ -1,9 +1,9 @@
 package hibernate.spring.dao.impl;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import hibernate.spring.dao.IUserDao;
 import hibernate.spring.dao.domain.User;
+
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class UserDaoImpl extends HibernateDaoSupport implements IUserDao{
 
