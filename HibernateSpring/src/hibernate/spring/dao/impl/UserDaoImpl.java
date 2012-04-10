@@ -7,27 +7,22 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-public class UserDaoImpl extends HibernateDaoSupport implements IUserDao{
+public class UserDaoImpl extends HibernateDaoSupport implements IUserDao {
 
 	@Override
-	@CacheEvict(value="userCache", allEntries=true)
+	@CacheEvict(value = "userCache", allEntries = true)
 	public void save(User user) {
-		
-		try{
-			getHibernateTemplate().save(user);
-			
-		}catch(RuntimeException e){
-			System.out.println("1111111111111111");
-		}
-		
+
+		getHibernateTemplate().save(user);
+
 	}
 
 	@Override
 	@Cacheable("userCache")
 	public User query(int id) {
-		
+
 		User user = getHibernateTemplate().get(User.class, id);
-		
+
 		return user;
 	}
 
