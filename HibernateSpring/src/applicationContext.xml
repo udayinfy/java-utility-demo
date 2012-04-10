@@ -14,11 +14,6 @@
 	       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
 	       ">
 	
-	<!-- Cache -->
-	<cache:annotation-driven />
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehcache"/>
-	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="ehcache.xml"/>
-	       
 	<!-- DataSourcev, SessionFactory -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	
@@ -85,6 +80,12 @@
             <tx:method name="find*" propagation="SUPPORTS"/>  
         </tx:attributes>
     </tx:advice>
+    
+    <!-- Cache -->
+	<cache:annotation-driven />
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehcache"/>
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="ehcache.xml"/>
+	       
     
     
 	<import resource="applicationContext-dao.xml"/>   
