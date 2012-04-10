@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xs:element name="Package" type="Package"></xs:element>
+
+	<xs:complexType name="Package">
+		<xs:sequence>
+			<xs:element name="OPFlag" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ProductID" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="BizID" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="AreaCode" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="CustID" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="CustName" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="UserID" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="AccType" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="AccName" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ProductInfo" type="ProductInfo" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ReturnStatus" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ProductInfo">
+		<xs:sequence>
+			<xs:element name="Product" type="Product" maxOccurs="unbounded" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Product">
+		<xs:sequence>
+			<xs:element name="ProductInstID" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ProductType" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ProductValue" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ParentType" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="ProductParentInstID" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
