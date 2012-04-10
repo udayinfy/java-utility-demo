@@ -6,6 +6,8 @@ import hibernate.spring.dao.domain.User;
 
 import java.util.Calendar;
 
+import org.hibernate.annotations.Cache;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
 
 public class HibernateSpringTest {
