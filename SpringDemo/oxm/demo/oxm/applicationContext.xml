@@ -4,8 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans  
        		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-
-	<bean id="personService" class="demo.service.impl.PersonServiceBean"></bean>
-
-
+	<bean id="application" class="demo.oxm.Application">
+		<property name="marshaller" ref="castorMarshaller" />
+		<property name="unmarshaller" ref="castorMarshaller" />
+	</bean>
+	
+	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller" />
+	
 </beans>
