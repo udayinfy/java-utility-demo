@@ -22,7 +22,7 @@ public class HibernateSpringTest {
 		IUserDao userDao = (IUserDao) appContext.getBean("userDao");
 		
 		User user = new User();
-		user.setName("User123");
+		user.setName("User1234");
 		user.setBirthday(Calendar.getInstance().getTime());
 		
 		try{
