@@ -1,4 +1,4 @@
-package template;
+package template.inherit;
 
 public abstract class Benchmark {
 	

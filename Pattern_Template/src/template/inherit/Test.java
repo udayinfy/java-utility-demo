@@ -1,4 +1,4 @@
-package template;
+package template.inherit;
 
 public class Test {
 
