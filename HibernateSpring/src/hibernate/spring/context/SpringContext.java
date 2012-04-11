@@ -1,7 +1,5 @@
 package hibernate.spring.context;
 
-import javax.security.auth.login.AppConfigurationEntry;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
