@@ -9,8 +9,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import com.hibernate.context.HibernateXmlCfgContext;
 import com.hibernate.domain.User;
-import com.hibernate.util.HibernateUtil;
 
 /**
  * 查询测试
@@ -41,7 +41,7 @@ public class UserQueryTest {
 		Session session = null;
 		try{
 			
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			
 //			String hql = "from User as user where user.name=?";
 			String hql = "from User as user where user.name=:name"; // 别名代替？，更容易维护
@@ -75,7 +75,7 @@ public class UserQueryTest {
 		Session session = null;
 		try{
 			
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			
 			Criteria criteria = session.createCriteria(User.class);
 			criteria.add(Restrictions.eq("name", name));

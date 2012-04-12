@@ -1,7 +1,8 @@
-package com.hibernate.util;
+package com.hibernate.context;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 /**
@@ -9,15 +10,15 @@ import org.hibernate.cfg.Configuration;
  * @author Admin
  *
  */
-public final class HibernateUtil {
+public final class HibernateAnnotationContext {
 	private static SessionFactory sessionFactory;
 
-	private HibernateUtil(){}
+	private HibernateAnnotationContext(){}
 	
 	static {
-		Configuration cfg = new Configuration();
-		cfg.configure();
-		sessionFactory = cfg.buildSessionFactory();
+		AnnotationConfiguration annotationCfg = new AnnotationConfiguration();
+		annotationCfg.configure();
+		sessionFactory = annotationCfg.buildSessionFactory();
 	}
 
 	/**
@@ -32,14 +33,14 @@ public final class HibernateUtil {
 	 * ªÒ»°Session
 	 * @return
 	 */
-	public static Session getSeesion(){
+	public static Session getSession(){
 		return sessionFactory.openSession();
 	}
 	
 	
 	public static void main(String[] args) {
-//		getSeesion();
-		System.out.println("aaaaaaaaaaaaaaa");
+		Session session = getSession();
+		System.out.println(session);
 	}
 	
 }

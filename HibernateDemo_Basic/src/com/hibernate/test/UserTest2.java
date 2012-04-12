@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.hibernate.util.HibernateUtil;
+import com.hibernate.context.HibernateXmlCfgContext;
 
 /**
  * 更通用的写法
@@ -30,7 +30,7 @@ public class UserTest2 {
 		Session session = null;
 		Transaction tran = null;
 		try{
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			tran = session.beginTransaction();
 			
 			session.save(entity);
@@ -56,7 +56,7 @@ public class UserTest2 {
 		Session session = null;
 		Transaction tran = null;
 		try{
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			tran = session.beginTransaction();
 			
 			session.update(entity);
@@ -82,7 +82,7 @@ public class UserTest2 {
 		Session session = null;
 		Transaction tran = null;
 		try{
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			tran = session.beginTransaction();
 			
 			session.delete(entity);
@@ -110,7 +110,7 @@ public class UserTest2 {
 		Session session = null;
 		Transaction tran = null;
 		try{
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			
 			Object obj = session.get(clazz, id);
 			//333持久状态对象

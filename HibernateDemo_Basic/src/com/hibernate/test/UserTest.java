@@ -7,8 +7,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.hibernate.context.HibernateXmlCfgContext;
 import com.hibernate.domain.User;
-import com.hibernate.util.HibernateUtil;
 
 public class UserTest {
 	
@@ -36,7 +36,7 @@ public class UserTest {
 		Session session = null;
 		Transaction tran = null;
 		try{
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 			tran = session.beginTransaction();
 			
 			session.save(user);
@@ -58,7 +58,7 @@ public class UserTest {
 		Session session = null;
 		User user = null;
 		try{
-			session = HibernateUtil.getSeesion();
+			session = HibernateXmlCfgContext.getSession();
 //			user = (User) session.get(User.class, id);
 			
 			
