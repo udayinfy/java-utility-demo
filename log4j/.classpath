@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk6"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar" sourcepath="D:/技术文档/Log/apache-log4j-1.2.16/src"/>
 	<classpathentry kind="lib" path="lib/javamail.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/classes12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

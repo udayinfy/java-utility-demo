@@ -4,6 +4,10 @@ import org.apache.log4j.Logger;
 
 public class LbmpLogger {
 	
+	public static void main(String[] args) {
+		LbmpLogger.debug("aaaaaaaaaaa");
+	}
+	
 	private static Logger debugLogger = Logger.getLogger("lbmpdebug");
 	private static Logger infoLogger = Logger.getLogger("lbmpinfo");
 	private static Logger warnLogger = Logger.getLogger("lbmpwarn");
