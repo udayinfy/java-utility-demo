@@ -12,7 +12,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.dao.DataAccessException;
 
-public class HibernateSpringTest {
+public class DaoTest {
 	
 	public static void main(String[] args) {
 		
@@ -22,14 +22,14 @@ public class HibernateSpringTest {
 		IUserDao userDao = (IUserDao) appContext.getBean("userDao");
 		
 		User user = new User();
-		user.setName("User1234");
+		user.setName("User000");
 		user.setBirthday(Calendar.getInstance().getTime());
 		
-		try{
+//		try{
 			userDao.save(user);
-		}catch(DataAccessException dae){
-			dae.printStackTrace();  
-		}
+//		}catch(DataAccessException dae){
+//			dae.printStackTrace();  
+//		}
 		
 //		User user = userDao.query(5);
 //		User user2 = userDao.query(5);

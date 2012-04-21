@@ -53,6 +53,12 @@
 	<bean id="transactionManager"  class="org.springframework.orm.hibernate3.HibernateTransactionManager">
     	<property name="sessionFactory" ref="sessionFactory"/>
     </bean>  
+    
+    <!-- Annotation Transaction Config -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    <!-- Xml Transaction Config -->
+    <!--  
     <aop:config>
 	  	<aop:pointcut id="transactionPointcut" expression="execution(* hibernate.spring.dao..*.*(..))"/>
 	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
@@ -80,6 +86,7 @@
             <tx:method name="find*" propagation="SUPPORTS"/>  
         </tx:attributes>
     </tx:advice>
+    -->
     
     <!-- Cache -->
 	<cache:annotation-driven />
