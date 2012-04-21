@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 
 import com.hibernate.domain.Student;
 import com.hibernate.domain.Teather;
-import com.hibernate.util.HibernateUtil;
+import common.hibernate.HibernateUtil;
 
 public class Many2ManyTest {
 	
@@ -16,7 +16,7 @@ public class Many2ManyTest {
 		
 		add();
 		
-		query(1);
+//		query(1);
 		
 	}
 	

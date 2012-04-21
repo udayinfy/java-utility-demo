@@ -14,9 +14,10 @@
 		<property name="hibernate.connection.username">zhc</property>
 		<property name="hibernate.connection.password">123456</property>
 		
-		<mapping resource="com/hibernate/domain/Teather.hbm.xml"/>
-		<mapping resource="com/hibernate/domain/Student.hbm.xml"/>
+		<!--<mapping resource="xml/hibernate/domain/Teather.hbm.xml"/>
+		<mapping resource="xml/hibernate/domain/Student.hbm.xml"/>-->
 		
-	</session-factory>
+		
+		</session-factory>
 	
 </hibernate-configuration>
