@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TEATHER", schema="ZHC" )
+@Table(name="STUDENT", schema="ZHC" )
 public class Student implements Serializable{
 	
 	private static final long serialVersionUID = 2854542003097193915L;
