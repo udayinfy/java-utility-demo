@@ -22,9 +22,12 @@ public class DBLogger {
 		PropertyConfigurator.configure(prop);
 	}
 	
-	public static void main(String[] args) {
-		dbLogger.debug("This is a debug message.");
+	public static void error(String msg, Throwable t){
+		dbLogger.error(t.toString(), t);
 	}
 	
-
+	public static void error(String msg){
+		dbLogger.error(msg);
+	}
+	
 }
