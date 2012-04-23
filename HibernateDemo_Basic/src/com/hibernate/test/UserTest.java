@@ -16,7 +16,7 @@ import com.hibernate.domain.User;
  * @author Admin
  *
  */
-public class UserTest2 {
+public class UserTest {
 	
 	
 	public static void main(String[] args) {
