@@ -33,8 +33,7 @@ class SimpleThread extends Thread {
 				if (!runningFlag) {
 					this.wait();
 				} else {
-					System.out.println("processing " + getArgument()
-							+ "... done.");
+					System.out.println("processing " + getArgument() + "... done.");
 					sleep(5000);
 					System.out.println("Thread is sleeping...");
 					setRunning(false);

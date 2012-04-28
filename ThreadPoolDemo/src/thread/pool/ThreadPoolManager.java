@@ -28,8 +28,7 @@ class ThreadPoolManager {
 		for (i = 0; i < vector.size(); i++) {
 			SimpleThread currentThread = (SimpleThread) vector.elementAt(i);
 			if (!currentThread.isRunning()) {
-				System.out.println("Thread " + (i + 1) + " is processing:"
-						+ argument);
+				System.out.println("Thread " + (i + 1) + " is processing:" + argument);
 				currentThread.setArgument(argument);
 				currentThread.setRunning(true);
 				return;
