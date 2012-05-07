@@ -34,6 +34,10 @@ public class UserQueryTest {
 		
 	}
 	
+	/**
+	 * get load·½Ê½
+	 * @param id
+	 */
 	public static void getUser(int id){
 		Session session = null;
 		User user = null;
