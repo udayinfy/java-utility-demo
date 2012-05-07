@@ -34,8 +34,7 @@ public class UserQueryTest {
 		
 	}
 	
-	public static void getUser(){
-		int id  = 118;
+	public static void getUser(int id){
 		Session session = null;
 		User user = null;
 		try{
