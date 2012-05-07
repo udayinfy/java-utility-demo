@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -28,6 +29,29 @@ public class UserQueryTest {
 		for (Iterator<User> it = list.iterator(); it.hasNext();) {
 			User user = it.next();
 			System.out.println(user.getId());
+		}
+		
+		
+	}
+	
+	public static void getUser(){
+		int id  = 118;
+		Session session = null;
+		User user = null;
+		try{
+			session = HibernateXmlCfgContext.getSession();
+//			user = (User) session.get(User.class, id);
+			
+			
+			// ¿¡º”‘ÿ
+			user = (User) session.load(User.class, id);
+			System.out.println(user.getClass());
+			Hibernate.initialize(user);
+			
+			
+		}finally{
+			if( session != null )
+				session.close();
 		}
 		
 		
