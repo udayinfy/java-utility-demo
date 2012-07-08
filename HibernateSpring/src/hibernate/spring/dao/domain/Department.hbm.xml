@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="hibernate.spring.dao.domain">
+
+	<class name="Department" table="t_dept">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name"/>
+		<set name="emps">
+			<key column="depart_id"/> <!-- 外键 -->
+			<one-to-many class="Employee"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -18,7 +18,7 @@ public class ServiceTest {
 		IUserService userService = (IUserService) appContext.getBean("userService");
 		
 		User user = new User();
-		user.setName("User1234");
+		user.setName("User12345678");
 		user.setBirthday(Calendar.getInstance().getTime());
 		
 		userService.addUser(user);
