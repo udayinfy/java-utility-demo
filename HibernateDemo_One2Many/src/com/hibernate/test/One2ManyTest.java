@@ -1,8 +1,10 @@
 package com.hibernate.test;
 
-import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,8 +18,68 @@ public class One2ManyTest {
 		
 //		add();
 		
-		query(8);
+//		query();
 		
+//		queryAndRemove();
+		
+		queyrCasadeByHqlAndUpdate();
+		
+	}
+	
+	public static void queyrCasadeByHqlAndUpdate(){
+		
+		Session session = null;
+		Transaction tran = null;
+		try{
+			
+			session = HibernateUtil.getSeesion();
+			tran = session.beginTransaction();
+			
+			String hql = "select emps from Department dept join dept.emps emps where dept.id=1 and emps.id=3";
+			Query query = session.createQuery(hql);
+			
+			List<Employee> list = query.list();
+			
+			for (Iterator<Employee> it = list.iterator(); it.hasNext();) {
+				Employee emp = it.next();
+				emp.setName("updated" + emp.getName());
+				session.update(emp);
+			}
+			
+			System.out.println(list.size());
+			
+			tran.commit();
+		}finally{
+			if( session != null )
+				session.close();
+		}
+	}
+	
+	public static void queryAndRemove(){
+		
+		int deptId = 1;
+		Employee emp = new Employee();
+		emp.setId(2);
+		
+		Session session = null;
+		Transaction tran = null;
+		try{
+			
+			session = HibernateUtil.getSeesion();
+			tran = session.beginTransaction();
+			
+			Department dept = (Department) session.get(Department.class, deptId);
+			
+			Set<Employee> emps = dept.getEmps();
+			emps.remove(emp);
+
+			session.update(dept);
+			
+			tran.commit();
+		}finally{
+			if( session != null )
+				session.close();
+		}
 	}
 	
 	/**
@@ -63,7 +125,10 @@ public class One2ManyTest {
 	 * @param deptId
 	 * @return
 	 */
-	public static Department query(int deptId){
+	public static Department query(){
+		
+		int deptId = 1;
+		
 		Session session = null;
 		try{
 			

@@ -4,7 +4,7 @@
           "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.hibernate.domain">
 
-	<class name="Employee" table="employee">
+	<class name="Employee" table="t_emp">
 		<id name="id" column="id">
 			<generator class="native" />
 		</id>
