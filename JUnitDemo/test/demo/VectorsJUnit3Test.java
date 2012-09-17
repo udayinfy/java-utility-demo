@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 
 /**
  *
- * @author nb
+ * @author zhc
  */
 public class VectorsJUnit3Test extends TestCase {
 

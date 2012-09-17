@@ -11,7 +11,7 @@ import junit.framework.TestCase;
  * It must be a (direct or indirect) subclass of class
  * {@code junit.framework.TestCase}.
  * 
- * @author nb
+ * @author zhc
  */
 public class UtilsJUnit3Test extends TestCase {
 

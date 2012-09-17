@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * 
  * Note that it does not need to be a subclass of any particular class.
  * 
- * @author nb
+ * @author zhc
  */
 public class UtilsJUnit4Test {
 

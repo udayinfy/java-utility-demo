@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 /**
  * Sample JUnit-4-style test suite.
  * 
- * @author nb
+ * @author zhc
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({demo.VectorsJUnit4Test.class,demo.UtilsJUnit4Test.class})

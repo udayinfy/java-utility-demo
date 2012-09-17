@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author nb
+ * @author zhc
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({demo.JUnit4TestSuite.class,demo.VectorsJUnit3Test.class})

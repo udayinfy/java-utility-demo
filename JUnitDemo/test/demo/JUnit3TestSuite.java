@@ -8,7 +8,7 @@ import junit.framework.TestSuite;
 /**
  * Sample JUnit-3-style test suite.
  * 
- * @author nb
+ * @author zhc
  */
 public class JUnit3TestSuite extends TestCase {
     
