@@ -10,7 +10,7 @@ import java.math.BigInteger;
 
 /**
  *
- * @author  nb
+ * @author  zhc
  */
 public class Utils {
 

@@ -8,7 +8,7 @@ package demo;
 /**
  * Sample utility class for vector algebra.
  *
- * @author  nb
+ * @author  zhc
  */
 public final class Vectors {
 
