@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WebApp" default="zip" basedir=".">
+
+	<property name="version" value="1.0" />
+	<property name="release.dir" value="release" />
+	<property name="build.dir" value="Web/WEB-INF/classes" />
+	<property name="app.name" value="WebApp" />
+
+	<property name="jarfile" value="${release.dir}/${app.name}-${version}.jar" />
+	<property name="zipfile" value="${release.dir}/${app.name}-${version}.zip" />
+
+	<target name="jar">
+		<delete file="${jarfile}" />
+		<echo message="jar..." />
+		<jar basedir="${build.dir}" destfile="${jarfile}" update="true">
+			<manifest>
+				<attribute name="Specification-Vendor" value="zhc" />
+				<attribute name="Implementation-Vendor-Id" value="demo" />
+				<attribute name="Implementation-Vendor" value="zhc" />
+				<attribute name="Implementation-Version" value="${version}" />
+				<attribute name="Created-By" value="1.6 (Sun Microsystems Inc.)" />
+			</manifest>
+			<include name="com/**" />
+			<include name="cn/**" />
+			<include name="demo/**" />
+			<include name="util/**" />
+		</jar>
+	</target>
+
+	<target name="zip" depends="jar">
+		<delete file="${zipfile}" />
+		<echo message="zip..." />
+		<zip destfile="${zipfile}">
+			<zipfileset dir="." includes="${jarfile}" fullpath="WebApp/WEB-INF/lib/${app.name}-${version}.jar" />
+			<zipfileset dir="Web" prefix="WebApp">
+				<exclude name="WEB-INF/classes/com/**" />
+				<exclude name="WEB-INF/classes/cn/**" />
+				<exclude name="WEB-INF/classes/demo/**" />
+				<exclude name="WEB-INF/classes/util/**" />
+			</zipfileset>
+		</zip>
+	</target>
+</project>

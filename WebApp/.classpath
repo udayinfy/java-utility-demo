@@ -22,7 +22,6 @@
 	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.jms-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.orm-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.oxm-3.1.0.RC1.jar"/>
-	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.spring-library-3.1.0.RC1.libd"/>
 	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.test-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.transaction-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="Web/WEB-INF/lib/org.springframework.web-3.1.0.RC1.jar"/>
