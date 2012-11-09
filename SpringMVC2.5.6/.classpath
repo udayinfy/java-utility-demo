@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-agent.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-aop.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-aspects.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-beans.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-context-support.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-context.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-core.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-jdbc.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-jms.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-orm.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-test.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-tomcat-weaver.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-tx.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-web.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-webmvc-portlet.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-webmvc-struts.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/spring-webmvc.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="Web/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="output" path="Web/WEB-INF/classes"/>
+</classpath>

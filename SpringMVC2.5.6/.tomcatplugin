@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/Web</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>true</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <webPath>/SpringMVC2.5.6</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/classes</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-agent.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-aop.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-aspects.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-beans.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-context-support.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-context.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-core.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-jdbc.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-jms.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-orm.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-test.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-tomcat-weaver.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-tx.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-web.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-webmvc-portlet.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-webmvc-struts.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC2.5.6/Web/WEB-INF/lib/spring-webmvc.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/charsets.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/ext/dnsns.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/ext/localedata.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/ext/sunjce_provider.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/ext/sunmscapi.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/ext/sunpkcs11.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/jsse.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/resources.jar</webClassPathEntry>
+        <webClassPathEntry>D:/ProgramFiles/Java/jre6/lib/rt.jar</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>
