@@ -24,6 +24,10 @@
 		<servlet-name>DebugServlet</servlet-name>
 		<servlet-class>demo.DebugServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>RedirectServlet</servlet-name>
+		<servlet-class>servlet.RedirectServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
@@ -41,5 +45,10 @@
 		<servlet-name>DebugServlet</servlet-name>
 		<url-pattern>/DebugServlet</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RedirectServlet</servlet-name>
+		<url-pattern>/AppRedirect</url-pattern>
+	</servlet-mapping>
+	
 
 </web-app>
