@@ -11,12 +11,8 @@
 <body>
 	
 	<%
-		Properties props = PropUtil.getProperties();
-		Set<Object> keySet = prop.keySet();
-		for (Iterator it = keySet.iterator(); it.hasNext();) {
-			String key = (String) it.next();
-			out.println(key + "=" + props.getProperty(key) + "<br>");
-		}
+		String propsProfile = PropUtil.printProperties("<br>");
+		out.println(propsProfile);
 	%>
 	
 	
