@@ -23,26 +23,28 @@ public class RedirectServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String reqURI = req.getRequestURI();
-		logger.debug("RequestURI=" + reqURI);
+		String url = req.getRequestURL().toString();
+		String queryStr = req.getQueryString();
+		String requestURL = url + "?" + queryStr;
+		logger.debug("RequestURL=" + requestURL);
 		
-		String redirectURI = "";
+		String redirectURL = "";
 		Properties prop = PropUtil.getProperties();
 		
 		Set<Object> keySet = prop.keySet();
 		for (Iterator it = keySet.iterator(); it.hasNext();) {
 			String key = (String) it.next();
-			if(reqURI.contains(key)){
-				redirectURI = prop.getProperty(key);
-				logger.debug("找到重定向URI: Key=" + key + "; RedirectURI=" + redirectURI);
+			if(requestURL.contains(key)){
+				redirectURL = prop.getProperty(key);
+				logger.debug("找到重定向URI: Key=" + key + "; RedirectURI=" + redirectURL);
 			}
 		}
 		
-		if(redirectURI.equals("")){
+		if(redirectURL.equals("")){
 			throw new RuntimeException("没有打到重定向URI，请检查配置。");
 		}
 		
-		resp.sendRedirect(redirectURI);
+		resp.sendRedirect(redirectURL);
 		
 	}
 
