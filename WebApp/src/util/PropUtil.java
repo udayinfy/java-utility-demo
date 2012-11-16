@@ -12,10 +12,6 @@ import java.util.Set;
 
 public class PropUtil {
 	
-	public static void main(String[] args) {
-		printProperties();
-	}
-
 	private static final Properties props = new Properties();
 	private static final String profilePath = PropUtil.class.getResource("/").getFile() + "redirect.properties";
 	private static final String comment = "";
@@ -123,12 +119,18 @@ public class PropUtil {
 	/**
 	 * 打印Properties列表
 	 */
-	public static void printProperties() {
+	public static String printProperties(String splitStr) {
+		StringBuffer buffer = new StringBuffer();
 		Set<Object> keySet = props.keySet();
 		for (Iterator it = keySet.iterator(); it.hasNext();) {
 			String key = (String) it.next();
-			System.out.println(key + "=" + props.getProperty(key));
+			String keyValue = key + "=" + props.getProperty(key);
+			System.out.println(keyValue);
+			buffer.append(keyValue + splitStr);
 		}
+		
+		return buffer.toString();
+		
 	}
 
 	/**

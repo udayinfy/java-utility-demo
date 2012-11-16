@@ -42,6 +42,8 @@ public class RedirectServlet extends HttpServlet {
 		
 		if(redirectURL.equals("")){
 			throw new RuntimeException("没有打到重定向URI，请检查配置。");
+		}else{
+			redirectURL = redirectURL + "?" + queryStr;
 		}
 		
 		resp.sendRedirect(redirectURL);
