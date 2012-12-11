@@ -28,6 +28,10 @@
 		<servlet-name>RedirectServlet</servlet-name>
 		<servlet-class>servlet.RedirectServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>PostServlet</servlet-name>
+		<servlet-class>demo.PostServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
@@ -48,6 +52,10 @@
 	<servlet-mapping>
 		<servlet-name>RedirectServlet</servlet-name>
 		<url-pattern>/AppRedirect</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PostServlet</servlet-name>
+		<url-pattern>/PostServlet</url-pattern>
 	</servlet-mapping>
 	
 
