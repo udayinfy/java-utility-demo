@@ -19,6 +19,7 @@ public class LogServlet extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		logger.info("the the logservlet is invoked." + count++);
+		logger.info("RequestURL:" + request.getRequestURL() + "?" + request.getQueryString());
 		
 	}
 	
