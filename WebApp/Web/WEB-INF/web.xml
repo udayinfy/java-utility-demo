@@ -10,19 +10,19 @@
 
 	<servlet>
 		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>demo.TestServlet</servlet-class>
+		<servlet-class>servlet.TestServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>LogServlet</servlet-name>
-		<servlet-class>demo.LogServlet</servlet-class>
+		<servlet-class>servlet.LogServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>ImageServlet</servlet-name>
-		<servlet-class>demo.ImageServlet</servlet-class>
+		<servlet-class>servlet.ImageServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>DebugServlet</servlet-name>
-		<servlet-class>demo.DebugServlet</servlet-class>
+		<servlet-class>servlet.DebugServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>RedirectServlet</servlet-name>
@@ -30,7 +30,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>PostServlet</servlet-name>
-		<servlet-class>demo.PostServlet</servlet-class>
+		<servlet-class>servlet.PostServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
