@@ -9,11 +9,14 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.junit.Test;
+
 public class JdkHttpClient {
 
 	private String getUrl = null;
 	private String postUrl = null;
 
+	@Test
 	public String doGet() throws IOException {
 
 		URL url = new URL(getUrl);
@@ -37,8 +40,10 @@ public class JdkHttpClient {
 		return retValue;
 	}
 
-	public String doPost(String content) throws IOException {
+	@Test
+	public String doPost() throws IOException {
 
+		String content = "";
 		URL url = new URL(postUrl);
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -48,6 +53,7 @@ public class JdkHttpClient {
 		connection.setDoInput(true);
 		connection.setRequestMethod("POST");
 		connection.setUseCaches(false);
+		connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
 
 		connection.connect();
 
