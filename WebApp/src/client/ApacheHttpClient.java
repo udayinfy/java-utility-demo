@@ -16,6 +16,7 @@ import org.springframework.util.StringUtils;
 public class ApacheHttpClient {
 
 	public void doGet() {
+		
 		String url = "";
 		String queryString = "";
 		String response = null;
@@ -38,6 +39,7 @@ public class ApacheHttpClient {
 		}
 
 		System.out.println(response);
+		
 	}
 
 	@Test
@@ -58,7 +60,7 @@ public class ApacheHttpClient {
 //		params.put("ParamA", "ValueA");
 //		params.put("ParamB", "ValueB");
 //		
-//		// 设置Http Post数据
+//		// 璁剧疆Http Post鏁版嵁
 //		if (paramArr != null) {
 //			HttpMethodParams httpParams = new HttpMethodParams();
 //			for (Map.Entry<String, String> entry : params.entrySet()) {
