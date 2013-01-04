@@ -7,7 +7,7 @@
     <updateXml>true</updateXml>
     <warLocation></warLocation>
     <extraInfo></extraInfo>
-    <webPath>/webapp</webPath>
+    <webPath>/WebApp</webPath>
     <webClassPathEntries>
         <webClassPathEntry>/WebApp/Web/WEB-INF/classes</webClassPathEntry>
     </webClassPathEntries>
