@@ -16,11 +16,13 @@ import org.springframework.util.StringUtils;
 public class ApacheHttpClient {
 
 	public void doGet() {
+		
 		String url = "";
 		String queryString = "";
 		String response = null;
 		HttpClient client = new HttpClient();
 		HttpMethod method = new GetMethod(url);
+		
 		try {
 			if (StringUtils.hasText(queryString))
 				method.setQueryString(URIUtil.encodeQuery(queryString));
@@ -37,6 +39,7 @@ public class ApacheHttpClient {
 		}
 
 		System.out.println(response);
+		
 	}
 
 	@Test
