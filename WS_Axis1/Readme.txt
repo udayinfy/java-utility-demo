@@ -1,1 +1,0 @@
-查看已发布的服务:http://ip:port/appname/services

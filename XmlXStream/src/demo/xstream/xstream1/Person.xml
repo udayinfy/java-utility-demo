@@ -1,6 +1,0 @@
-<Person name1="赵" gender1="male">
-	<birthday year1="2008">
-		<month>08</month>
-		<day>08</day>
-	</birthday>
-</Person>

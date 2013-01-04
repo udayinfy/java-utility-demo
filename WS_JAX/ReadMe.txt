@@ -1,1 +1,0 @@
-工程说明：使用JDK1.6的JAX-WS编写WebService
