@@ -21,6 +21,7 @@ public class ApacheHttpClient {
 		String response = null;
 		HttpClient client = new HttpClient();
 		HttpMethod method = new GetMethod(url);
+		
 		try {
 			if (StringUtils.hasText(queryString))
 				method.setQueryString(URIUtil.encodeQuery(queryString));
