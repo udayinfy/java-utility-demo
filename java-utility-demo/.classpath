@@ -7,7 +7,6 @@
 	<classpathentry kind="src" path="HTTP"/>
 	<classpathentry kind="src" path="Socket"/>
 	<classpathentry kind="src" path="Annotation"/>
-	<classpathentry kind="src" path="MD5"/>
 	<classpathentry kind="src" path="Brace"/>
 	<classpathentry kind="src" path="Reflect"/>
 	<classpathentry kind="src" path="encrypt"/>

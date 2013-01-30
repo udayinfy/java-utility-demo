@@ -1,4 +1,4 @@
-package demo;
+package demo.md5;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
