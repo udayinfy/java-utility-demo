@@ -10,6 +10,7 @@
 	<classpathentry kind="src" path="MD5"/>
 	<classpathentry kind="src" path="Brace"/>
 	<classpathentry kind="src" path="Reflect"/>
+	<classpathentry kind="src" path="encrypt"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.jar"/>
 	<classpathentry kind="lib" path="lib/jaxen-1.1-beta-6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
