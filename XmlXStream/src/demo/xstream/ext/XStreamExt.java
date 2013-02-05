@@ -9,6 +9,11 @@ import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyReplacer;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 
+/**
+ * CDATA 下划线  相关
+ * @author zhc
+ *
+ */
 public class XStreamExt {
 
 	/**
