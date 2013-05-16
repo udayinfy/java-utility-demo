@@ -9,6 +9,15 @@
 
 	<context:component-scan base-package="demo.springmvc.controller" />
 
+	<bean id="customerValidator" name="customerValidator"
+		class="demo.springmvc.validator.CustomerValidator"></bean>
+
+	<!-- Register the Customer.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="demo/springmvc/validator/Customer" />
+	</bean>
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -18,5 +27,5 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	
+
 </beans>

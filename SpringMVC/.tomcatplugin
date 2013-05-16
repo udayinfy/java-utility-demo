@@ -43,6 +43,5 @@
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/slf4j-log4j12-1.6.0.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/xercesImpl.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/xml-apis.jar</webClassPathEntry>
-        <webClassPathEntry>/SpringMVC/bin</webClassPathEntry>
     </webClassPathEntries>
 </tomcatProjectProperties>

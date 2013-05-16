@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * URL : http://localhost:8080/SpringMVC/movie/SpiderMan4
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("/movie")
 public class MovieController {
