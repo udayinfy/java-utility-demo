@@ -9,12 +9,16 @@
     <extraInfo></extraInfo>
     <webPath>/SpringMVC</webPath>
     <webClassPathEntries>
+        <webClassPathEntry>/SpringMVC/Web/WEB-INF/classes</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/castor-1.2.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/cglib-nodep-2.1_3.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/classes12.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/commons-dbcp-1.3.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/commons-logging-1.1.1.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/commons-pool-1.5.4.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/jackson-core-lgpl-1.9.12.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/jackson-mapper-lgpl-1.9.12.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/jstl.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/log4j-1.2.14.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/org.springframework.aop-3.1.0.RC1.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/org.springframework.asm-3.1.0.RC1.jar</webClassPathEntry>
@@ -41,7 +45,18 @@
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/serializer.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/slf4j-api-1.6.0.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/slf4j-log4j12-1.6.0.jar</webClassPathEntry>
+        <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/standard.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/xercesImpl.jar</webClassPathEntry>
         <webClassPathEntry>/SpringMVC/Web/WEB-INF/lib/xml-apis.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/charsets.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/ext/dnsns.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/ext/localedata.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/ext/sunjce_provider.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/ext/sunmscapi.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/ext/sunpkcs11.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/jsse.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/resources.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_24/jre/lib/rt.jar</webClassPathEntry>
     </webClassPathEntries>
 </tomcatProjectProperties>
