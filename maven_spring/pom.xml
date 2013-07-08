@@ -52,7 +52,11 @@
 		<finalName>spring3</finalName>
 	</build>
 
-	<!-- <repositories> <repository> <id>My Repository</id> <url>http://search.maven.org</url> 
-		</repository> </repositories> -->
+	<repositories>
+		<repository>
+			<id>My Repository</id>
+			<url>http://search.maven.org</url>
+		</repository>
+	</repositories>
 
 </project>
