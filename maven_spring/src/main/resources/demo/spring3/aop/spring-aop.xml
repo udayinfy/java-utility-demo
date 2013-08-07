@@ -10,7 +10,15 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<!-- 指定自动搜索Bean组件、自动搜索切面类，前一个代表搜索Bean的包，后一个代表搜索切面类的包 -->
+	<context:component-scan
+		base-package="demo.spring3/aop">
+		<context:include-filter type="annotation"
+			expression="org.aspectj.lang.annotation.Aspect" />
+	</context:component-scan>
 	
+	<!-- 启动@AspectJ支持 -->
+	<aop:aspectj-autoproxy />
 
 
 </beans>
