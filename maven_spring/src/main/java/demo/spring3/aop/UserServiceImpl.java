@@ -5,29 +5,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-	public void getUserByUid(String uid) {
+	public User getUserByUid(long uid) {
 
 		System.out.println("getUserById");
 
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		User user = new User();
+		user.setUid(1L);
+		user.setName("aname");
+		
+		return user;
 
 	}
 
-	public void updateUserByUid(String uid) {
+	public void updateUserByUid(long uid) {
 
 		System.out.println("updateUserByUid");
 
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

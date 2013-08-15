@@ -1,5 +1,7 @@
 package demo.spring3.aop;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,13 @@ public class TestSpringAop {
 	
 	@Test
 	public void testgetUserByUId(){
-		String uid = "auid";
-		userService.getUserByUid(uid);
+		User user = userService.getUserByUid(1L);
+		assertNotNull(user);
 	}
 	
 	@Test
 	public void testupdaeUserByUid(){
-		String uid = "auid";
-		userService.updateUserByUid(uid);
+		userService.updateUserByUid(1L);
 	}
 	
 }

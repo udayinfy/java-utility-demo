@@ -2,9 +2,9 @@ package demo.spring3.aop;
 
 public interface UserService {
 	
-	public void getUserByUid(String uid);
+	public User getUserByUid(long uid);
 	
-	public void updateUserByUid(String uid);
+	public void updateUserByUid(long uid);
 	
 
 }
