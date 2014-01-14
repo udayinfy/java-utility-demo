@@ -4,12 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class JSONController {
+	
+	
+	@RequestMapping(value = "/saveObjectJson", method = RequestMethod.GET)
+	public @ResponseBody Shop save(@RequestBody Shop jsonString) {
+		
+		Shop shop = new Shop();
+		shop.setName("AName");
+		shop.setStaffName(new String[] { "arrOne", "arrTwo" });
+
+		return shop;
+	}
 
 	@RequestMapping(value = "/getObjectJson", method = RequestMethod.GET)
 	public @ResponseBody Shop getObjectJson() {
